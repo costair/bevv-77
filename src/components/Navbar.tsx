@@ -27,6 +27,7 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-8">
             <NavLink href="#services">Services</NavLink>
+            <NavLink href="#pricing">Pricing</NavLink>
             <NavLink href="#work">Work</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#contact">Contact</NavLink>
@@ -51,6 +52,9 @@ const Navbar = () => {
           <div className="container mx-auto px-6 py-4 space-y-4">
             <MobileNavLink href="#services" onClick={() => setIsMobileMenuOpen(false)}>
               Services
+            </MobileNavLink>
+            <MobileNavLink href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>
+              Pricing
             </MobileNavLink>
             <MobileNavLink href="#work" onClick={() => setIsMobileMenuOpen(false)}>
               Work

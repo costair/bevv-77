@@ -61,9 +61,16 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 bg-white">
+    <section id="pricing" className="py-24 bg-secondary">
       <div className="container px-4 mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center">
+          <Button
+            className="mb-16 bg-black text-white hover:bg-black/90"
+            onClick={() => window.location.href = '#pricing'}
+          >
+            View Our Pricing Plans
+          </Button>
+          <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Pricing Plans</h2>
           <p className="text-lg text-muted-foreground">
             Choose the perfect plan for your food & beverage brand
