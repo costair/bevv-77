@@ -71,10 +71,11 @@ const Pricing = () => {
             View Our Pricing Plans
           </Button>
           <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Pricing Plans</h2>
-          <p className="text-lg text-muted-foreground">
-            Choose the perfect plan for your food & beverage brand
-          </p>
+            <h2 className="text-4xl font-bold mb-4">Pricing Plans</h2>
+            <p className="text-lg text-muted-foreground">
+              Choose the perfect plan for your food & beverage brand
+            </p>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
