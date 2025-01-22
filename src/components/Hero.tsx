@@ -1,8 +1,18 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, UtensilsCrossed, Coffee, Pizza } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-20">
+    <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
+      {/* Decorative Icons */}
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden lg:block animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <UtensilsCrossed className="w-24 h-24 text-[#F97316] opacity-20 mb-8 transform -rotate-12" />
+        <Pizza className="w-24 h-24 text-[#ea384c] opacity-20 transform rotate-12" />
+      </div>
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:block animate-fade-in" style={{ animationDelay: "0.3s" }}>
+        <Coffee className="w-24 h-24 text-[#0EA5E9] opacity-20 mb-8 transform rotate-12" />
+        <UtensilsCrossed className="w-24 h-24 text-[#8B5CF6] opacity-20 transform -rotate-12" />
+      </div>
+
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block px-3 py-1 mb-6 text-sm font-medium bg-black text-white rounded-full animate-fade-in">
