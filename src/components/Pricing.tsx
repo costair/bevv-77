@@ -80,7 +80,7 @@ const Pricing = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan, index) => (
-            <Card key={index} className="relative border-2 hover:border-black transition-all duration-300">
+            <Card key={index} className="relative border-2 hover:border-black transition-all duration-300 flex flex-col">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
                 <CardDescription>{plan.subtitle}</CardDescription>
@@ -100,8 +100,8 @@ const Pricing = () => {
                   )}
                 </div>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-4">
+              <CardContent className="flex-1 flex flex-col">
+                <ul className="space-y-4 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-black shrink-0 mt-0.5" />
