@@ -32,7 +32,7 @@ const Pricing = () => {
       ]
     },
     {
-      name: "Full Brand Experience",
+      name: "Premium",
       subtitle: "Complete Digital Presence",
       monthlyPrice: 980,
       quarterlyPrice: 2640,
