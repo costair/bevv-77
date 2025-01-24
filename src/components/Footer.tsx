@@ -2,8 +2,8 @@ import { Instagram, Facebook, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-black py-20">
-      <div className="container mx-auto px-6">
+    <footer className="bg-secondary text-black pt-20">
+      <div className="container mx-auto px-6 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-3 space-y-4">
             <a href="/" className="text-2xl font-bold tracking-tighter">
