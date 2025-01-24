@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Youtube } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,54 +10,51 @@ const Footer = () => {
               Bevv
             </a>
             <p className="text-muted-foreground text-sm">
-              Elevating food & beverage brands through strategic design and creative excellence.
+              Transformando marcas de alimentos y bebidas a través de diseño estratégico y excelencia creativa.
             </p>
           </div>
 
           <div className="md:col-span-2 md:col-start-6 space-y-4">
-            <h3 className="font-semibold text-lg">Services</h3>
+            <h3 className="font-semibold text-lg">Productos</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#services" className="hover:text-black transition-colors">Packaging Design</a></li>
-              <li><a href="#services" className="hover:text-black transition-colors">Brand Identity</a></li>
-              <li><a href="#services" className="hover:text-black transition-colors">Marketing Campaigns</a></li>
-              <li><a href="#services" className="hover:text-black transition-colors">Social Media</a></li>
+              <li><a href="#services" className="hover:text-black transition-colors">Bebidas</a></li>
+              <li><a href="#services" className="hover:text-black transition-colors">Alimentos</a></li>
+              <li><a href="#services" className="hover:text-black transition-colors">Snacks</a></li>
+              <li><a href="#services" className="hover:text-black transition-colors">Orgánicos</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2 space-y-4">
-            <h3 className="font-semibold text-lg">Resources</h3>
+            <h3 className="font-semibold text-lg">Servicios</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#work" className="hover:text-black transition-colors">Case Studies</a></li>
-              <li><a href="#work" className="hover:text-black transition-colors">Portfolio</a></li>
-              <li><a href="#pricing" className="hover:text-black transition-colors">Pricing Guide</a></li>
-              <li><a href="#contact" className="hover:text-black transition-colors">Contact Sales</a></li>
+              <li><a href="#work" className="hover:text-black transition-colors">Branding</a></li>
+              <li><a href="#work" className="hover:text-black transition-colors">Packaging</a></li>
+              <li><a href="#pricing" className="hover:text-black transition-colors">Marketing</a></li>
+              <li><a href="#contact" className="hover:text-black transition-colors">Consultoría</a></li>
             </ul>
           </div>
 
           <div className="md:col-span-2 space-y-4">
-            <h3 className="font-semibold text-lg">Legal</h3>
+            <h3 className="font-semibold text-lg">Empresa</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-black transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-black transition-colors">Licensing</a></li>
+              <li><a href="#" className="hover:text-black transition-colors">Sobre Nosotros</a></li>
+              <li><a href="#" className="hover:text-black transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-black transition-colors">Contacto</a></li>
+              <li><a href="#" className="hover:text-black transition-colors">Careers</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © 2025 Bevv Studio. All rights reserved.
+            © 2024 Bevv Studio. Todos los derechos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-muted-foreground hover:text-black transition-colors">
+            <a href="#" className="text-muted-foreground hover:text-black transition-colors" aria-label="LinkedIn">
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-black transition-colors" aria-label="Instagram">
               <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-black transition-colors">
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-black transition-colors">
-              <Youtube className="h-5 w-5" />
             </a>
           </div>
         </div>
