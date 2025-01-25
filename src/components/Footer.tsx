@@ -7,14 +7,14 @@ const Footer = () => {
     <footer className="bg-white text-black w-full">
       <div className="container mx-auto px-6">
         {/* Logo centered at the top */}
-        <div className="flex justify-center py-4">
+        <div className="flex justify-center py-8">
           <a href="/" className="text-3xl font-bold tracking-tighter">
             Bevv
           </a>
         </div>
 
         {/* Main footer content */}
-        <div className="flex flex-col md:flex-row justify-between items-start py-8 border-b border-gray-200">
+        <div className="flex flex-col md:flex-row justify-between items-start py-16 border-b border-gray-200">
           {/* Navigation links */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-24">
             <div className="space-y-4">
@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
 
         {/* Footer bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center py-4">
+        <div className="flex flex-col md:flex-row justify-between items-center py-6">
           <p className="text-sm text-gray-600">
             © 2024 Bevv Studio. All rights reserved.
           </p>

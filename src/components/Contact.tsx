@@ -38,12 +38,14 @@ const Contact = () => {
               rows={4}
               className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
             ></textarea>
-            <button
-              type="submit"
-              className="w-full md:w-auto px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors"
-            >
-              Send Message
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors"
+              >
+                Send Message
+              </button>
+            </div>
           </form>
         </div>
       </div>
