@@ -4,12 +4,13 @@ const Footer = () => {
   return (
     <footer className="bg-white text-black w-full">
       <div className="container mx-auto px-6 py-8">
-        {/* Logo and social icons */}
-        <div className="flex justify-between items-center mb-8">
+        {/* Logo, subtitle and social icons */}
+        <div className="flex flex-col items-start mb-8">
           <a href="/" className="text-2xl font-bold tracking-tighter">
             Bevv
           </a>
-          <div className="flex items-center space-x-4">
+          <p className="text-sm text-gray-600 mt-1">Food & Beverage Studio</p>
+          <div className="flex items-center space-x-4 mt-3">
             <a href="#" className="text-gray-600 hover:text-black transition-colors">
               <Linkedin className="h-5 w-5" />
             </a>
@@ -20,7 +21,7 @@ const Footer = () => {
         </div>
 
         {/* Navigation links */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-24 mb-8">
+        <div className="flex justify-end space-x-12 lg:space-x-24">
           <div className="space-y-3">
             <h3 className="font-semibold">Products</h3>
             <ul className="space-y-2 text-sm text-gray-600">
@@ -53,7 +54,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="pt-4 border-t border-gray-200">
+        <div className="pt-8 mt-8 border-t border-gray-200">
           <p className="text-sm text-gray-600">
             © 2024 Bevv Studio. All rights reserved.
           </p>
