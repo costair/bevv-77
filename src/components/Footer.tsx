@@ -1,10 +1,10 @@
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-white text-black w-full">
       <div className="container mx-auto px-6 py-8">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-start">
           {/* Logo, subtitle and social icons */}
           <div className="flex flex-col items-start">
             <a href="/" className="text-2xl font-bold tracking-tighter">
@@ -21,8 +21,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Navigation links */}
-          <div className="flex space-x-12 lg:space-x-24">
+          {/* Navigation links - Centered */}
+          <div className="flex space-x-24">
             <div className="space-y-3">
               <h3 className="font-semibold">Products</h3>
               <ul className="space-y-2 text-sm text-gray-600">
@@ -51,6 +51,22 @@ const Footer = () => {
                 <li><a href="#" className="hover:text-black transition-colors">Guides</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">FAQ</a></li>
               </ul>
+            </div>
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">Stay up to date</h3>
+            <div className="flex flex-col space-y-3">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+              />
+              <button className="bg-black text-white px-4 py-2 rounded-md hover:bg-black/90 transition-colors flex items-center justify-center gap-2">
+                <Mail className="h-4 w-4" />
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
