@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation links - Centered */}
-          <div className="flex space-x-24">
+          <div className="flex space-x-16">
             <div className="space-y-3">
               <h3 className="font-semibold">Products</h3>
               <ul className="space-y-2 text-sm text-gray-600">
@@ -50,6 +50,16 @@ const Footer = () => {
                 <li><a href="#" className="hover:text-black transition-colors">Success Stories</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">Guides</a></li>
                 <li><a href="#" className="hover:text-black transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="font-semibold">Legal</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li><a href="#" className="hover:text-black transition-colors">Food Safety</a></li>
+                <li><a href="#" className="hover:text-black transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-black transition-colors">Terms & Conditions</a></li>
+                <li><a href="#" className="hover:text-black transition-colors">Compliance</a></li>
               </ul>
             </div>
           </div>
