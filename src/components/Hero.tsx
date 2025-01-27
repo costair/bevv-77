@@ -1,16 +1,68 @@
-import { ArrowRight, UtensilsCrossed, Coffee, Pizza } from "lucide-react";
+import { ArrowRight, UtensilsCrossed, Coffee, Pizza, Wheat, LeafyGreen, Flower2, Sprout } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
       {/* Decorative Icons */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 hidden lg:block animate-fade-in" style={{ animationDelay: "0.3s" }}>
-        <UtensilsCrossed className="w-24 h-24 text-[#F97316] opacity-20 mb-8 transform -rotate-12" />
-        <Pizza className="w-24 h-24 text-[#ea384c] opacity-20 transform rotate-12" />
-      </div>
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:block animate-fade-in" style={{ animationDelay: "0.3s" }}>
-        <Coffee className="w-24 h-24 text-[#0EA5E9] opacity-20 mb-8 transform rotate-12" />
-        <UtensilsCrossed className="w-24 h-24 text-[#8B5CF6] opacity-20 transform -rotate-12" />
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Left side icons */}
+        <div 
+          className="absolute left-4 top-1/2 -translate-y-1/2 hidden lg:block animate-fade-in" 
+          style={{ 
+            animationDelay: "0.3s",
+            transform: `translateY(calc(-50% + ${scrollY * 0.1}px))`
+          }}
+        >
+          <UtensilsCrossed className="w-24 h-24 text-[#F97316] opacity-20 mb-8 transform -rotate-12" />
+          <Pizza className="w-24 h-24 text-[#ea384c] opacity-20 transform rotate-12 mb-8" />
+          <Wheat className="w-24 h-24 text-[#84cc16] opacity-20 transform -rotate-6" />
+        </div>
+
+        {/* Right side icons */}
+        <div 
+          className="absolute right-4 top-1/2 -translate-y-1/2 hidden lg:block animate-fade-in"
+          style={{ 
+            animationDelay: "0.3s",
+            transform: `translateY(calc(-50% - ${scrollY * 0.1}px))`
+          }}
+        >
+          <Coffee className="w-24 h-24 text-[#0EA5E9] opacity-20 mb-8 transform rotate-12" />
+          <LeafyGreen className="w-24 h-24 text-[#22c55e] opacity-20 transform -rotate-12 mb-8" />
+          <Flower2 className="w-24 h-24 text-[#ec4899] opacity-20 transform rotate-6" />
+        </div>
+
+        {/* Additional scattered icons */}
+        <div 
+          className="absolute left-1/4 top-1/3 hidden lg:block animate-fade-in"
+          style={{ 
+            animationDelay: "0.4s",
+            transform: `translate(${scrollY * 0.05}px, ${scrollY * -0.05}px)`
+          }}
+        >
+          <Sprout className="w-20 h-20 text-[#a3e635] opacity-20 transform rotate-45" />
+        </div>
+
+        <div 
+          className="absolute right-1/4 bottom-1/3 hidden lg:block animate-fade-in"
+          style={{ 
+            animationDelay: "0.4s",
+            transform: `translate(${scrollY * -0.05}px, ${scrollY * 0.05}px)`
+          }}
+        >
+          <UtensilsCrossed className="w-20 h-20 text-[#8B5CF6] opacity-20 transform -rotate-45" />
+        </div>
       </div>
 
       <div className="container mx-auto px-6">
