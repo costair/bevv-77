@@ -4,7 +4,12 @@ const About = () => {
   return (
     <section className="relative bg-white py-24 overflow-hidden">
       <div className="container relative z-10 mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-4 text-center">Our culture</h2>
+        <div className="flex flex-col items-center justify-center space-y-3 mb-12">
+          <span className="border border-black rounded-full px-4 py-1.5 text-sm font-medium">
+            Our Culture
+          </span>
+          <h2 className="text-4xl font-bold text-center">About Us</h2>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-12">
           <div className="space-y-12">
