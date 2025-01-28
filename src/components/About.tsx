@@ -5,7 +5,7 @@ const About = () => {
     <section className="relative bg-white py-24 overflow-hidden">
       <div className="container relative z-10 mx-auto px-6">
         <div className="flex flex-col items-center justify-center space-y-3 mb-12">
-          <span className="bg-black text-white rounded-full px-6 py-2 text-sm font-medium">
+          <span className="bg-black text-white rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
             Our Culture
           </span>
           <h2 className="text-4xl font-bold text-center">About Us</h2>
