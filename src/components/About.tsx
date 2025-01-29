@@ -2,7 +2,7 @@ import { ShieldCheck, TrendingUp, MessageSquare, HeartHandshake } from "lucide-r
 
 const About = () => {
   return (
-    <section className="relative bg-white py-24 overflow-hidden">
+    <section id="about" className="relative bg-white py-24 overflow-hidden">
       <div className="container relative z-10 mx-auto px-6">
         <div className="flex flex-col items-center justify-center space-y-3 mb-12">
           <span className="bg-black text-white rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
