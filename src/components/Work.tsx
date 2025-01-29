@@ -21,10 +21,10 @@ const Work = () => {
     <section id="work" className="py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="inline-block px-3 py-1 mb-4 text-sm font-medium bg-black text-white rounded-full">
+          <span className="bg-black text-white rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
             SELECTED WORK
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 mt-3">
             Crafting Success Stories
           </h2>
           <p className="text-gray-600">
