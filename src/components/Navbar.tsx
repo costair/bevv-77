@@ -13,6 +13,13 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -29,7 +36,12 @@ const Navbar = () => {
             <NavLink href="#services">Services</NavLink>
             <NavLink href="#work">Work</NavLink>
             <NavLink href="#pricing">Pricing</NavLink>
-            <NavLink href="#about">About</NavLink>
+            <button 
+              onClick={() => scrollToSection('about')} 
+              className="text-sm font-medium text-gray-800 hover:text-black transition-colors"
+            >
+              About
+            </button>
             <NavLink href="#contact">Contact</NavLink>
           </div>
 
@@ -59,9 +71,15 @@ const Navbar = () => {
             <MobileNavLink href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>
               Pricing
             </MobileNavLink>
-            <MobileNavLink href="#about" onClick={() => setIsMobileMenuOpen(false)}>
+            <button 
+              onClick={() => {
+                scrollToSection('about');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block text-base font-medium text-gray-800 hover:text-black transition-colors"
+            >
               About
-            </MobileNavLink>
+            </button>
             <MobileNavLink href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
               Contact
             </MobileNavLink>
