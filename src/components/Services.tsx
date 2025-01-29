@@ -39,7 +39,7 @@ const Services = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <span className="inline-block px-3 py-1 mb-4 text-sm font-medium bg-black text-white rounded-full">
-            Our Services
+            OUR SERVICES
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Comprehensive F&B Design Solutions
