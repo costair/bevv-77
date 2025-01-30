@@ -14,11 +14,26 @@ const projects = [
     category: "Brand Identity",
     image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
   },
+  {
+    title: "Gourmet Restaurant",
+    category: "Digital Marketing",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Organic Bakery",
+    category: "Brand Strategy",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Premium Tea House",
+    category: "Visual Identity",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
 ];
 
 const Work = () => {
   return (
-    <section id="work" className="py-20">
+    <section id="work" className="py-20 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <span className="bg-black text-white rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
@@ -32,28 +47,32 @@ const Work = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-2xl animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-white text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-white/80 text-sm">{project.category}</p>
+        <div className="relative">
+          <div className="flex animate-scroll">
+            {[...projects, ...projects].map((project, index) => (
+              <div
+                key={index}
+                className="min-w-[33.333%] px-4"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="group relative overflow-hidden rounded-2xl">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                    <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <h3 className="text-white text-xl font-semibold mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-white/80 text-sm">{project.category}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
