@@ -56,17 +56,12 @@ const About = () => {
             </div>
           </div>
 
-          <div className="relative w-full h-[822px] rounded-lg overflow-hidden">
-            <video 
-              className="absolute inset-0 w-[1056px] h-[822px] object-cover"
-              autoPlay 
-              muted 
-              loop 
-              playsInline
-            >
-              <source src="/your-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="relative">
+            <img 
+              src="/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png" 
+              alt="Team Culture" 
+              className="rounded-lg shadow-xl w-full object-cover"
+            />
           </div>
         </div>
       </div>
