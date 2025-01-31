@@ -35,7 +35,7 @@ const Pricing = () => {
       name: "Premium",
       subtitle: "Complete Digital Presence",
       monthlyPrice: 1499,
-      quarterlyPrice: 3597,
+      quarterlyPrice: 3600,
       features: [
         "50 Monthly Posts (Client's Choice)",
         "60 Monthly Stories (2 per day)",
