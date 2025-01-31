@@ -57,8 +57,8 @@ const About = () => {
           </div>
 
           <div className="relative">
-            <img 
-              src="/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png" 
+            <video
+              src="public/lovable-uploads/bevv2.mp4" 
               alt="Team Culture" 
               className="rounded-lg shadow-xl w-full object-cover"
             />
