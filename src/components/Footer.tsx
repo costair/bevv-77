@@ -84,7 +84,7 @@ const Footer = () => {
         {/* Copyright - Now centered */}
         <div className="pt-8 mt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-600">
-            © 2024 Bevv Studio. All rights reserved.
+            © 2025 Bevv Studio. All rights reserved.
           </p>
         </div>
       </div>
