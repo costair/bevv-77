@@ -7,8 +7,8 @@ const Pricing = () => {
     {
       name: "Starter",
       subtitle: "For New Companies",
-      monthlyPrice: 300,
-      quarterlyPrice: 810,
+      monthlyPrice: 550,
+      quarterlyPrice: 1320,
       features: [
         "Branding & Content Setup",
         "12 Monthly Posts",
@@ -21,8 +21,8 @@ const Pricing = () => {
     {
       name: "Intermediate",
       subtitle: "For Growing Brands",
-      monthlyPrice: 550,
-      quarterlyPrice: 1480,
+      monthlyPrice: 860,
+      quarterlyPrice: 2070,
       features: [
         "30 Monthly Posts",
         "30 Monthly Stories",
@@ -34,8 +34,8 @@ const Pricing = () => {
     {
       name: "Premium",
       subtitle: "Complete Digital Presence",
-      monthlyPrice: 980,
-      quarterlyPrice: 2640,
+      monthlyPrice: 1499,
+      quarterlyPrice: 3597,
       features: [
         "50 Monthly Posts (Client's Choice)",
         "60 Monthly Stories (2 per day)",
