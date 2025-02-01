@@ -2,9 +2,9 @@ import { Instagram, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black w-full">
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex justify-between items-start">
+    <footer className="bg-white text-black w-full overflow-x-hidden">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
           {/* Logo, subtitle and social icons */}
           <div className="flex flex-col items-start">
             <a href="/" className="text-2xl font-bold tracking-tighter">
@@ -21,8 +21,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Navigation links - Centered */}
-          <div className="flex space-x-16">
+          {/* Navigation links - Responsive Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-auto">
             <div className="space-y-3">
               <h3 className="font-semibold">Products</h3>
               <ul className="space-y-2 text-sm text-gray-600">
@@ -65,15 +65,15 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 w-full lg:w-auto">
             <h3 className="font-semibold">Stay up to date</h3>
             <div className="flex flex-col space-y-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black w-full lg:w-auto"
               />
-              <button className="bg-black text-white px-4 py-2 rounded-md hover:bg-black/90 transition-colors flex items-center justify-center gap-2">
+              <button className="bg-black text-white px-4 py-2 rounded-md hover:bg-black/90 transition-colors flex items-center justify-center gap-2 w-full lg:w-auto">
                 <Mail className="h-4 w-4" />
                 Subscribe
               </button>
@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright - Now centered */}
+        {/* Copyright */}
         <div className="pt-8 mt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-600">
             © 2025 Bevv Studio. All rights reserved.
