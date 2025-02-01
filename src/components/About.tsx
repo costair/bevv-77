@@ -13,8 +13,8 @@ const About = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-12">
           <div className="space-y-12">
-            <div className="grid grid-cols-2 gap-8">
-              <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
                 <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
                   <ShieldCheck className="h-6 w-6 text-white" />
                 </div>
@@ -24,7 +24,7 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
                 <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
@@ -34,7 +34,7 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
                 <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
                   <MessageSquare className="h-6 w-6 text-white" />
                 </div>
@@ -44,7 +44,7 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
                 <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
                   <HeartHandshake className="h-6 w-6 text-white" />
                 </div>
