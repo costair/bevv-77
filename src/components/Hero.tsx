@@ -1,4 +1,4 @@
-import { ArrowRight, UtensilsCrossed, Coffee, Pizza, Wheat, LeafyGreen, Flower2, Sprout, Wine } from "lucide-react";
+import { ArrowRight, UtensilsCrossed, Coffee, Pizza, Wheat, LeafyGreen, Flower2, Sprout } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
@@ -15,9 +15,9 @@ const Hero = () => {
 
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
-      {/* Decorative Icons - With floating animations */}
+      {/* Decorative Icons - Updated for mobile visibility */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Left side icons */}
+        {/* Left side icons - Now visible on mobile */}
         <div 
           className="absolute left-4 top-1/2 -translate-y-1/2 block animate-fade-in" 
           style={{ 
@@ -25,12 +25,12 @@ const Hero = () => {
             transform: `translateY(calc(-50% + ${scrollY * 0.1}px))`
           }}
         >
-          <UtensilsCrossed className="w-16 md:w-24 h-16 md:h-24 text-[#F97316] opacity-20 mb-8 transform -rotate-12 hover:translate-x-2 transition-transform duration-300 animate-float" />
-          <Pizza className="w-16 md:w-24 h-16 md:h-24 text-[#ea384c] opacity-20 transform rotate-12 mb-8 hover:translate-x-2 transition-transform duration-300 animate-float-delayed" />
-          <Wheat className="w-16 md:w-24 h-16 md:h-24 text-[#84cc16] opacity-20 transform -rotate-6 hover:translate-x-2 transition-transform duration-300 animate-float" />
+          <UtensilsCrossed className="w-16 md:w-24 h-16 md:h-24 text-[#F97316] opacity-20 mb-8 transform -rotate-12" />
+          <Pizza className="w-16 md:w-24 h-16 md:h-24 text-[#ea384c] opacity-20 transform rotate-12 mb-8" />
+          <Wheat className="w-16 md:w-24 h-16 md:h-24 text-[#84cc16] opacity-20 transform -rotate-6" />
         </div>
 
-        {/* Right side icons */}
+        {/* Right side icons - Now visible on mobile */}
         <div 
           className="absolute right-4 top-1/2 -translate-y-1/2 block animate-fade-in"
           style={{ 
@@ -38,12 +38,12 @@ const Hero = () => {
             transform: `translateY(calc(-50% - ${scrollY * 0.1}px))`
           }}
         >
-          <Coffee className="w-16 md:w-24 h-16 md:h-24 text-[#0EA5E9] opacity-20 mb-8 transform rotate-12 hover:-translate-x-2 transition-transform duration-300 animate-float-delayed" />
-          <LeafyGreen className="w-16 md:w-24 h-16 md:h-24 text-[#22c55e] opacity-20 transform -rotate-12 mb-8 hover:-translate-x-2 transition-transform duration-300 animate-float" />
-          <Wine className="w-16 md:w-24 h-16 md:h-24 text-[#ec4899] opacity-20 transform rotate-6 hover:-translate-x-2 transition-transform duration-300 animate-float-delayed" />
+          <Coffee className="w-16 md:w-24 h-16 md:h-24 text-[#0EA5E9] opacity-20 mb-8 transform rotate-12" />
+          <LeafyGreen className="w-16 md:w-24 h-16 md:h-24 text-[#22c55e] opacity-20 transform -rotate-12 mb-8" />
+          <Flower2 className="w-16 md:w-24 h-16 md:h-24 text-[#ec4899] opacity-20 transform rotate-6" />
         </div>
 
-        {/* Additional scattered icons */}
+        {/* Additional scattered icons - Now visible on mobile */}
         <div 
           className="absolute left-1/4 top-1/3 block animate-fade-in"
           style={{ 
@@ -51,7 +51,7 @@ const Hero = () => {
             transform: `translate(${scrollY * 0.05}px, ${scrollY * -0.05}px)`
           }}
         >
-          <Sprout className="w-12 md:w-20 h-12 md:h-20 text-[#a3e635] opacity-20 transform rotate-45 hover:scale-110 transition-transform duration-300 animate-float" />
+          <Sprout className="w-12 md:w-20 h-12 md:h-20 text-[#a3e635] opacity-20 transform rotate-45" />
         </div>
 
         <div 
@@ -61,20 +61,7 @@ const Hero = () => {
             transform: `translate(${scrollY * -0.05}px, ${scrollY * 0.05}px)`
           }}
         >
-          <Flower2 className="w-12 md:w-20 h-12 md:h-20 text-[#8B5CF6] opacity-20 transform -rotate-45 hover:scale-110 transition-transform duration-300 animate-float-delayed" />
-        </div>
-
-        {/* New scattered icons */}
-        <div className="absolute left-[15%] top-1/4 animate-fade-in">
-          <Coffee className="w-10 md:w-16 h-10 md:h-16 text-[#d97706] opacity-20 transform rotate-12 hover:scale-110 transition-transform duration-300 animate-float" />
-        </div>
-
-        <div className="absolute right-[15%] top-1/4 animate-fade-in">
-          <Wheat className="w-10 md:w-16 h-10 md:h-16 text-[#059669] opacity-20 transform -rotate-12 hover:scale-110 transition-transform duration-300 animate-float-delayed" />
-        </div>
-
-        <div className="absolute left-[40%] bottom-1/4 animate-fade-in">
-          <LeafyGreen className="w-8 md:w-12 h-8 md:h-12 text-[#7c3aed] opacity-20 transform rotate-45 hover:scale-110 transition-transform duration-300 animate-float" />
+          <UtensilsCrossed className="w-12 md:w-20 h-12 md:h-20 text-[#8B5CF6] opacity-20 transform -rotate-45" />
         </div>
       </div>
 
