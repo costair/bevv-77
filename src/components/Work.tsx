@@ -52,10 +52,10 @@ const Work = () => {
             {[...projects, ...projects].map((project, index) => (
               <div
                 key={index}
-                className="min-w-[33.333%] px-4"
+                className="min-w-full md:min-w-[33.333%] px-4"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="group relative overflow-hidden rounded-2xl">
+                <div className="group relative overflow-hidden rounded-2xl mx-auto max-w-[400px] md:max-w-none">
                   <img
                     src={project.image}
                     alt={project.title}

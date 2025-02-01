@@ -87,7 +87,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
-        "scroll": "scroll 25s linear infinite",
+        "scroll": "scroll 15s linear infinite", // Increased animation speed from 25s to 15s
       },
     },
   },
