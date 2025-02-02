@@ -3,90 +3,150 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Blog = () => {
+  const categories = [
+    "ALL TOPICS",
+    "BEVERAGES",
+    "FOOD",
+    "CASE STUDY",
+    "SUSTAINABILITY",
+    "INNOVATION",
+    "TRENDS",
+    "INDUSTRY NEWS",
+    "RECIPES"
+  ];
+
   const blogPosts = [
     {
       title: "The Art of Craft Beer: From Grain to Glass",
-      date: "March 15, 2024",
+      category: "BEVERAGES",
       description: "Discover the intricate process behind craft beer brewing and what makes each brew unique.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       tags: ["Beverages", "Craft Beer", "Brewing"]
     },
     {
       title: "Sustainable Practices in Modern Beverage Production",
-      date: "March 10, 2024",
+      category: "SUSTAINABILITY",
       description: "How beverage companies are adopting eco-friendly practices while maintaining quality.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       tags: ["Sustainability", "Production", "Industry"]
     },
     {
       title: "Food Photography: Capturing the Perfect Pour",
-      date: "March 5, 2024",
+      category: "FOOD",
       description: "Expert tips for photographing beverages and creating stunning visual content.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       tags: ["Photography", "Marketing", "Tips"]
+    },
+    {
+      title: "Latest Innovations in Beverage Packaging",
+      category: "INNOVATION",
+      description: "Exploring cutting-edge packaging solutions revolutionizing the beverage industry.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      tags: ["Innovation", "Packaging", "Technology"]
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <div className="pt-24">
-        {/* Hero Section */}
-        <section className="container mx-auto px-4 py-12">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Inside Design: Stories and Interviews</h1>
-            <p className="text-lg text-muted-foreground">
-              Subscribe to learn about new product features, the latest in technology, and updates.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-black w-full sm:w-auto"
-              />
-              <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-black/90 transition-colors w-full sm:w-auto">
-                Subscribe
+      <div className="container mx-auto px-4 pt-24 pb-12">
+        {/* Categories Navigation */}
+        <div className="overflow-x-auto">
+          <nav className="flex space-x-8 border-b border-gray-200 pb-4 mb-12">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                className="text-sm font-medium whitespace-nowrap hover:text-black transition-colors min-w-fit
+                          text-gray-600 hover:border-b-2 hover:border-black pb-1"
+              >
+                {category}
               </button>
+            ))}
+          </nav>
+        </div>
+
+        {/* Latest Section */}
+        <div className="mb-16">
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-4xl font-bold">Latest</h1>
+            <button className="text-sm font-medium hover:text-gray-600 transition-colors">
+              View latest
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Featured Post */}
+            <Card className="lg:col-span-8 overflow-hidden group cursor-pointer">
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={blogPosts[0].image}
+                  alt={blogPosts[0].title}
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <CardHeader className="space-y-2">
+                <div className="text-sm font-medium text-gray-600">
+                  {blogPosts[0].category}
+                </div>
+                <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors">
+                  {blogPosts[0].title}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {blogPosts[0].description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            {/* Side Posts */}
+            <div className="lg:col-span-4 space-y-8">
+              {blogPosts.slice(1, 3).map((post, index) => (
+                <Card key={index} className="overflow-hidden group cursor-pointer">
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader>
+                    <div className="text-sm font-medium text-gray-600 mb-2">
+                      {post.category}
+                    </div>
+                    <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Blog Posts Grid */}
-        <section className="container mx-auto px-4 py-12">
-          <h2 className="text-2xl font-bold mb-8">Recent blog posts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video relative overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                  />
+        {/* Additional Posts */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.slice(3).map((post, index) => (
+            <Card key={index} className="overflow-hidden group cursor-pointer">
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <CardHeader>
+                <div className="text-sm font-medium text-gray-600 mb-2">
+                  {post.category}
                 </div>
-                <CardHeader>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                    <time>{post.date}</time>
-                  </div>
-                  <CardTitle className="text-xl">{post.title}</CardTitle>
-                  <CardDescription>{post.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-3 py-1 bg-gray-100 text-sm rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+                <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
+                  {post.title}
+                </CardTitle>
+                <CardDescription>
+                  {post.description}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
       </div>
       <Footer />
     </div>
