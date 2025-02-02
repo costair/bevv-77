@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,10 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== "/") {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -28,21 +34,19 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <a href="/" className="text-2xl font-bold tracking-tighter">
+          <Link to="/" className="text-2xl font-bold tracking-tighter">
             Bevv
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink href="#services">Services</NavLink>
-            <NavLink href="#work">Work</NavLink>
-            <NavLink href="#pricing">Pricing</NavLink>
-            <button 
-              onClick={() => scrollToSection('about')} 
-              className="text-sm font-medium text-gray-800 hover:text-black transition-colors"
-            >
-              About
-            </button>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink onClick={() => scrollToSection('services')}>Services</NavLink>
+            <NavLink onClick={() => scrollToSection('work')}>Work</NavLink>
+            <NavLink onClick={() => scrollToSection('pricing')}>Pricing</NavLink>
+            <Link to="/blog" className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
+              Blog
+            </Link>
+            <NavLink onClick={() => scrollToSection('about')}>About</NavLink>
+            <NavLink onClick={() => scrollToSection('contact')}>Contact</NavLink>
           </div>
 
           <button
@@ -62,25 +66,41 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white">
           <div className="container mx-auto px-6 py-4 space-y-4">
-            <MobileNavLink href="#services" onClick={() => setIsMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => {
+              scrollToSection('services');
+              setIsMobileMenuOpen(false);
+            }}>
               Services
             </MobileNavLink>
-            <MobileNavLink href="#work" onClick={() => setIsMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => {
+              scrollToSection('work');
+              setIsMobileMenuOpen(false);
+            }}>
               Work
             </MobileNavLink>
-            <MobileNavLink href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>
+            <MobileNavLink onClick={() => {
+              scrollToSection('pricing');
+              setIsMobileMenuOpen(false);
+            }}>
               Pricing
             </MobileNavLink>
-            <button 
-              onClick={() => {
-                scrollToSection('about');
-                setIsMobileMenuOpen(false);
-              }}
+            <Link 
+              to="/blog" 
               className="block text-base font-medium text-gray-800 hover:text-black transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
+              Blog
+            </Link>
+            <MobileNavLink onClick={() => {
+              scrollToSection('about');
+              setIsMobileMenuOpen(false);
+            }}>
               About
-            </button>
-            <MobileNavLink href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+            </MobileNavLink>
+            <MobileNavLink onClick={() => {
+              scrollToSection('contact');
+              setIsMobileMenuOpen(false);
+            }}>
               Contact
             </MobileNavLink>
           </div>
@@ -90,31 +110,28 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
+const NavLink = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
+  <button
+    onClick={onClick}
     className="text-sm font-medium text-gray-800 hover:text-black transition-colors"
   >
     {children}
-  </a>
+  </button>
 );
 
 const MobileNavLink = ({
-  href,
   onClick,
   children,
 }: {
-  href: string;
   onClick: () => void;
   children: React.ReactNode;
 }) => (
-  <a
-    href={href}
+  <button
     onClick={onClick}
-    className="block text-base font-medium text-gray-800 hover:text-black transition-colors"
+    className="block text-base font-medium text-gray-800 hover:text-black transition-colors w-full text-left"
   >
     {children}
-  </a>
+  </button>
 );
 
 export default Navbar;
