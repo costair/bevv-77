@@ -234,7 +234,7 @@ const Blog = () => {
                   {latestPosts[0].description}
                 </CardDescription>
                 <span
-                  className={`${getTagColor(latestPosts[0].category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                  className={`${getTagColor(latestPosts[0].category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
                 >
                   {latestPosts[0].category}
                 </span>
@@ -260,7 +260,7 @@ const Blog = () => {
                       {post.title}
                     </CardTitle>
                     <span
-                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                      className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
                     >
                       {post.category}
                     </span>
@@ -310,7 +310,7 @@ const Blog = () => {
                   {post.description}
                 </CardDescription>
                 <span
-                  className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                  className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
                 >
                   {post.category}
                 </span>
