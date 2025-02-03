@@ -18,7 +18,7 @@ const Blog = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("ALL TOPICS");
 
-  const featuredPosts = [
+  const latestPosts = [
     {
       title: "The Art of Craft Beer: From Grain to Glass",
       category: "BEVERAGES",
@@ -42,7 +42,7 @@ const Blog = () => {
     }
   ];
 
-  const additionalPosts = [
+  const regularPosts = [
     {
       title: "Rising Trends in Functional Beverages",
       category: "TRENDS",
@@ -175,6 +175,13 @@ const Blog = () => {
       description: "Professional tips for beverage photography.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       publishDate: "March 2, 2024"
+    },
+    {
+      title: "Future of Sustainable Beverages",
+      category: "SUSTAINABILITY",
+      description: "Exploring upcoming trends in sustainable beverage production.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 1, 2024"
     }
   ];
 
@@ -192,7 +199,7 @@ const Blog = () => {
     return colors[category] || "bg-gray-500";
   };
 
-  const filteredPosts = [...featuredPosts, ...additionalPosts].filter(
+  const filteredPosts = regularPosts.filter(
     post => selectedCategory === "ALL TOPICS" || post.category === selectedCategory
   );
 
@@ -204,44 +211,39 @@ const Blog = () => {
         <div className="mb-16">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold">Latest</h1>
-            <button className="text-sm font-medium hover:text-gray-600 transition-colors">
-              View latest
-            </button>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Featured Post */}
-            {filteredPosts.length > 0 && (
-              <Card className="lg:col-span-8 overflow-hidden group cursor-pointer">
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={filteredPosts[0].image}
-                    alt={filteredPosts[0].title}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                  />
+            <Card className="lg:col-span-8 overflow-hidden group cursor-pointer">
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={latestPosts[0].image}
+                  alt={latestPosts[0].title}
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <CardHeader className="space-y-2">
+                <div className="text-sm font-medium text-gray-600">
+                  {latestPosts[0].publishDate}
                 </div>
-                <CardHeader className="space-y-2">
-                  <div className="text-sm font-medium text-gray-600">
-                    {filteredPosts[0].publishDate}
-                  </div>
-                  <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors">
-                    {filteredPosts[0].title}
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    {filteredPosts[0].description}
-                  </CardDescription>
-                  <span
-                    className={`${getTagColor(filteredPosts[0].category)} text-white px-3 py-1 rounded-full text-sm inline-block w-fit`}
-                  >
-                    {filteredPosts[0].category}
-                  </span>
-                </CardHeader>
-              </Card>
-            )}
+                <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors">
+                  {latestPosts[0].title}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {latestPosts[0].description}
+                </CardDescription>
+                <span
+                  className={`${getTagColor(latestPosts[0].category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                >
+                  {latestPosts[0].category}
+                </span>
+              </CardHeader>
+            </Card>
 
             {/* Side Posts */}
             <div className="lg:col-span-4 space-y-8">
-              {filteredPosts.slice(1, 3).map((post, index) => (
+              {latestPosts.slice(1, 3).map((post, index) => (
                 <Card key={index} className="overflow-hidden group cursor-pointer">
                   <div className="aspect-[16/10] overflow-hidden">
                     <img
@@ -251,14 +253,14 @@ const Blog = () => {
                     />
                   </div>
                   <CardHeader>
-                    <div className="text-sm font-medium text-gray-600 mb-2">
+                    <div className="text-sm font-medium text-gray-600">
                       {post.publishDate}
                     </div>
                     <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
                       {post.title}
                     </CardTitle>
                     <span
-                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block w-fit`}
+                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
                     >
                       {post.category}
                     </span>
@@ -286,9 +288,9 @@ const Blog = () => {
           </nav>
         </div>
 
-        {/* Additional Posts Grid */}
+        {/* Regular Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.slice(3).map((post, index) => (
+          {filteredPosts.map((post, index) => (
             <Card key={index} className="overflow-hidden group cursor-pointer">
               <div className="aspect-[16/10] overflow-hidden">
                 <img
@@ -298,7 +300,7 @@ const Blog = () => {
                 />
               </div>
               <CardHeader>
-                <div className="text-sm font-medium text-gray-600 mb-2">
+                <div className="text-sm font-medium text-gray-600">
                   {post.publishDate}
                 </div>
                 <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
@@ -308,7 +310,7 @@ const Blog = () => {
                   {post.description}
                 </CardDescription>
                 <span
-                  className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block w-fit`}
+                  className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
                 >
                   {post.category}
                 </span>
