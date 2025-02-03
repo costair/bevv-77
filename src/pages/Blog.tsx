@@ -24,47 +24,43 @@ const Blog = () => {
       category: "BEVERAGES",
       description: "Discover the intricate process behind craft beer brewing and what makes each brew unique.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
-      tags: ["Beverages", "Craft Beer", "Brewing"]
+      publishDate: "April 15, 2024"
     },
     {
       title: "Sustainable Practices in Modern Beverage Production",
       category: "SUSTAINABILITY",
       description: "How beverage companies are adopting eco-friendly practices while maintaining quality.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
-      tags: ["Sustainability", "Production", "Industry"]
+      publishDate: "April 12, 2024"
     },
     {
       title: "Food Photography: Capturing the Perfect Pour",
       category: "FOOD",
       description: "Expert tips for photographing beverages and creating stunning visual content.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
-      tags: ["Photography", "Marketing", "Tips"]
+      publishDate: "April 10, 2024"
     },
     {
       title: "Latest Innovations in Beverage Packaging",
       category: "INNOVATION",
       description: "Exploring cutting-edge packaging solutions revolutionizing the beverage industry.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
-      tags: ["Innovation", "Packaging", "Technology"]
+      publishDate: "April 8, 2024"
     }
   ];
 
-  const getTagColor = (tag: string) => {
+  const getTagColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      Beverages: "bg-[#9b87f5]",
-      Sustainability: "bg-[#0EA5E9]",
-      Photography: "bg-[#D946EF]",
-      Innovation: "bg-[#F97316]",
-      Marketing: "bg-[#7E69AB]",
-      Production: "bg-[#6E59A5]",
-      Technology: "bg-[#8B5CF6]",
-      Industry: "bg-[#0EA5E9]",
-      Tips: "bg-[#F97316]",
-      Brewing: "bg-[#D946EF]",
-      "Craft Beer": "bg-[#7E69AB]",
-      Packaging: "bg-[#6E59A5]",
+      BEVERAGES: "bg-[#9b87f5]",
+      SUSTAINABILITY: "bg-[#0EA5E9]",
+      FOOD: "bg-[#D946EF]",
+      INNOVATION: "bg-[#F97316]",
+      "CASE STUDY": "bg-[#7E69AB]",
+      TRENDS: "bg-[#6E59A5]",
+      "INDUSTRY NEWS": "bg-[#8B5CF6]",
+      RECIPES: "bg-[#0EA5E9]"
     };
-    return colors[tag] || "bg-gray-500";
+    return colors[category] || "bg-gray-500";
   };
 
   const filteredPosts = blogPosts.filter(
@@ -76,7 +72,7 @@ const Blog = () => {
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-12">
         {/* Categories Navigation */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto mt-8">
           <nav className="flex justify-center space-x-8 border-b border-gray-200 pb-4 mb-12">
             {categories.map((category, index) => (
               <button
@@ -114,7 +110,7 @@ const Blog = () => {
                 </div>
                 <CardHeader className="space-y-2">
                   <div className="text-sm font-medium text-gray-600">
-                    {filteredPosts[0].category}
+                    {filteredPosts[0].publishDate}
                   </div>
                   <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors">
                     {filteredPosts[0].title}
@@ -122,16 +118,11 @@ const Blog = () => {
                   <CardDescription className="text-base">
                     {filteredPosts[0].description}
                   </CardDescription>
-                  <div className="flex gap-2 flex-wrap">
-                    {filteredPosts[0].tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className={`${getTagColor(tag)} text-white px-3 py-1 rounded-full text-sm`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <span
+                    className={`${getTagColor(filteredPosts[0].category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                  >
+                    {filteredPosts[0].category}
+                  </span>
                 </CardHeader>
               </Card>
             )}
@@ -149,21 +140,16 @@ const Blog = () => {
                   </div>
                   <CardHeader>
                     <div className="text-sm font-medium text-gray-600 mb-2">
-                      {post.category}
+                      {post.publishDate}
                     </div>
                     <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
                       {post.title}
                     </CardTitle>
-                    <div className="flex gap-2 flex-wrap">
-                      {post.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className={`${getTagColor(tag)} text-white px-3 py-1 rounded-full text-sm`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    <span
+                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                    >
+                      {post.category}
+                    </span>
                   </CardHeader>
                 </Card>
               ))}
@@ -184,7 +170,7 @@ const Blog = () => {
               </div>
               <CardHeader>
                 <div className="text-sm font-medium text-gray-600 mb-2">
-                  {post.category}
+                  {post.publishDate}
                 </div>
                 <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
                   {post.title}
@@ -192,16 +178,11 @@ const Blog = () => {
                 <CardDescription>
                   {post.description}
                 </CardDescription>
-                <div className="flex gap-2 flex-wrap">
-                  {post.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className={`${getTagColor(tag)} text-white px-3 py-1 rounded-full text-sm`}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <span
+                  className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                >
+                  {post.category}
+                </span>
               </CardHeader>
             </Card>
           ))}
