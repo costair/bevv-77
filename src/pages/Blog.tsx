@@ -39,13 +39,6 @@ const Blog = () => {
       description: "Expert tips for photographing beverages and creating stunning visual content.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       publishDate: "April 10, 2024"
-    },
-    {
-      title: "Latest Innovations in Beverage Packaging",
-      category: "INNOVATION",
-      description: "Exploring cutting-edge packaging solutions revolutionizing the beverage industry.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
-      publishDate: "April 8, 2024"
     }
   ];
 
@@ -71,23 +64,6 @@ const Blog = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-12">
-        {/* Categories Navigation */}
-        <div className="overflow-x-auto mt-8">
-          <nav className="flex justify-center space-x-8 border-b border-gray-200 pb-4 mb-12">
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedCategory(category)}
-                className={`text-sm font-medium whitespace-nowrap hover:text-black transition-colors min-w-fit
-                          text-gray-600 hover:border-b-2 hover:border-black pb-1
-                          ${selectedCategory === category ? 'bg-[#f3f3f3] px-4 py-2 rounded' : ''}`}
-              >
-                {category}
-              </button>
-            ))}
-          </nav>
-        </div>
-
         {/* Latest Section */}
         <div className="mb-16">
           <div className="flex justify-between items-center mb-8">
@@ -119,7 +95,7 @@ const Blog = () => {
                     {filteredPosts[0].description}
                   </CardDescription>
                   <span
-                    className={`${getTagColor(filteredPosts[0].category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                    className={`${getTagColor(filteredPosts[0].category)} text-white px-3 py-1 rounded-full text-sm inline-block w-fit`}
                   >
                     {filteredPosts[0].category}
                   </span>
@@ -146,7 +122,7 @@ const Blog = () => {
                       {post.title}
                     </CardTitle>
                     <span
-                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
+                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block w-fit`}
                     >
                       {post.category}
                     </span>
@@ -157,35 +133,21 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Additional Posts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.slice(3).map((post, index) => (
-            <Card key={index} className="overflow-hidden group cursor-pointer">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="text-sm font-medium text-gray-600 mb-2">
-                  {post.publishDate}
-                </div>
-                <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
-                  {post.title}
-                </CardTitle>
-                <CardDescription>
-                  {post.description}
-                </CardDescription>
-                <span
-                  className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block`}
-                >
-                  {post.category}
-                </span>
-              </CardHeader>
-            </Card>
-          ))}
+        {/* Categories Navigation */}
+        <div className="overflow-x-auto my-12">
+          <nav className="flex justify-center space-x-8 border-b border-gray-200 pb-4">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCategory(category)}
+                className={`text-sm font-medium whitespace-nowrap hover:text-black transition-colors min-w-fit
+                          text-gray-600 hover:border-b-2 hover:border-black pb-1
+                          ${selectedCategory === category ? 'bg-[#f3f3f3] px-4 py-2 rounded' : ''}`}
+              >
+                {category}
+              </button>
+            ))}
+          </nav>
         </div>
       </div>
       <Footer />
