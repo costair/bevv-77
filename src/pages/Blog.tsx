@@ -18,7 +18,7 @@ const Blog = () => {
 
   const [selectedCategory, setSelectedCategory] = useState("ALL TOPICS");
 
-  const blogPosts = [
+  const featuredPosts = [
     {
       title: "The Art of Craft Beer: From Grain to Glass",
       category: "BEVERAGES",
@@ -42,6 +42,142 @@ const Blog = () => {
     }
   ];
 
+  const additionalPosts = [
+    {
+      title: "Rising Trends in Functional Beverages",
+      category: "TRENDS",
+      description: "Exploring the growing market of health-focused functional drinks.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "April 7, 2024"
+    },
+    {
+      title: "Plant-Based Alternatives in the Beverage Industry",
+      category: "INNOVATION",
+      description: "How plant-based alternatives are reshaping beverage choices.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "April 5, 2024"
+    },
+    {
+      title: "Global Coffee Market Analysis 2024",
+      category: "INDUSTRY NEWS",
+      description: "Latest insights into the global coffee industry and market trends.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "April 3, 2024"
+    },
+    {
+      title: "Signature Cocktail Creation Guide",
+      category: "RECIPES",
+      description: "Step-by-step guide to creating unique signature cocktails.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "April 1, 2024"
+    },
+    {
+      title: "Success Story: Local Brewery Expansion",
+      category: "CASE STUDY",
+      description: "How a local brewery scaled their operations successfully.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 30, 2024"
+    },
+    {
+      title: "Zero-Waste Beverage Production",
+      category: "SUSTAINABILITY",
+      description: "Implementing zero-waste practices in beverage manufacturing.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 28, 2024"
+    },
+    {
+      title: "Artisanal Tea Blending Techniques",
+      category: "RECIPES",
+      description: "Master the art of creating unique tea blends.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 26, 2024"
+    },
+    {
+      title: "Digital Marketing in the Beverage Industry",
+      category: "TRENDS",
+      description: "Effective digital marketing strategies for beverage brands.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 24, 2024"
+    },
+    {
+      title: "New Regulations in Beverage Labeling",
+      category: "INDUSTRY NEWS",
+      description: "Understanding the latest beverage labeling requirements.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 22, 2024"
+    },
+    {
+      title: "Smart Packaging Solutions",
+      category: "INNOVATION",
+      description: "Innovative packaging solutions in the beverage industry.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 20, 2024"
+    },
+    {
+      title: "Seasonal Beverage Menu Planning",
+      category: "FOOD",
+      description: "Creating successful seasonal beverage menus.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 18, 2024"
+    },
+    {
+      title: "Beverage Brand Expansion Case Study",
+      category: "CASE STUDY",
+      description: "Analysis of a successful beverage brand expansion.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 16, 2024"
+    },
+    {
+      title: "Cold Brew Coffee Innovations",
+      category: "BEVERAGES",
+      description: "Latest trends and techniques in cold brew coffee.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 14, 2024"
+    },
+    {
+      title: "Eco-Friendly Packaging Solutions",
+      category: "SUSTAINABILITY",
+      description: "Sustainable packaging options for beverages.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 12, 2024"
+    },
+    {
+      title: "Beverage Industry Market Report",
+      category: "INDUSTRY NEWS",
+      description: "Comprehensive analysis of the beverage market.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 10, 2024"
+    },
+    {
+      title: "Homemade Soda Recipes",
+      category: "RECIPES",
+      description: "Create your own artisanal sodas at home.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 8, 2024"
+    },
+    {
+      title: "AI in Beverage Production",
+      category: "INNOVATION",
+      description: "How AI is transforming beverage manufacturing.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 6, 2024"
+    },
+    {
+      title: "Premium Mixer Trends",
+      category: "TRENDS",
+      description: "The rising demand for premium cocktail mixers.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 4, 2024"
+    },
+    {
+      title: "Beverage Photography Guide",
+      category: "FOOD",
+      description: "Professional tips for beverage photography.",
+      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      publishDate: "March 2, 2024"
+    }
+  ];
+
   const getTagColor = (category: string) => {
     const colors: { [key: string]: string } = {
       BEVERAGES: "bg-[#9b87f5]",
@@ -56,7 +192,7 @@ const Blog = () => {
     return colors[category] || "bg-gray-500";
   };
 
-  const filteredPosts = blogPosts.filter(
+  const filteredPosts = [...featuredPosts, ...additionalPosts].filter(
     post => selectedCategory === "ALL TOPICS" || post.category === selectedCategory
   );
 
@@ -148,6 +284,37 @@ const Blog = () => {
               </button>
             ))}
           </nav>
+        </div>
+
+        {/* Additional Posts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredPosts.slice(3).map((post, index) => (
+            <Card key={index} className="overflow-hidden group cursor-pointer">
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <CardHeader>
+                <div className="text-sm font-medium text-gray-600 mb-2">
+                  {post.publishDate}
+                </div>
+                <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
+                  {post.title}
+                </CardTitle>
+                <CardDescription className="text-base">
+                  {post.description}
+                </CardDescription>
+                <span
+                  className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-sm inline-block w-fit`}
+                >
+                  {post.category}
+                </span>
+              </CardHeader>
+            </Card>
+          ))}
         </div>
       </div>
       <Footer />
