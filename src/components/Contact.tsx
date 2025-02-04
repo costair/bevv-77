@@ -1,6 +1,60 @@
 import { Beer, Coffee, Pizza, Sandwich, CakeSlice, Wine } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await supabase.functions.invoke('send-contact', {
+        body: formData
+      });
+
+      if (response.error) throw response.error;
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      // Clear form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        variant: "destructive",
+        title: "Error sending message",
+        description: "Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
   return (
     <section id="contact" className="py-20 bg-black text-white relative overflow-hidden">
       <div className="absolute left-4 top-1/2 -translate-y-1/2 block animate-fade-in" style={{ animationDelay: "0.3s" }}>
@@ -32,35 +86,52 @@ const Contact = () => {
             </p>
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
                 type="text"
+                name="name"
                 placeholder="Name"
+                required
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Email"
+                required
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
               />
             </div>
             <input
               type="text"
+              name="subject"
               placeholder="Subject"
+              required
+              value={formData.subject}
+              onChange={handleChange}
               className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
             />
             <textarea
+              name="message"
               placeholder="Message"
+              required
+              value={formData.message}
+              onChange={handleChange}
               rows={4}
               className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
             ></textarea>
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors"
+                disabled={isSubmitting}
+                className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </div>
           </form>
