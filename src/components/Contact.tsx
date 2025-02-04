@@ -22,7 +22,12 @@ const Contact = () => {
         body: formData
       });
 
-      if (response.error) throw response.error;
+      if (response.error) {
+        console.error("Supabase function error:", response.error);
+        throw new Error(response.error.message || "Error sending message");
+      }
+
+      console.log("Contact form response:", response);
 
       toast({
         title: "Message sent!",
@@ -41,7 +46,7 @@ const Contact = () => {
       toast({
         variant: "destructive",
         title: "Error sending message",
-        description: "Please try again later.",
+        description: error.message || "Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
