@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -20,31 +21,31 @@ const Blog = () => {
 
   const latestPosts = [
     {
-      title: "The Future of FB Marketing: Strategies for Beverage Brands",
-      category: "INDUSTRY NEWS",
-      description: "Discover how beverage brands are leveraging FB's latest features to connect with their audience. From interactive posts to targeted advertising, learn the essential strategies for success in 2024.",
-      image: "/lovable-uploads/photo-1519389950473-47ba0277781c.jpg",
+      title: "The Art of Craft Beer: From Grain to Glass",
+      category: "BEVERAGES",
+      description: "Discover the meticulous process of craft beer brewing, from selecting premium ingredients to the final pour. Learn about traditional techniques and modern innovations that create exceptional brews.",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 15, 2024"
     },
     {
-      title: "Building Community Through FB Groups: A Beverage Industry Success Story",
-      category: "CASE STUDY",
-      description: "How leading beverage companies are using FB groups to build engaged communities around their brands. Learn from real success stories and implement proven strategies for your business.",
-      image: "/lovable-uploads/photo-1486312338219-ce68d2c6f44d.jpg",
+      title: "Mastering Social Media Marketing for F&B Brands",
+      category: "MARKETING",
+      description: "Learn effective strategies to build your F&B brand presence on social media. From content planning to engagement tactics, discover how to connect with your audience authentically.",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 14, 2024"
     },
     {
-      title: "Maximizing FB Ads for Beverage Products",
-      category: "MARKETING",
-      description: "Expert tips for creating high-converting FB ad campaigns specifically designed for beverage products.",
-      image: "/lovable-uploads/photo-1581091226825-a6a2a5aee158.jpg",
+      title: "Essential F&B Photography Tips",
+      category: "TIPS",
+      description: "Master the art of food and beverage photography with our expert guide to lighting, composition, and styling techniques.",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 12, 2024"
     },
     {
-      title: "FB Live Events: Engaging Your Beverage Brand Audience",
-      category: "INNOVATION",
-      description: "How to use FB Live to showcase your products and connect with customers in real-time.",
-      image: "/lovable-uploads/photo-1605810230434-7631ac76ec81.jpg",
+      title: "Sustainable Practices in F&B",
+      category: "SUSTAINABILITY",
+      description: "Explore eco-friendly initiatives and sustainable practices that are reshaping the future of the food and beverage industry.",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 10, 2024"
     }
   ];
@@ -220,10 +221,13 @@ const Blog = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-12">
-        {/* Latest Section */}
+        {/* Latest Section with new separator */}
         <div className="mb-16">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-4xl font-bold">Latest</h1>
+          <div className="flex flex-col items-center justify-center mb-8">
+            <h1 className="text-4xl font-bold text-center mb-4">Latest F&B Articles</h1>
+            <div className="w-full max-w-[200px] flex items-center justify-center">
+              <Separator className="h-1 bg-black rounded-full" />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -237,11 +241,11 @@ const Blog = () => {
                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <CardHeader className="space-y-3">
+                <CardHeader className="space-y-3 p-6">
                   <div className="text-sm font-medium text-gray-600">
                     {post.publishDate}
                   </div>
-                  <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors line-clamp-2 min-h-[4rem]">
+                  <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors line-clamp-2">
                     {post.title}
                   </CardTitle>
                   <CardDescription className="text-base line-clamp-2">
@@ -262,7 +266,7 @@ const Blog = () => {
             {latestPosts.slice(2).map((post, index) => (
               <Card key={index} className="overflow-hidden group cursor-pointer">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-square overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
