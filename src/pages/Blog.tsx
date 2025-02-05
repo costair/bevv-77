@@ -199,6 +199,11 @@ const Blog = () => {
     return colors[category] || "bg-gray-500";
   };
 
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trim() + '...';
+  };
+
   const filteredPosts = regularPosts.filter(
     post => selectedCategory === "ALL TOPICS" || post.category === selectedCategory
   );
@@ -227,11 +232,11 @@ const Blog = () => {
                 <div className="text-sm font-medium text-gray-600">
                   {latestPosts[0].publishDate}
                 </div>
-                <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors">
+                <CardTitle className="text-2xl h-[64px] group-hover:text-gray-600 transition-colors line-clamp-2">
                   {latestPosts[0].title}
                 </CardTitle>
-                <CardDescription className="text-base">
-                  {latestPosts[0].description}
+                <CardDescription className="text-base h-[48px] line-clamp-2">
+                  {truncateText(latestPosts[0].description, 120)}
                 </CardDescription>
                 <span
                   className={`${getTagColor(latestPosts[0].category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
@@ -256,7 +261,7 @@ const Blog = () => {
                     <div className="text-sm font-medium text-gray-600">
                       {post.publishDate}
                     </div>
-                    <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
+                    <CardTitle className="text-lg h-[48px] group-hover:text-gray-600 transition-colors line-clamp-2">
                       {post.title}
                     </CardTitle>
                     <span
@@ -303,14 +308,14 @@ const Blog = () => {
                 <div className="text-sm font-medium text-gray-600">
                   {post.publishDate}
                 </div>
-                <CardTitle className="text-lg group-hover:text-gray-600 transition-colors">
+                <CardTitle className="text-lg h-[48px] group-hover:text-gray-600 transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
-                <CardDescription className="text-base">
-                  {post.description}
+                <CardDescription className="text-base h-[48px] line-clamp-2">
+                  {truncateText(post.description, 120)}
                 </CardDescription>
                 <span
-                  className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
+                  className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit mt-2`}
                 >
                   {post.category}
                 </span>
