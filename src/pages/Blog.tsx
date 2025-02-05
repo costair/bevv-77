@@ -221,7 +221,7 @@ const Blog = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-12">
-        {/* Latest Section with new separator */}
+        {/* Latest Section with separator */}
         <div className="mb-16">
           <div className="flex flex-col items-center justify-center mb-8">
             <h1 className="text-4xl font-bold text-center mb-4">Latest F&B Articles</h1>
@@ -233,7 +233,7 @@ const Blog = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Two Featured Posts */}
             {latestPosts.slice(0, 2).map((post, index) => (
-              <Card key={index} className="overflow-hidden group cursor-pointer">
+              <Card key={index} className="overflow-hidden group cursor-pointer flex flex-col">
                 <div className="aspect-[16/10] overflow-hidden">
                   <img
                     src={post.image}
@@ -241,18 +241,18 @@ const Blog = () => {
                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <CardHeader className="space-y-3 p-6">
+                <CardHeader className="space-y-3 p-6 flex-grow flex flex-col">
                   <div className="text-sm font-medium text-gray-600">
                     {post.publishDate}
                   </div>
                   <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors line-clamp-2">
                     {post.title}
                   </CardTitle>
-                  <CardDescription className="text-base line-clamp-2">
+                  <CardDescription className="text-base flex-grow">
                     {truncateText(post.description, 120)}
                   </CardDescription>
                   <span
-                    className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
+                    className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit mt-auto`}
                   >
                     {post.category}
                   </span>
@@ -273,18 +273,18 @@ const Blog = () => {
                       className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="py-4 pr-4">
+                  <div className="py-4 pr-4 flex flex-col h-full">
                     <div className="text-sm font-medium text-gray-600 mb-2">
                       {post.publishDate}
                     </div>
                     <h3 className="text-lg font-semibold mb-2 group-hover:text-gray-600 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+                    <p className="text-sm text-gray-600 line-clamp-2 mb-2 flex-grow">
                       {truncateText(post.description, 80)}
                     </p>
                     <span
-                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-xs inline-block`}
+                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-xs inline-block w-fit mt-auto`}
                     >
                       {post.category}
                     </span>
