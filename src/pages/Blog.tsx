@@ -22,21 +22,21 @@ const Blog = () => {
     {
       title: "The Art of Craft Beer: From Grain to Glass",
       category: "BEVERAGES",
-      description: "Discover the intricate process behind craft beer brewing and what makes each brew unique.",
+      description: "Discover the intricate process behind craft beer brewing and what makes each brew unique. From selecting the finest ingredients to mastering fermentation techniques, learn the secrets of creating exceptional craft beer.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       publishDate: "April 15, 2024"
     },
     {
       title: "Sustainable Practices in Modern Beverage Production",
       category: "SUSTAINABILITY",
-      description: "How beverage companies are adopting eco-friendly practices while maintaining quality.",
+      description: "How beverage companies are adopting eco-friendly practices while maintaining quality. Explore innovative solutions and technologies that are reshaping the industry's approach to sustainability.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       publishDate: "April 12, 2024"
     },
     {
       title: "Food Photography: Capturing the Perfect Pour",
       category: "FOOD",
-      description: "Expert tips for photographing beverages and creating stunning visual content.",
+      description: "Expert tips for photographing beverages and creating stunning visual content. Learn professional techniques to showcase your drinks in the most appealing way possible.",
       image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
       publishDate: "April 10, 2024"
     }
@@ -201,7 +201,8 @@ const Blog = () => {
 
   const truncateText = (text: string, maxLength: number) => {
     if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength).trim() + '...';
+    const lastSpace = text.substring(0, maxLength).lastIndexOf(' ');
+    return text.substring(0, lastSpace) + '...';
   };
 
   const filteredPosts = regularPosts.filter(
@@ -228,14 +229,14 @@ const Blog = () => {
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <CardHeader className="space-y-2">
+              <CardHeader className="space-y-3">
                 <div className="text-sm font-medium text-gray-600">
                   {latestPosts[0].publishDate}
                 </div>
-                <CardTitle className="text-2xl h-[64px] group-hover:text-gray-600 transition-colors line-clamp-2">
+                <CardTitle className="text-2xl min-h-[72px] group-hover:text-gray-600 transition-colors line-clamp-2">
                   {latestPosts[0].title}
                 </CardTitle>
-                <CardDescription className="text-base h-[48px] line-clamp-2">
+                <CardDescription className="text-base min-h-[48px] line-clamp-2">
                   {truncateText(latestPosts[0].description, 120)}
                 </CardDescription>
                 <span
@@ -257,13 +258,16 @@ const Blog = () => {
                       className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <CardHeader>
+                  <CardHeader className="space-y-3">
                     <div className="text-sm font-medium text-gray-600">
                       {post.publishDate}
                     </div>
-                    <CardTitle className="text-lg h-[48px] group-hover:text-gray-600 transition-colors line-clamp-2">
+                    <CardTitle className="text-lg min-h-[56px] group-hover:text-gray-600 transition-colors line-clamp-2">
                       {post.title}
                     </CardTitle>
+                    <CardDescription className="text-base min-h-[48px] line-clamp-2">
+                      {truncateText(post.description, 120)}
+                    </CardDescription>
                     <span
                       className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
                     >
@@ -304,18 +308,18 @@ const Blog = () => {
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <CardHeader>
+              <CardHeader className="space-y-3">
                 <div className="text-sm font-medium text-gray-600">
                   {post.publishDate}
                 </div>
-                <CardTitle className="text-lg h-[48px] group-hover:text-gray-600 transition-colors line-clamp-2">
+                <CardTitle className="text-lg min-h-[56px] group-hover:text-gray-600 transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
-                <CardDescription className="text-base h-[48px] line-clamp-2">
+                <CardDescription className="text-base min-h-[48px] line-clamp-2">
                   {truncateText(post.description, 120)}
                 </CardDescription>
                 <span
-                  className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit mt-2`}
+                  className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
                 >
                   {post.category}
                 </span>
