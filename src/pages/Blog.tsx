@@ -20,24 +20,31 @@ const Blog = () => {
 
   const latestPosts = [
     {
-      title: "The Art of Craft Beer: From Grain to Glass",
-      category: "BEVERAGES",
-      description: "Discover the intricate process behind craft beer brewing and what makes each brew unique. From selecting the finest ingredients to mastering fermentation techniques, learn the secrets of creating exceptional craft beer.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      title: "The Future of FB Marketing: Strategies for Beverage Brands",
+      category: "INDUSTRY NEWS",
+      description: "Discover how beverage brands are leveraging FB's latest features to connect with their audience. From interactive posts to targeted advertising, learn the essential strategies for success in 2024.",
+      image: "/lovable-uploads/photo-1519389950473-47ba0277781c.jpg",
       publishDate: "April 15, 2024"
     },
     {
-      title: "Sustainable Practices in Modern Beverage Production",
-      category: "SUSTAINABILITY",
-      description: "How beverage companies are adopting eco-friendly practices while maintaining quality. Explore innovative solutions and technologies that are reshaping the industry's approach to sustainability.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      title: "Building Community Through FB Groups: A Beverage Industry Success Story",
+      category: "CASE STUDY",
+      description: "How leading beverage companies are using FB groups to build engaged communities around their brands. Learn from real success stories and implement proven strategies for your business.",
+      image: "/lovable-uploads/photo-1486312338219-ce68d2c6f44d.jpg",
+      publishDate: "April 14, 2024"
+    },
+    {
+      title: "Maximizing FB Ads for Beverage Products",
+      category: "MARKETING",
+      description: "Expert tips for creating high-converting FB ad campaigns specifically designed for beverage products.",
+      image: "/lovable-uploads/photo-1581091226825-a6a2a5aee158.jpg",
       publishDate: "April 12, 2024"
     },
     {
-      title: "Food Photography: Capturing the Perfect Pour",
-      category: "FOOD",
-      description: "Expert tips for photographing beverages and creating stunning visual content. Learn professional techniques to showcase your drinks in the most appealing way possible.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      title: "FB Live Events: Engaging Your Beverage Brand Audience",
+      category: "INNOVATION",
+      description: "How to use FB Live to showcase your products and connect with customers in real-time.",
+      image: "/lovable-uploads/photo-1605810230434-7631ac76ec81.jpg",
       publishDate: "April 10, 2024"
     }
   ];
@@ -219,64 +226,68 @@ const Blog = () => {
             <h1 className="text-4xl font-bold">Latest</h1>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Featured Post */}
-            <Card className="lg:col-span-8 overflow-hidden group cursor-pointer">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={latestPosts[0].image}
-                  alt={latestPosts[0].title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader className="space-y-3">
-                <div className="text-sm font-medium text-gray-600">
-                  {latestPosts[0].publishDate}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Two Featured Posts */}
+            {latestPosts.slice(0, 2).map((post, index) => (
+              <Card key={index} className="overflow-hidden group cursor-pointer">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <CardTitle className="text-2xl min-h-[72px] group-hover:text-gray-600 transition-colors line-clamp-2">
-                  {latestPosts[0].title}
-                </CardTitle>
-                <CardDescription className="text-base min-h-[48px] line-clamp-2">
-                  {truncateText(latestPosts[0].description, 120)}
-                </CardDescription>
-                <span
-                  className={`${getTagColor(latestPosts[0].category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
-                >
-                  {latestPosts[0].category}
-                </span>
-              </CardHeader>
-            </Card>
+                <CardHeader className="space-y-3">
+                  <div className="text-sm font-medium text-gray-600">
+                    {post.publishDate}
+                  </div>
+                  <CardTitle className="text-2xl group-hover:text-gray-600 transition-colors line-clamp-2 min-h-[4rem]">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-base line-clamp-2">
+                    {truncateText(post.description, 120)}
+                  </CardDescription>
+                  <span
+                    className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
+                  >
+                    {post.category}
+                  </span>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
 
-            {/* Side Posts */}
-            <div className="lg:col-span-4 space-y-8">
-              {latestPosts.slice(1, 3).map((post, index) => (
-                <Card key={index} className="overflow-hidden group cursor-pointer">
-                  <div className="aspect-[16/10] overflow-hidden">
+          {/* Two Smaller Posts */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+            {latestPosts.slice(2).map((post, index) => (
+              <Card key={index} className="overflow-hidden group cursor-pointer">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="aspect-[4/3] overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
                       className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <CardHeader className="space-y-3">
-                    <div className="text-sm font-medium text-gray-600">
+                  <div className="py-4 pr-4">
+                    <div className="text-sm font-medium text-gray-600 mb-2">
                       {post.publishDate}
                     </div>
-                    <CardTitle className="text-lg min-h-[56px] group-hover:text-gray-600 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-gray-600 transition-colors line-clamp-2">
                       {post.title}
-                    </CardTitle>
-                    <CardDescription className="text-base min-h-[48px] line-clamp-2">
-                      {truncateText(post.description, 120)}
-                    </CardDescription>
+                    </h3>
+                    <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+                      {truncateText(post.description, 80)}
+                    </p>
                     <span
-                      className={`${getTagColor(post.category)} text-white px-4 py-1 rounded-full text-sm inline-block w-fit`}
+                      className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-xs inline-block`}
                     >
                       {post.category}
                     </span>
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
 
