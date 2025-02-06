@@ -55,7 +55,7 @@ const Footer = () => {
         <div key={section.title}>
           <button
             onClick={() => toggleSection(section.title)}
-            className="w-full py-4 px-4 flex justify-between items-center text-left"
+            className="w-full py-4 flex justify-between items-center text-left"
           >
             <span className="font-semibold">{section.title}</span>
             <ChevronDown
@@ -65,7 +65,7 @@ const Footer = () => {
             />
           </button>
           {openSection === section.title && (
-            <div className="px-4 pb-4 space-y-2">
+            <div className="pb-4 space-y-2">
               {section.links.map((link) => (
                 <a
                   key={link.label}
@@ -103,10 +103,10 @@ const Footer = () => {
 
   return (
     <footer className="bg-white text-black w-full overflow-x-hidden">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-0 md:px-4 py-8">
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
           {/* Logo, subtitle and social icons */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start px-4 md:px-0">
             <a href="/" className="text-2xl font-bold tracking-tighter">
               Bevv
             </a>
@@ -125,7 +125,7 @@ const Footer = () => {
           {isMobile ? renderMobileFooter() : renderDesktopFooter()}
 
           {/* Newsletter Section */}
-          <div className="space-y-4 w-full lg:w-auto">
+          <div className="space-y-4 w-full lg:w-auto px-4 md:px-0">
             <h3 className="font-semibold">Stay up to date</h3>
             <div className="flex flex-col space-y-3">
               <input
