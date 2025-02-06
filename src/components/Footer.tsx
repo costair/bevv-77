@@ -1,6 +1,106 @@
-import { Instagram, Linkedin, Mail } from "lucide-react";
+import { Instagram, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Footer = () => {
+  const isMobile = useIsMobile();
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
+  const footerSections = [
+    {
+      title: "Products",
+      links: [
+        { label: "Beverages", href: "#" },
+        { label: "Food", href: "#" },
+        { label: "Snacks", href: "#" },
+        { label: "Organic", href: "#" },
+      ],
+    },
+    {
+      title: "Services",
+      links: [
+        { label: "Branding", href: "#" },
+        { label: "Packaging", href: "#" },
+        { label: "Marketing", href: "#" },
+        { label: "Consulting", href: "#" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Blog", href: "#" },
+        { label: "Success Stories", href: "#" },
+        { label: "Guides", href: "#" },
+        { label: "FAQ", href: "#" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Food Safety", href: "#" },
+        { label: "Privacy Policy", href: "#" },
+        { label: "Terms & Conditions", href: "#" },
+        { label: "Compliance", href: "#" },
+      ],
+    },
+  ];
+
+  const renderMobileFooter = () => (
+    <div className="space-y-0 divide-y divide-gray-200">
+      {footerSections.map((section) => (
+        <div key={section.title}>
+          <button
+            onClick={() => toggleSection(section.title)}
+            className="w-full py-4 px-4 flex justify-between items-center text-left"
+          >
+            <span className="font-semibold">{section.title}</span>
+            <ChevronDown
+              className={`h-5 w-5 transition-transform ${
+                openSection === section.title ? "transform rotate-180" : ""
+              }`}
+            />
+          </button>
+          {openSection === section.title && (
+            <div className="px-4 pb-4 space-y-2">
+              {section.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="block text-gray-600 hover:text-black transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderDesktopFooter = () => (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-auto">
+      {footerSections.map((section) => (
+        <div key={section.title} className="space-y-3">
+          <h3 className="font-semibold">{section.title}</h3>
+          <ul className="space-y-2 text-sm text-gray-600">
+            {section.links.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="hover:text-black transition-colors">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <footer className="bg-white text-black w-full overflow-x-hidden">
       <div className="container mx-auto px-4 py-8">
@@ -22,47 +122,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation links - Responsive Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-auto">
-            <div className="space-y-3">
-              <h3 className="font-semibold">Products</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">Beverages</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Food</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Snacks</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Organic</a></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="font-semibold">Services</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">Branding</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Packaging</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Marketing</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Consulting</a></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="font-semibold">Resources</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Success Stories</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Guides</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">FAQ</a></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="font-semibold">Legal</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-black transition-colors">Food Safety</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Terms & Conditions</a></li>
-                <li><a href="#" className="hover:text-black transition-colors">Compliance</a></li>
-              </ul>
-            </div>
-          </div>
+          {isMobile ? renderMobileFooter() : renderDesktopFooter()}
 
           {/* Newsletter Section */}
           <div className="space-y-4 w-full lg:w-auto">
