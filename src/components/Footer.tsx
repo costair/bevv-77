@@ -55,9 +55,9 @@ const Footer = () => {
         <div key={section.title}>
           <button
             onClick={() => toggleSection(section.title)}
-            className="w-full py-4 flex justify-between items-center text-left"
+            className="w-full py-4 flex justify-between items-center text-left pr-4"
           >
-            <span className="font-semibold">{section.title}</span>
+            <span className="font-semibold pl-4">{section.title}</span>
             <ChevronDown
               className={`h-5 w-5 transition-transform ${
                 openSection === section.title ? "transform rotate-180" : ""
@@ -65,7 +65,7 @@ const Footer = () => {
             />
           </button>
           {openSection === section.title && (
-            <div className="pb-4 space-y-2">
+            <div className="pb-4 space-y-2 pl-4">
               {section.links.map((link) => (
                 <a
                   key={link.label}
