@@ -39,11 +39,13 @@ const Work = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [lastX, setLastX] = useState(0);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsDragging(true);
     if (scrollContainerRef.current) {
-      setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+      setStartX(e.pageX);
+      setLastX(e.pageX);
       setScrollLeft(scrollContainerRef.current.scrollLeft);
     }
   };
@@ -55,24 +57,28 @@ const Work = () => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !scrollContainerRef.current) return;
     e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    
+    const deltaX = e.pageX - lastX;
+    setLastX(e.pageX);
+    
+    scrollContainerRef.current.scrollLeft -= deltaX;
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setIsDragging(true);
     if (scrollContainerRef.current) {
-      setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
+      setStartX(e.touches[0].pageX);
+      setLastX(e.touches[0].pageX);
       setScrollLeft(scrollContainerRef.current.scrollLeft);
     }
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging || !scrollContainerRef.current) return;
-    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    const deltaX = e.touches[0].pageX - lastX;
+    setLastX(e.touches[0].pageX);
+    
+    scrollContainerRef.current.scrollLeft -= deltaX;
   };
 
   return (
@@ -93,7 +99,7 @@ const Work = () => {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className={`flex transition-all ${!isDragging ? 'animate-scroll' : ''} cursor-grab active:cursor-grabbing select-none`}
+            className={`flex transition-none ${!isDragging ? 'animate-scroll' : ''} cursor-grab active:cursor-grabbing select-none`}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
