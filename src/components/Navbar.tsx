@@ -7,6 +7,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isBlogPage = location.pathname === "/blog";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,42 +28,59 @@ const Navbar = () => {
     }
   };
 
+  const handleBlogClick = () => {
+    if (isBlogPage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const getNavStyles = () => {
+    if (isBlogPage) {
+      return "bg-white shadow-sm";
+    }
+    return isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent";
+  };
+
+  const getLinkStyles = () => {
+    if (isBlogPage) {
+      return "text-gray-800 hover:text-black";
+    }
+    return isScrolled ? "text-gray-800 hover:text-black" : "text-white/90 hover:text-white";
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getNavStyles()}`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
             className={`text-2xl font-bold tracking-tighter transition-colors duration-300 ${
-              isScrolled ? "text-black" : "text-white"
+              isBlogPage || isScrolled ? "text-black" : "text-white"
             }`}
           >
             Bevv
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('services')}>Services</NavLink>
-            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('work')}>Work</NavLink>
-            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('pricing')}>Pricing</NavLink>
+            <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('services')}>Services</NavLink>
+            <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('work')}>Work</NavLink>
+            <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('pricing')}>Pricing</NavLink>
             <Link 
               to="/blog" 
-              className={`text-sm font-medium transition-colors duration-300 ${
-                isScrolled ? "text-gray-800 hover:text-black" : "text-white/90 hover:text-white"
-              }`}
+              onClick={handleBlogClick}
+              className={`text-sm font-medium transition-colors duration-300 ${getLinkStyles()}`}
             >
               Blog
             </Link>
-            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('about')}>About</NavLink>
-            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('contact')}>Contact</NavLink>
+            <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('about')}>About</NavLink>
+            <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('contact')}>Contact</NavLink>
           </div>
 
           <button
             className={`md:hidden transition-colors duration-300 ${
-              isScrolled ? "text-black" : "text-white"
+              isBlogPage || isScrolled ? "text-black" : "text-white"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -100,7 +118,10 @@ const Navbar = () => {
             <Link 
               to="/blog" 
               className="block text-base font-medium text-gray-800 hover:text-black transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                handleBlogClick();
+                setIsMobileMenuOpen(false);
+              }}
             >
               Blog
             </Link>
@@ -126,16 +147,18 @@ const Navbar = () => {
 const NavLink = ({ 
   onClick, 
   children, 
-  isScrolled 
+  isScrolled,
+  isBlogPage 
 }: { 
   onClick: () => void; 
   children: React.ReactNode;
   isScrolled: boolean;
+  isBlogPage: boolean;
 }) => (
   <button
     onClick={onClick}
     className={`text-sm font-medium transition-colors duration-300 ${
-      isScrolled ? "text-gray-800 hover:text-black" : "text-white/90 hover:text-white"
+      isBlogPage || isScrolled ? "text-gray-800 hover:text-black" : "text-white/90 hover:text-white"
     }`}
   >
     {children}
