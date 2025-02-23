@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -34,23 +35,35 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold tracking-tighter">
+          <Link 
+            to="/" 
+            className={`text-2xl font-bold tracking-tighter transition-colors duration-300 ${
+              isScrolled ? "text-black" : "text-white"
+            }`}
+          >
             Bevv
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <NavLink onClick={() => scrollToSection('services')}>Services</NavLink>
-            <NavLink onClick={() => scrollToSection('work')}>Work</NavLink>
-            <NavLink onClick={() => scrollToSection('pricing')}>Pricing</NavLink>
-            <Link to="/blog" className="text-sm font-medium text-gray-800 hover:text-black transition-colors">
+            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('services')}>Services</NavLink>
+            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('work')}>Work</NavLink>
+            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('pricing')}>Pricing</NavLink>
+            <Link 
+              to="/blog" 
+              className={`text-sm font-medium transition-colors duration-300 ${
+                isScrolled ? "text-gray-800 hover:text-black" : "text-white/90 hover:text-white"
+              }`}
+            >
               Blog
             </Link>
-            <NavLink onClick={() => scrollToSection('about')}>About</NavLink>
-            <NavLink onClick={() => scrollToSection('contact')}>Contact</NavLink>
+            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('about')}>About</NavLink>
+            <NavLink isScrolled={isScrolled} onClick={() => scrollToSection('contact')}>Contact</NavLink>
           </div>
 
           <button
-            className="md:hidden"
+            className={`md:hidden transition-colors duration-300 ${
+              isScrolled ? "text-black" : "text-white"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -110,10 +123,20 @@ const Navbar = () => {
   );
 };
 
-const NavLink = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
+const NavLink = ({ 
+  onClick, 
+  children, 
+  isScrolled 
+}: { 
+  onClick: () => void; 
+  children: React.ReactNode;
+  isScrolled: boolean;
+}) => (
   <button
     onClick={onClick}
-    className="text-sm font-medium text-gray-800 hover:text-black transition-colors"
+    className={`text-sm font-medium transition-colors duration-300 ${
+      isScrolled ? "text-gray-800 hover:text-black" : "text-white/90 hover:text-white"
+    }`}
   >
     {children}
   </button>
