@@ -1,6 +1,3 @@
-
-import { useRef, useState } from "react";
-
 const projects = [
   {
     title: "Artisanal Coffee Brand",
@@ -35,52 +32,6 @@ const projects = [
 ];
 
 const Work = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [lastX, setLastX] = useState(0);
-
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    if (scrollContainerRef.current) {
-      setStartX(e.pageX);
-      setLastX(e.pageX);
-      setScrollLeft(scrollContainerRef.current.scrollLeft);
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    e.preventDefault();
-    
-    const deltaX = e.pageX - lastX;
-    setLastX(e.pageX);
-    
-    scrollContainerRef.current.scrollLeft -= deltaX;
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    if (scrollContainerRef.current) {
-      setStartX(e.touches[0].pageX);
-      setLastX(e.touches[0].pageX);
-      setScrollLeft(scrollContainerRef.current.scrollLeft);
-    }
-  };
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging || !scrollContainerRef.current) return;
-    const deltaX = e.touches[0].pageX - lastX;
-    setLastX(e.touches[0].pageX);
-    
-    scrollContainerRef.current.scrollLeft -= deltaX;
-  };
-
   return (
     <section id="work" className="py-20 overflow-hidden">
       <div className="container mx-auto px-6">
@@ -97,17 +48,7 @@ const Work = () => {
         </div>
 
         <div className="relative">
-          <div
-            ref={scrollContainerRef}
-            className={`flex transition-none ${!isDragging ? 'animate-scroll' : ''} cursor-grab active:cursor-grabbing select-none`}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleMouseUp}
-            onTouchMove={handleTouchMove}
-          >
+          <div className="flex animate-scroll">
             {[...projects, ...projects].map((project, index) => (
               <div
                 key={index}
@@ -119,9 +60,8 @@ const Work = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
-                    draggable="false"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
                     <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <h3 className="text-white text-xl font-semibold mb-2">
                         {project.title}
