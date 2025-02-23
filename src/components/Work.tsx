@@ -1,3 +1,6 @@
+
+import { useRef, useState } from "react";
+
 const projects = [
   {
     title: "Artisanal Coffee Brand",
@@ -32,6 +35,46 @@ const projects = [
 ];
 
 const Work = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    if (scrollContainerRef.current) {
+      setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+      setScrollLeft(scrollContainerRef.current.scrollLeft);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    if (scrollContainerRef.current) {
+      setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
+      setScrollLeft(scrollContainerRef.current.scrollLeft);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   return (
     <section id="work" className="py-20 overflow-hidden">
       <div className="container mx-auto px-6">
@@ -48,7 +91,17 @@ const Work = () => {
         </div>
 
         <div className="relative">
-          <div className="flex animate-scroll">
+          <div
+            ref={scrollContainerRef}
+            className={`flex transition-all ${!isDragging ? 'animate-scroll' : ''} cursor-grab active:cursor-grabbing select-none`}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleMouseUp}
+            onTouchMove={handleTouchMove}
+          >
             {[...projects, ...projects].map((project, index) => (
               <div
                 key={index}
@@ -60,8 +113,9 @@ const Work = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                    draggable="false"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center pointer-events-none">
                     <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <h3 className="text-white text-xl font-semibold mb-2">
                         {project.title}
