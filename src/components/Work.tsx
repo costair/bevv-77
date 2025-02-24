@@ -37,8 +37,22 @@ const projects = [
 const Work = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState(0);
-  const [currentTranslate, setCurrentTranslate] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  const handleInfiniteScroll = () => {
+    if (!sliderRef.current) return;
+    
+    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    
+    // Si llegamos al final, volvemos al inicio
+    if (scrollLeft + clientWidth >= scrollWidth - 10) {
+      sliderRef.current.scrollLeft = 0;
+    }
+    // Si llegamos al inicio y vamos hacia atrás, vamos al final
+    else if (scrollLeft <= 0) {
+      sliderRef.current.scrollLeft = scrollWidth - clientWidth;
+    }
+  };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setIsDragging(true);
@@ -56,10 +70,9 @@ const Work = () => {
     const currentPosition = e.touches[0].clientX;
     const diff = startPosition - currentPosition;
     
-    if (Math.abs(diff) > 5) { // Pequeño umbral para evitar movimientos no intencionales
-      sliderRef.current.scrollLeft += diff;
-      setStartPosition(currentPosition);
-    }
+    sliderRef.current.scrollLeft += diff;
+    setStartPosition(currentPosition);
+    handleInfiniteScroll();
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -68,10 +81,9 @@ const Work = () => {
     const currentPosition = e.clientX;
     const diff = startPosition - currentPosition;
     
-    if (Math.abs(diff) > 5) {
-      sliderRef.current.scrollLeft += diff;
-      setStartPosition(currentPosition);
-    }
+    sliderRef.current.scrollLeft += diff;
+    setStartPosition(currentPosition);
+    handleInfiniteScroll();
   };
 
   const handleDragEnd = () => {
@@ -96,7 +108,7 @@ const Work = () => {
         <div className="relative">
           <div
             ref={sliderRef}
-            className={`flex ${!isDragging ? 'animate-scroll' : ''} cursor-grab active:cursor-grabbing`}
+            className={`flex overflow-x-hidden ${!isDragging ? 'scroll-smooth' : ''} cursor-grab active:cursor-grabbing`}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleDragEnd}
@@ -105,11 +117,10 @@ const Work = () => {
             onMouseUp={handleDragEnd}
             onMouseLeave={handleDragEnd}
           >
-            {[...projects, ...projects].map((project, index) => (
+            {[...projects, ...projects, ...projects].map((project, index) => (
               <div
                 key={index}
                 className="min-w-full md:min-w-[33.333%] px-4 select-none"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="group relative overflow-hidden rounded-2xl mx-auto max-w-[400px] md:max-w-none">
                   <img
