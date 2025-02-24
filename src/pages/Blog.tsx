@@ -343,6 +343,12 @@ const Blog = () => {
           ))}
         </div>
       </div>
+
+      {/* Separator antes del footer */}
+      <div className="container mx-auto px-4">
+        <Separator className="h-[2px] bg-gray-200" />
+      </div>
+      
       <Footer />
     </div>
   );
