@@ -1,3 +1,4 @@
+
 const projects = [
   {
     title: "Artisanal Coffee Brand",
@@ -32,6 +33,49 @@ const projects = [
 ];
 
 const Work = () => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [startPosition, setStartPosition] = useState(0);
+  const [currentTranslate, setCurrentTranslate] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setStartPosition(e.touches[0].clientX);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setStartPosition(e.clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    const currentPosition = e.touches[0].clientX;
+    const diff = startPosition - currentPosition;
+    
+    if (Math.abs(diff) > 5) { // Pequeño umbral para evitar movimientos no intencionales
+      sliderRef.current.scrollLeft += diff;
+      setStartPosition(currentPosition);
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    const currentPosition = e.clientX;
+    const diff = startPosition - currentPosition;
+    
+    if (Math.abs(diff) > 5) {
+      sliderRef.current.scrollLeft += diff;
+      setStartPosition(currentPosition);
+    }
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
     <section id="work" className="py-20 overflow-hidden">
       <div className="container mx-auto px-6">
@@ -48,11 +92,21 @@ const Work = () => {
         </div>
 
         <div className="relative">
-          <div className="flex animate-scroll">
+          <div
+            ref={sliderRef}
+            className={`flex ${!isDragging ? 'animate-scroll' : ''} cursor-grab active:cursor-grabbing`}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleDragEnd}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={handleDragEnd}
+          >
             {[...projects, ...projects].map((project, index) => (
               <div
                 key={index}
-                className="min-w-full md:min-w-[33.333%] px-4"
+                className="min-w-full md:min-w-[33.333%] px-4 select-none"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="group relative overflow-hidden rounded-2xl mx-auto max-w-[400px] md:max-w-none">
@@ -60,6 +114,7 @@ const Work = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                    draggable="false"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
                     <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
