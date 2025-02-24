@@ -1,4 +1,6 @@
 
+import { useState, useRef } from "react";
+
 const projects = [
   {
     title: "Artisanal Coffee Brand",
