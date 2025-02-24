@@ -36,7 +36,8 @@ const projects = [
 
 const Work = () => {
   const [isDragging, setIsDragging] = useState(false);
-  const [startPosition, setStartPosition] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const handleInfiniteScroll = () => {
@@ -44,45 +45,43 @@ const Work = () => {
     
     const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
     
-    // Si llegamos al final, volvemos al inicio
     if (scrollLeft + clientWidth >= scrollWidth - 10) {
       sliderRef.current.scrollLeft = 0;
     }
-    // Si llegamos al inicio y vamos hacia atrás, vamos al final
     else if (scrollLeft <= 0) {
       sliderRef.current.scrollLeft = scrollWidth - clientWidth;
     }
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!sliderRef.current) return;
     setIsDragging(true);
-    setStartPosition(e.touches[0].clientX);
+    setStartX(e.touches[0].pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!sliderRef.current) return;
     setIsDragging(true);
-    setStartPosition(e.clientX);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging || !sliderRef.current) return;
-    
-    const currentPosition = e.touches[0].clientX;
-    const diff = startPosition - currentPosition;
-    
-    sliderRef.current.scrollLeft += diff;
-    setStartPosition(currentPosition);
+    e.preventDefault();
+    const x = e.touches[0].pageX - sliderRef.current.offsetLeft;
+    const distance = x - startX;
+    sliderRef.current.scrollLeft = scrollLeft - distance;
     handleInfiniteScroll();
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !sliderRef.current) return;
-    
-    const currentPosition = e.clientX;
-    const diff = startPosition - currentPosition;
-    
-    sliderRef.current.scrollLeft += diff;
-    setStartPosition(currentPosition);
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const distance = x - startX;
+    sliderRef.current.scrollLeft = scrollLeft - distance;
     handleInfiniteScroll();
   };
 
