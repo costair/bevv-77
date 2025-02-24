@@ -1,12 +1,13 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const isBlogPage = location.pathname === "/blog";
 
   useEffect(() => {
@@ -31,6 +32,12 @@ const Navbar = () => {
   const handleBlogClick = () => {
     if (isBlogPage) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/blog');
+      // Usamos un setTimeout para asegurar que la navegación se complete antes de hacer scroll
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
     }
   };
 
@@ -67,13 +74,12 @@ const Navbar = () => {
             <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('services')}>Services</NavLink>
             <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('work')}>Work</NavLink>
             <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('pricing')}>Pricing</NavLink>
-            <Link 
-              to="/blog" 
+            <button 
               onClick={handleBlogClick}
               className={`text-sm font-medium transition-colors duration-300 ${getLinkStyles()}`}
             >
               Blog
-            </Link>
+            </button>
             <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('about')}>About</NavLink>
             <NavLink isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={() => scrollToSection('contact')}>Contact</NavLink>
           </div>
@@ -115,16 +121,15 @@ const Navbar = () => {
             }}>
               Pricing
             </MobileNavLink>
-            <Link 
-              to="/blog" 
-              className="block text-base font-medium text-gray-800 hover:text-black transition-colors"
+            <button 
+              className="block text-base font-medium text-gray-800 hover:text-black transition-colors w-full text-left"
               onClick={() => {
                 handleBlogClick();
                 setIsMobileMenuOpen(false);
               }}
             >
               Blog
-            </Link>
+            </button>
             <MobileNavLink onClick={() => {
               scrollToSection('about');
               setIsMobileMenuOpen(false);
