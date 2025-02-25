@@ -39,6 +39,7 @@ const Work = () => {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [previousTouch, setPreviousTouch] = useState(0);
 
   const handleInfiniteScroll = () => {
     if (!sliderRef.current) return;
@@ -56,6 +57,7 @@ const Work = () => {
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!sliderRef.current) return;
     setIsDragging(true);
+    setPreviousTouch(e.touches[0].pageX);
     setStartX(e.touches[0].pageX - sliderRef.current.offsetLeft);
     setScrollLeft(sliderRef.current.scrollLeft);
   };
@@ -70,18 +72,31 @@ const Work = () => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging || !sliderRef.current) return;
     e.preventDefault();
-    const x = e.touches[0].pageX - sliderRef.current.offsetLeft;
-    const distance = x - startX;
-    sliderRef.current.scrollLeft = scrollLeft - distance;
+    
+    const currentTouch = e.touches[0].pageX;
+    const diff = previousTouch - currentTouch;
+    
+    // Limitar el desplazamiento a un elemento a la vez
+    const slideWidth = sliderRef.current.clientWidth;
+    const maxScroll = Math.abs(diff) > slideWidth ? Math.sign(diff) * slideWidth : diff;
+    
+    sliderRef.current.scrollLeft = scrollLeft + maxScroll;
+    setPreviousTouch(currentTouch);
     handleInfiniteScroll();
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !sliderRef.current) return;
     e.preventDefault();
+    
     const x = e.pageX - sliderRef.current.offsetLeft;
-    const distance = x - startX;
-    sliderRef.current.scrollLeft = scrollLeft - distance;
+    const diff = startX - x;
+    
+    // Limitar el desplazamiento a un elemento a la vez
+    const slideWidth = sliderRef.current.clientWidth;
+    const maxScroll = Math.abs(diff) > slideWidth ? Math.sign(diff) * slideWidth : diff;
+    
+    sliderRef.current.scrollLeft = scrollLeft + maxScroll;
     handleInfiniteScroll();
   };
 
@@ -107,7 +122,7 @@ const Work = () => {
         <div className="relative">
           <div
             ref={sliderRef}
-            className={`flex overflow-x-hidden ${!isDragging ? 'scroll-smooth' : ''} cursor-grab active:cursor-grabbing`}
+            className={`flex overflow-x-hidden scroll-smooth cursor-grab active:cursor-grabbing`}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleDragEnd}
@@ -119,7 +134,7 @@ const Work = () => {
             {[...projects, ...projects, ...projects].map((project, index) => (
               <div
                 key={index}
-                className="min-w-full md:min-w-[33.333%] px-4 select-none"
+                className="min-w-full md:min-w-[33.333%] px-4 select-none transition-all duration-300"
               >
                 <div className="group relative overflow-hidden rounded-2xl mx-auto max-w-[400px] md:max-w-none">
                   <img
