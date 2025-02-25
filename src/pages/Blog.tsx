@@ -302,9 +302,9 @@ const Blog = () => {
               <button
                 key={index}
                 onClick={() => setSelectedCategory(category)}
-                className={`text-sm font-medium whitespace-nowrap hover:text-black transition-colors min-w-fit
-                          text-gray-600 hover:border-b-2 hover:border-black pb-1
-                          ${selectedCategory === category ? 'bg-[#f3f3f3] px-4 py-2 rounded' : ''}`}
+                className={`text-sm font-medium whitespace-nowrap hover:text-black transition-colors min-w-fit h-9 flex items-center
+                          text-gray-600 hover:border-b-2 hover:border-black
+                          ${selectedCategory === category ? 'bg-[#f3f3f3] px-4 rounded' : ''}`}
               >
                 {category}
               </button>
