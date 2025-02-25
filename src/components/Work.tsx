@@ -1,5 +1,5 @@
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const projects = [
   {
@@ -35,33 +35,33 @@ const projects = [
 ];
 
 const Work = () => {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [currentPosition, setCurrentPosition] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (sliderRef.current) {
-        const slideWidth = sliderRef.current.clientWidth;
-        const maxScroll = sliderRef.current.scrollWidth - slideWidth;
+    const container = containerRef.current;
+    if (!container) return;
 
-        // Si llegamos al final, volvemos al principio suavemente
-        if (currentPosition >= maxScroll) {
-          setCurrentPosition(0);
-        } else {
-          // Avanzamos una imagen
-          setCurrentPosition(prev => prev + slideWidth / 3);
+    container.style.setProperty('--move-initial', '0');
+    container.style.setProperty('--move-final', '-50%');
+
+    // Esta función se asegura de que el carrusel siga siendo infinito
+    const handleAnimation = () => {
+      if (container) {
+        if (container.classList.contains('moving')) {
+          container.classList.remove('moving');
+          container.style.left = '0';
+          container.classList.add('moving');
         }
-
-        // Aplicamos el scroll con animación suave
-        sliderRef.current.scrollTo({
-          left: currentPosition,
-          behavior: 'smooth'
-        });
       }
-    }, 2000); // Cambia de imagen cada 2 segundos
+    };
 
-    return () => clearInterval(interval);
-  }, [currentPosition]);
+    container.addEventListener('animationend', handleAnimation);
+    return () => {
+      if (container) {
+        container.removeEventListener('animationend', handleAnimation);
+      }
+    };
+  }, []);
 
   return (
     <section id="work" className="py-20 overflow-hidden">
@@ -78,17 +78,57 @@ const Work = () => {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative overflow-hidden">
+          <style>
+            {`
+              @keyframes scroll {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(-50%);
+                }
+              }
+              .moving {
+                animation: scroll 20s linear infinite;
+              }
+            `}
+          </style>
           <div
-            ref={sliderRef}
-            className="flex overflow-x-hidden"
+            ref={containerRef}
+            className="flex moving relative"
           >
-            {[...projects, ...projects, ...projects].map((project, index) => (
+            {/* Primer conjunto de imágenes */}
+            {projects.map((project, index) => (
               <div
                 key={index}
-                className="min-w-full md:min-w-[33.333%] px-4 select-none transition-transform duration-500"
+                className="min-w-[300px] md:min-w-[400px] px-4 select-none"
               >
-                <div className="group relative overflow-hidden rounded-2xl mx-auto max-w-[400px] md:max-w-none">
+                <div className="group relative overflow-hidden rounded-2xl">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                    draggable="false"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                    <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <h3 className="text-white text-xl font-semibold mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-white/80 text-sm">{project.category}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {/* Segundo conjunto de imágenes (para el loop infinito) */}
+            {projects.map((project, index) => (
+              <div
+                key={`clone-${index}`}
+                className="min-w-[300px] md:min-w-[400px] px-4 select-none"
+              >
+                <div className="group relative overflow-hidden rounded-2xl">
                   <img
                     src={project.image}
                     alt={project.title}
