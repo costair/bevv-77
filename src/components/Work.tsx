@@ -1,5 +1,7 @@
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const projects = [
   {
@@ -36,6 +38,10 @@ const projects = [
 
 const Work = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -44,7 +50,6 @@ const Work = () => {
     container.style.setProperty('--move-initial', '0');
     container.style.setProperty('--move-final', '-50%');
 
-    // Esta función se asegura de que el carrusel siga siendo infinito
     const handleAnimation = () => {
       if (container) {
         if (container.classList.contains('moving')) {
@@ -62,6 +67,45 @@ const Work = () => {
       }
     };
   }, []);
+
+  // Manejo de eventos táctiles para mobile
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isMobile || !containerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
+    containerRef.current.classList.remove('moving');
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isMobile || !isDragging || !containerRef.current) return;
+    e.preventDefault();
+    const x = e.touches[0].clientX - containerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isMobile || !containerRef.current) return;
+    setIsDragging(false);
+    containerRef.current.classList.add('moving');
+  };
+
+  // Funciones para los botones de navegación en desktop
+  const scroll = (direction: 'left' | 'right') => {
+    if (!containerRef.current) return;
+    
+    const scrollAmount = 400; // Ancho aproximado de una imagen
+    const currentScroll = containerRef.current.scrollLeft;
+    const targetScroll = direction === 'left' ? 
+      currentScroll - scrollAmount : 
+      currentScroll + scrollAmount;
+    
+    containerRef.current.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <section id="work" className="py-20 overflow-hidden">
@@ -90,13 +134,35 @@ const Work = () => {
                 }
               }
               .moving {
-                animation: scroll 20s linear infinite;
+                animation: scroll 15s linear infinite;
               }
             `}
           </style>
+          
+          {/* Botones de navegación (solo en desktop) */}
+          {!isMobile && (
+            <>
+              <button 
+                onClick={() => scroll('left')}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+              <button 
+                onClick={() => scroll('right')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
+
           <div
             ref={containerRef}
             className="flex moving relative"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {/* Primer conjunto de imágenes */}
             {projects.map((project, index) => (
