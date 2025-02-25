@@ -1,5 +1,5 @@
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const projects = [
   {
@@ -35,74 +35,33 @@ const projects = [
 ];
 
 const Work = () => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [previousTouch, setPreviousTouch] = useState(0);
+  const [currentPosition, setCurrentPosition] = useState(0);
 
-  const handleInfiniteScroll = () => {
-    if (!sliderRef.current) return;
-    
-    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
-    
-    if (scrollLeft + clientWidth >= scrollWidth - 10) {
-      sliderRef.current.scrollLeft = 0;
-    }
-    else if (scrollLeft <= 0) {
-      sliderRef.current.scrollLeft = scrollWidth - clientWidth;
-    }
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (sliderRef.current) {
+        const slideWidth = sliderRef.current.clientWidth;
+        const maxScroll = sliderRef.current.scrollWidth - slideWidth;
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!sliderRef.current) return;
-    setIsDragging(true);
-    setPreviousTouch(e.touches[0].pageX);
-    setStartX(e.touches[0].pageX - sliderRef.current.offsetLeft);
-    setScrollLeft(sliderRef.current.scrollLeft);
-  };
+        // Si llegamos al final, volvemos al principio suavemente
+        if (currentPosition >= maxScroll) {
+          setCurrentPosition(0);
+        } else {
+          // Avanzamos una imagen
+          setCurrentPosition(prev => prev + slideWidth / 3);
+        }
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!sliderRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - sliderRef.current.offsetLeft);
-    setScrollLeft(sliderRef.current.scrollLeft);
-  };
+        // Aplicamos el scroll con animación suave
+        sliderRef.current.scrollTo({
+          left: currentPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 2000); // Cambia de imagen cada 2 segundos
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging || !sliderRef.current) return;
-    e.preventDefault();
-    
-    const currentTouch = e.touches[0].pageX;
-    const diff = previousTouch - currentTouch;
-    
-    // Limitar el desplazamiento a un elemento a la vez
-    const slideWidth = sliderRef.current.clientWidth;
-    const maxScroll = Math.abs(diff) > slideWidth ? Math.sign(diff) * slideWidth : diff;
-    
-    sliderRef.current.scrollLeft = scrollLeft + maxScroll;
-    setPreviousTouch(currentTouch);
-    handleInfiniteScroll();
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !sliderRef.current) return;
-    e.preventDefault();
-    
-    const x = e.pageX - sliderRef.current.offsetLeft;
-    const diff = startX - x;
-    
-    // Limitar el desplazamiento a un elemento a la vez
-    const slideWidth = sliderRef.current.clientWidth;
-    const maxScroll = Math.abs(diff) > slideWidth ? Math.sign(diff) * slideWidth : diff;
-    
-    sliderRef.current.scrollLeft = scrollLeft + maxScroll;
-    handleInfiniteScroll();
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
-  };
+    return () => clearInterval(interval);
+  }, [currentPosition]);
 
   return (
     <section id="work" className="py-20 overflow-hidden">
@@ -122,19 +81,12 @@ const Work = () => {
         <div className="relative">
           <div
             ref={sliderRef}
-            className={`flex overflow-x-hidden scroll-smooth cursor-grab active:cursor-grabbing`}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleDragEnd}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleDragEnd}
-            onMouseLeave={handleDragEnd}
+            className="flex overflow-x-hidden"
           >
             {[...projects, ...projects, ...projects].map((project, index) => (
               <div
                 key={index}
-                className="min-w-full md:min-w-[33.333%] px-4 select-none transition-all duration-300"
+                className="min-w-full md:min-w-[33.333%] px-4 select-none transition-transform duration-500"
               >
                 <div className="group relative overflow-hidden rounded-2xl mx-auto max-w-[400px] md:max-w-none">
                   <img
