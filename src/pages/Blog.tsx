@@ -297,14 +297,14 @@ const Blog = () => {
 
         {/* Categories Navigation */}
         <div className="overflow-x-auto my-12">
-          <nav className="flex justify-center space-x-8 border-b border-gray-200 pb-4">
+          <nav className="flex space-x-8 border-b border-gray-200 pb-4 px-4 min-w-max">
             {categories.map((category, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedCategory(category)}
                 className={`text-sm font-medium whitespace-nowrap hover:text-black transition-colors min-w-fit h-9 flex items-center
                           text-gray-600 hover:border-b-2 hover:border-black
-                          ${selectedCategory === category ? 'bg-[#f3f3f3] px-4 rounded' : ''}`}
+                          ${selectedCategory === category ? 'bg-[#f3f3f3] px-4 rounded' : 'px-4'}`}
               >
                 {category}
               </button>
