@@ -1,4 +1,3 @@
-
 import { useRef, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -68,7 +67,6 @@ const Work = () => {
     };
   }, []);
 
-  // Manejo de eventos táctiles para mobile
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!isMobile || !containerRef.current) return;
     setIsDragging(true);
@@ -91,11 +89,12 @@ const Work = () => {
     containerRef.current.classList.add('moving');
   };
 
-  // Funciones para los botones de navegación en desktop
   const scroll = (direction: 'left' | 'right') => {
     if (!containerRef.current) return;
     
-    const scrollAmount = 400; // Ancho aproximado de una imagen
+    containerRef.current.classList.remove('moving');
+    
+    const scrollAmount = containerRef.current.clientWidth / 2;
     const currentScroll = containerRef.current.scrollLeft;
     const targetScroll = direction === 'left' ? 
       currentScroll - scrollAmount : 
@@ -105,6 +104,12 @@ const Work = () => {
       left: targetScroll,
       behavior: 'smooth'
     });
+
+    setTimeout(() => {
+      if (containerRef.current) {
+        containerRef.current.classList.add('moving');
+      }
+    }, 500);
   };
 
   return (
@@ -139,7 +144,6 @@ const Work = () => {
             `}
           </style>
           
-          {/* Botones de navegación (solo en desktop) */}
           {!isMobile && (
             <>
               <button 
@@ -164,7 +168,6 @@ const Work = () => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Primer conjunto de imágenes */}
             {projects.map((project, index) => (
               <div
                 key={index}
@@ -188,7 +191,6 @@ const Work = () => {
                 </div>
               </div>
             ))}
-            {/* Segundo conjunto de imágenes (para el loop infinito) */}
             {projects.map((project, index) => (
               <div
                 key={`clone-${index}`}
