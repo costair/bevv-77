@@ -1,3 +1,4 @@
+
 import { useRef, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -94,7 +95,7 @@ const Work = () => {
     
     containerRef.current.classList.remove('moving');
     
-    const scrollAmount = containerRef.current.clientWidth / 2;
+    const scrollAmount = containerRef.current.clientWidth / 3; // Un tercio del ancho para mover una story
     const currentScroll = containerRef.current.scrollLeft;
     const targetScroll = direction === 'left' ? 
       currentScroll - scrollAmount : 
@@ -171,7 +172,7 @@ const Work = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="min-w-[300px] md:min-w-[400px] px-4 select-none"
+                className="min-w-[300px] md:min-w-[33.333%] px-4 select-none"
               >
                 <div className="group relative overflow-hidden rounded-2xl">
                   <img
@@ -194,7 +195,7 @@ const Work = () => {
             {projects.map((project, index) => (
               <div
                 key={`clone-${index}`}
-                className="min-w-[300px] md:min-w-[400px] px-4 select-none"
+                className="min-w-[300px] md:min-w-[33.333%] px-4 select-none"
               >
                 <div className="group relative overflow-hidden rounded-2xl">
                   <img
