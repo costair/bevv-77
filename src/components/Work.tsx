@@ -34,6 +34,51 @@ const projects = [
     category: "Visual Identity",
     image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
   },
+  {
+    title: "Farm-to-Table Restaurant",
+    category: "Brand Development",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Artisanal Chocolatier",
+    category: "Packaging Design",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Sustainable Wine Bar",
+    category: "Social Media Strategy",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Local Food Market",
+    category: "Brand Identity",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Healthy Meal Delivery",
+    category: "Digital Marketing",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Vegan Ice Cream Shop",
+    category: "Brand Strategy",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Food Truck Festival",
+    category: "Event Branding",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Specialty Spice Store",
+    category: "E-commerce Design",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  },
+  {
+    title: "Kombucha Brewery",
+    category: "Product Launch",
+    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+  }
 ];
 
 const Work = () => {
@@ -95,7 +140,7 @@ const Work = () => {
     
     containerRef.current.classList.remove('moving');
     
-    const scrollAmount = containerRef.current.clientWidth / 3; // Un tercio del ancho para mover una story
+    const scrollAmount = containerRef.current.clientWidth / 3;
     const currentScroll = containerRef.current.scrollLeft;
     const targetScroll = direction === 'left' ? 
       currentScroll - scrollAmount : 
@@ -140,7 +185,7 @@ const Work = () => {
                 }
               }
               .moving {
-                animation: scroll 15s linear infinite;
+                animation: scroll 25s linear infinite;
               }
             `}
           </style>
