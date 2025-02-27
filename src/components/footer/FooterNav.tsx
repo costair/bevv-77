@@ -1,6 +1,8 @@
+
 import { useState } from "react";
 import FooterSection from "./FooterSection";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Link } from "react-router-dom";
 
 interface FooterLink {
   label: string;
@@ -34,7 +36,7 @@ const footerSections: FooterSectionData[] = [
   {
     title: "Resources",
     links: [
-      { label: "Blog", href: "#" },
+      { label: "Blog", href: "/blog" },
       { label: "Success Stories", href: "#" },
       { label: "Guides", href: "#" },
       { label: "FAQ", href: "#" },
@@ -45,7 +47,7 @@ const footerSections: FooterSectionData[] = [
     links: [
       { label: "Food Safety", href: "#" },
       { label: "Privacy Policy", href: "#" },
-      { label: "Terms & Conditions", href: "#" },
+      { label: "Terms & Conditions", href: "/terms" },
       { label: "Compliance", href: "#" },
     ],
   },
@@ -83,9 +85,21 @@ const FooterNav = () => {
           <ul className="space-y-2 text-sm text-gray-600">
             {section.links.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="hover:text-black transition-colors">
-                  {link.label}
-                </a>
+                {link.href.startsWith('/') ? (
+                  <Link 
+                    to={link.href} 
+                    className="hover:text-black transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a 
+                    href={link.href} 
+                    className="hover:text-black transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
