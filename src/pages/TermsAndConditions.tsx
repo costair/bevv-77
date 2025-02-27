@@ -8,10 +8,10 @@ const TermsAndConditions = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section with Gradient Background */}
-      <div className="relative bg-gradient-to-r from-[#9b87f5] to-[#7E69AB] h-[200px] flex items-center justify-center">
-        <div className="absolute inset-0 bg-[url('/lovable-uploads/6bfe6d03-5d5d-4cd6-ab7c-9b36e9c392a6.png')] opacity-10 bg-cover bg-center" />
-        <h1 className="text-4xl md:text-5xl font-bold text-white relative z-10">Terms and Conditions</h1>
+      {/* Hero Section */}
+      <div className="bg-white h-[80px]" /> {/* Spacer for fixed navbar */}
+      <div className="relative bg-black py-16">
+        <h1 className="text-4xl md:text-5xl font-bold text-white text-center">Terms and Conditions</h1>
       </div>
 
       {/* Content Section */}
@@ -28,7 +28,7 @@ const TermsAndConditions = () => {
 
           {/* Services Agreement */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">1. Services Agreement</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">1. Services Agreement</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 Bevv Studio provides branding, packaging design, marketing, and consulting services for the food and beverage industry. Our services are subject to these terms and conditions and any additional agreements made in writing.
@@ -41,7 +41,7 @@ const TermsAndConditions = () => {
 
           {/* Intellectual Property */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">2. Intellectual Property Rights</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">2. Intellectual Property Rights</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 All intellectual property rights for designs, concepts, and materials created by Bevv Studio remain our property until full payment is received and ownership transfer is explicitly stated in writing.
@@ -54,7 +54,7 @@ const TermsAndConditions = () => {
 
           {/* Payment Terms */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">3. Payment Terms</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">3. Payment Terms</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 Our payment terms typically require a 50% deposit to commence work, with the remaining balance due upon project completion. Specific payment schedules will be outlined in your project proposal.
@@ -67,7 +67,7 @@ const TermsAndConditions = () => {
 
           {/* Confidentiality */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">4. Confidentiality</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">4. Confidentiality</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 We maintain strict confidentiality regarding all client information and project details. Non-disclosure agreements can be provided upon request.
@@ -80,7 +80,7 @@ const TermsAndConditions = () => {
 
           {/* Project Changes */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">5. Project Changes & Revisions</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">5. Project Changes & Revisions</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 Our project quotes include a specified number of revision rounds. Additional revisions or scope changes may incur extra charges at our standard rates.
@@ -93,7 +93,7 @@ const TermsAndConditions = () => {
 
           {/* Limitation of Liability */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">6. Limitation of Liability</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">6. Limitation of Liability</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 While we strive for excellence in all our work, we cannot guarantee specific business results or outcomes from our services.
@@ -106,7 +106,7 @@ const TermsAndConditions = () => {
 
           {/* Updates to Terms */}
           <section>
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">7. Updates to Terms</h2>
+            <h2 className="text-2xl font-semibold text-black mb-4">7. Updates to Terms</h2>
             <div className="space-y-4 text-gray-600">
               <p>
                 We reserve the right to update these terms and conditions at any time. Continued use of our services following any changes constitutes acceptance of the updated terms.
@@ -115,8 +115,8 @@ const TermsAndConditions = () => {
           </section>
 
           {/* Contact Information */}
-          <section className="bg-[#E5DEFF] p-6 rounded-lg">
-            <h2 className="text-2xl font-semibold text-[#7E69AB] mb-4">Contact Us</h2>
+          <section className="bg-gray-100 p-6 rounded-lg">
+            <h2 className="text-2xl font-semibold text-black mb-4">Contact Us</h2>
             <p className="text-gray-600">
               If you have any questions about these terms and conditions, please contact us at:
               <br />
