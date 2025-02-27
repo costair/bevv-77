@@ -9,7 +9,7 @@ const TermsAndConditions = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="bg-white h-[80px]" /> {/* Spacer for fixed navbar */}
+      <div className="bg-white h-[70px]" /> {/* Reducido de 80px a 70px */}
       <div className="relative bg-black py-16">
         <h1 className="text-4xl md:text-5xl font-bold text-white text-center">Terms and Conditions</h1>
       </div>
