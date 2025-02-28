@@ -1,9 +1,29 @@
+
 import { Instagram, Linkedin } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FooterLogo = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      // Si estamos en la landing page, hacer scroll hacia arriba
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Si estamos en otra página, navegar a la landing page
+      navigate('/');
+      // Asegurarse de que el scroll esté en la parte superior
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   return (
     <div className="flex flex-col items-start px-4 md:px-0">
-      <a href="/" className="text-2xl font-bold tracking-tighter">
+      <a href="/" onClick={handleLogoClick} className="text-2xl font-bold tracking-tighter">
         Bevv
       </a>
       <p className="text-sm text-gray-600 mt-1">Food & Beverage Studio</p>

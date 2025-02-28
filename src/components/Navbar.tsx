@@ -43,6 +43,21 @@ const Navbar = () => {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      // Si estamos en la landing page, hacer scroll hacia arriba
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Si estamos en otra página, navegar a la landing page
+      navigate('/');
+      // Asegurarse de que el scroll esté en la parte superior
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   const getNavStyles = () => {
     if (useStaticStyle) {
       return "bg-white shadow-sm";
@@ -63,14 +78,15 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link 
-            to="/" 
+          <a 
+            href="/"
+            onClick={handleLogoClick}
             className={`text-2xl font-bold tracking-tighter transition-colors duration-300 ${
               useStaticStyle || isScrolled ? "text-black" : "text-white"
             }`}
           >
             Bevv
-          </Link>
+          </a>
 
           <div className="hidden md:flex items-center space-x-8">
             <NavLink isScrolled={isScrolled} useStaticStyle={useStaticStyle} onClick={() => scrollToSection('services')}>Services</NavLink>
