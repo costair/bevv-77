@@ -46,7 +46,7 @@ const footerSections: FooterSectionData[] = [
     title: "Legal",
     links: [
       { label: "Food Safety", href: "#" },
-      { label: "Privacy Policy", href: "#" },
+      { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms & Conditions", href: "/terms" },
       { label: "Compliance", href: "#" },
     ],
