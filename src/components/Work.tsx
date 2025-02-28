@@ -87,6 +87,17 @@ const Work = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [isAnimationPaused, setIsAnimationPaused] = useState(false);
+
+  // Función para reiniciar la animación automática
+  const resumeAnimation = () => {
+    setTimeout(() => {
+      if (containerRef.current) {
+        containerRef.current.classList.add('moving');
+        setIsAnimationPaused(false);
+      }
+    }, 2000); // Esperar 2 segundos antes de reanudar la animación
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -119,6 +130,7 @@ const Work = () => {
     setStartX(e.touches[0].clientX - containerRef.current.offsetLeft);
     setScrollLeft(containerRef.current.scrollLeft);
     containerRef.current.classList.remove('moving');
+    setIsAnimationPaused(true);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -132,30 +144,32 @@ const Work = () => {
   const handleTouchEnd = () => {
     if (!isMobile || !containerRef.current) return;
     setIsDragging(false);
-    containerRef.current.classList.add('moving');
+    resumeAnimation();
   };
 
   const scroll = (direction: 'left' | 'right') => {
     if (!containerRef.current) return;
     
+    // Detener la animación automática
     containerRef.current.classList.remove('moving');
+    setIsAnimationPaused(true);
     
-    const scrollAmount = containerRef.current.clientWidth / 3;
+    // Calcular el ancho de un solo proyecto (en desktop)
+    const itemWidth = containerRef.current.querySelector('div[class*="min-w-"]')?.clientWidth || 0;
+    
+    // Desplazar solo por el ancho de un elemento
     const currentScroll = containerRef.current.scrollLeft;
     const targetScroll = direction === 'left' ? 
-      currentScroll - scrollAmount : 
-      currentScroll + scrollAmount;
+      currentScroll - itemWidth : 
+      currentScroll + itemWidth;
     
     containerRef.current.scrollTo({
       left: targetScroll,
       behavior: 'smooth'
     });
 
-    setTimeout(() => {
-      if (containerRef.current) {
-        containerRef.current.classList.add('moving');
-      }
-    }, 500);
+    // Reanudar la animación después de un tiempo
+    resumeAnimation();
   };
 
   return (
@@ -195,12 +209,14 @@ const Work = () => {
               <button 
                 onClick={() => scroll('left')}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
+                aria-label="Previous item"
               >
                 <ArrowLeft className="w-6 h-6" />
               </button>
               <button 
                 onClick={() => scroll('right')}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
+                aria-label="Next item"
               >
                 <ArrowRight className="w-6 h-6" />
               </button>
@@ -209,7 +225,7 @@ const Work = () => {
 
           <div
             ref={containerRef}
-            className="flex moving relative"
+            className={`flex ${!isAnimationPaused ? 'moving' : ''} relative`}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
