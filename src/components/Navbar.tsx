@@ -10,7 +10,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isBlogPage = location.pathname === "/blog";
   const isTermsPage = location.pathname === "/terms";
-  const useStaticStyle = isBlogPage || isTermsPage;
+  const isPrivacyPage = location.pathname === "/privacy";
+  const useStaticStyle = isBlogPage || isTermsPage || isPrivacyPage;
 
   useEffect(() => {
     const handleScroll = () => {
