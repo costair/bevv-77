@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -37,22 +36,16 @@ const Navbar = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       navigate('/blog');
-      // Usamos un setTimeout para asegurar que la navegación se complete antes de hacer scroll
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname === "/") {
-      // Si estamos en la landing page, hacer scroll hacia arriba
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Si estamos en otra página, navegar a la landing page
       navigate('/');
-      // Asegurarse de que el scroll esté en la parte superior
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }, 100);
@@ -118,7 +111,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white">
           <div className="container mx-auto px-6 py-4 space-y-4">

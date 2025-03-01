@@ -1,3 +1,4 @@
+
 import { ChevronDown } from "lucide-react";
 
 interface FooterLink {
@@ -10,9 +11,10 @@ interface FooterSectionProps {
   links: FooterLink[];
   isOpen: boolean;
   onToggle: () => void;
+  onLinkClick: (href: string) => void;
 }
 
-const FooterSection = ({ title, links, isOpen, onToggle }: FooterSectionProps) => {
+const FooterSection = ({ title, links, isOpen, onToggle, onLinkClick }: FooterSectionProps) => {
   return (
     <div>
       <button
@@ -29,13 +31,23 @@ const FooterSection = ({ title, links, isOpen, onToggle }: FooterSectionProps) =
       {isOpen && (
         <div className="pb-4 space-y-2 pl-4">
           {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="block text-gray-600 hover:text-black transition-colors"
-            >
-              {link.label}
-            </a>
+            link.href.startsWith('/') ? (
+              <button
+                key={link.label}
+                onClick={() => onLinkClick(link.href)}
+                className="block text-gray-600 hover:text-black transition-colors"
+              >
+                {link.label}
+              </button>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="block text-gray-600 hover:text-black transition-colors"
+              >
+                {link.label}
+              </a>
+            )
           ))}
         </div>
       )}

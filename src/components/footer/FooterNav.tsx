@@ -2,7 +2,7 @@
 import { useState } from "react";
 import FooterSection from "./FooterSection";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface FooterLink {
   label: string;
@@ -56,9 +56,17 @@ const footerSections: FooterSectionData[] = [
 const FooterNav = () => {
   const isMobile = useIsMobile();
   const [openSection, setOpenSection] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
+  };
+
+  const handleLinkClick = (href: string) => {
+    if (href.startsWith('/')) {
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   if (isMobile) {
@@ -71,6 +79,7 @@ const FooterNav = () => {
             links={section.links}
             isOpen={openSection === section.title}
             onToggle={() => toggleSection(section.title)}
+            onLinkClick={handleLinkClick}
           />
         ))}
       </div>
@@ -86,12 +95,12 @@ const FooterNav = () => {
             {section.links.map((link) => (
               <li key={link.label}>
                 {link.href.startsWith('/') ? (
-                  <Link 
-                    to={link.href} 
+                  <button 
+                    onClick={() => handleLinkClick(link.href)}
                     className="hover:text-black transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </button>
                 ) : (
                   <a 
                     href={link.href} 
