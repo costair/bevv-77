@@ -2,15 +2,135 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Separator } from "@/components/ui/separator";
-import { Beer, Coffee, Pizza, IceCream, Sandwich, Wine, Cherry, Cake, Carrot, Croissant } from "lucide-react";
+import { Beer, Coffee, Pizza, IceCream, Sandwich, Wine, Cherry, Cake, Carrot, Croissant, ChevronUp, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const TermsAndConditions = () => {
+  type Section = {
+    id: string;
+    title: string;
+    content: React.ReactNode;
+  };
+
+  const sections: Section[] = [
+    {
+      id: "intro",
+      title: "Introduction",
+      content: (
+        <p className="text-gray-600">
+          Welcome to Bevv Studio. By accessing our website and using our services, you agree to these terms and conditions. Please read them carefully.
+        </p>
+      )
+    },
+    {
+      id: "services",
+      title: "1. Services Agreement",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            Bevv Studio provides branding, packaging design, marketing, and consulting services for the food and beverage industry. Our services are subject to these terms and conditions and any additional agreements made in writing.
+          </p>
+          <p>
+            By engaging our services, you acknowledge that project timelines, deliverables, and costs will be specified in a separate project proposal or statement of work.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: "intellectual-property",
+      title: "2. Intellectual Property Rights",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            All intellectual property rights for designs, concepts, and materials created by Bevv Studio remain our property until full payment is received and ownership transfer is explicitly stated in writing.
+          </p>
+          <p>
+            Upon project completion and full payment, specified deliverables and their associated rights will be transferred to the client as detailed in the project agreement.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: "payment",
+      title: "3. Payment Terms",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            Our payment terms typically require a 50% deposit to commence work, with the remaining balance due upon project completion. Specific payment schedules will be outlined in your project proposal.
+          </p>
+          <p>
+            Late payments may result in project delays and additional fees. We reserve the right to suspend services until outstanding payments are resolved.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: "confidentiality",
+      title: "4. Confidentiality",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            We maintain strict confidentiality regarding all client information and project details. Non-disclosure agreements can be provided upon request.
+          </p>
+          <p>
+            Portfolio rights: Unless otherwise specified, we reserve the right to include completed work in our portfolio and promotional materials.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: "changes",
+      title: "5. Project Changes & Revisions",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            Our project quotes include a specified number of revision rounds. Additional revisions or scope changes may incur extra charges at our standard rates.
+          </p>
+          <p>
+            Significant changes to project scope or requirements may require a revised quote and timeline.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: "liability",
+      title: "6. Limitation of Liability",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            While we strive for excellence in all our work, we cannot guarantee specific business results or outcomes from our services.
+          </p>
+          <p>
+            Our liability is limited to the amount paid for our services, and we are not responsible for indirect or consequential damages.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: "updates",
+      title: "7. Updates to Terms",
+      content: (
+        <div className="space-y-4 text-gray-600">
+          <p>
+            We reserve the right to update these terms and conditions at any time. Continued use of our services following any changes constitutes acceptance of the updated terms.
+          </p>
+        </div>
+      )
+    }
+  ];
+
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const toggleSection = (id: string) => {
+    setOpenSection(openSection === id ? null : id);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       
       {/* Hero Section */}
-      <div className="bg-white h-[70px]" /> {/* Reducido de 80px a 70px */}
+      <div className="bg-white h-[70px]" />
       <div className="relative bg-black py-16">
         <h1 className="text-4xl md:text-5xl font-bold text-white text-center">Terms and Conditions</h1>
       </div>
@@ -51,103 +171,30 @@ const TermsAndConditions = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8 relative">
-          {/* Introduction */}
-          <section className="prose max-w-none">
-            <p className="text-gray-600">
-              Welcome to Bevv Studio. By accessing our website and using our services, you agree to these terms and conditions. Please read them carefully.
-            </p>
-          </section>
-
-          <Separator className="my-8" />
-
-          {/* Services Agreement */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">1. Services Agreement</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                Bevv Studio provides branding, packaging design, marketing, and consulting services for the food and beverage industry. Our services are subject to these terms and conditions and any additional agreements made in writing.
-              </p>
-              <p>
-                By engaging our services, you acknowledge that project timelines, deliverables, and costs will be specified in a separate project proposal or statement of work.
-              </p>
-            </div>
-          </section>
-
-          {/* Intellectual Property */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">2. Intellectual Property Rights</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                All intellectual property rights for designs, concepts, and materials created by Bevv Studio remain our property until full payment is received and ownership transfer is explicitly stated in writing.
-              </p>
-              <p>
-                Upon project completion and full payment, specified deliverables and their associated rights will be transferred to the client as detailed in the project agreement.
-              </p>
-            </div>
-          </section>
-
-          {/* Payment Terms */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">3. Payment Terms</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                Our payment terms typically require a 50% deposit to commence work, with the remaining balance due upon project completion. Specific payment schedules will be outlined in your project proposal.
-              </p>
-              <p>
-                Late payments may result in project delays and additional fees. We reserve the right to suspend services until outstanding payments are resolved.
-              </p>
-            </div>
-          </section>
-
-          {/* Confidentiality */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">4. Confidentiality</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                We maintain strict confidentiality regarding all client information and project details. Non-disclosure agreements can be provided upon request.
-              </p>
-              <p>
-                Portfolio rights: Unless otherwise specified, we reserve the right to include completed work in our portfolio and promotional materials.
-              </p>
-            </div>
-          </section>
-
-          {/* Project Changes */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">5. Project Changes & Revisions</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                Our project quotes include a specified number of revision rounds. Additional revisions or scope changes may incur extra charges at our standard rates.
-              </p>
-              <p>
-                Significant changes to project scope or requirements may require a revised quote and timeline.
-              </p>
-            </div>
-          </section>
-
-          {/* Limitation of Liability */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">6. Limitation of Liability</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                While we strive for excellence in all our work, we cannot guarantee specific business results or outcomes from our services.
-              </p>
-              <p>
-                Our liability is limited to the amount paid for our services, and we are not responsible for indirect or consequential damages.
-              </p>
-            </div>
-          </section>
-
-          {/* Updates to Terms */}
-          <section>
-            <h2 className="text-2xl font-semibold text-black mb-4">7. Updates to Terms</h2>
-            <div className="space-y-4 text-gray-600">
-              <p>
-                We reserve the right to update these terms and conditions at any time. Continued use of our services following any changes constitutes acceptance of the updated terms.
-              </p>
-            </div>
-          </section>
+        <div className="max-w-4xl mx-auto space-y-6 relative">
+          {/* FAQ style sections with accordions */}
+          <div className="border-t border-b-0 border-gray-200">
+            {sections.map((section) => (
+              <div key={section.id} className="border-b border-gray-200">
+                <button
+                  onClick={() => toggleSection(section.id)}
+                  className="w-full py-5 px-4 flex justify-between items-center text-left focus:outline-none"
+                >
+                  <h2 className="text-xl font-semibold text-black">{section.title}</h2>
+                  {openSection === section.id ? (
+                    <ChevronUp className="h-5 w-5 text-gray-500" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-gray-500" />
+                  )}
+                </button>
+                {openSection === section.id && (
+                  <div className="px-4 pb-5">
+                    {section.content}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
