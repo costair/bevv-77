@@ -129,10 +129,13 @@ const TermsAndConditions = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section with new dual-title style */}
       <div className="bg-white h-[70px]" />
       <div className="relative bg-black py-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-white text-center">Terms and Conditions</h1>
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-400 uppercase tracking-wide mb-2">BEVV STUDIO LEGAL</p>
+          <h1 className="text-5xl md:text-6xl font-bold text-white">Terms and Conditions</h1>
+        </div>
       </div>
 
       {/* Content Section */}
