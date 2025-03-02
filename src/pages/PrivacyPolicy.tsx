@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Separator } from "@/components/ui/separator";
@@ -170,15 +171,15 @@ const PrivacyPolicy = () => {
       <Navbar />
       
       {/* Hero Section with title styling */}
-      <div className="bg-white py-20 mt-[70px]">
+      <div className="bg-white py-10 mt-[70px]">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-500 uppercase tracking-wide mb-3 text-sm font-medium">BEVV STUDIO LEGAL</p>
           <h1 className="text-4xl md:text-5xl font-bold text-black">Privacy Policy</h1>
         </div>
       </div>
 
-      {/* Content Section */}
-      <div className="container mx-auto px-4 py-12 relative">
+      {/* Content Section - reduced top padding */}
+      <div className="container mx-auto px-4 pt-0 pb-12 relative">
         {/* Decorative Icons Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.035]">
           <div className="absolute top-10 left-10">
@@ -213,7 +214,7 @@ const PrivacyPolicy = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-6 relative">
+        <div className="max-w-4xl mx-auto space-y-0 relative">
           {/* FAQ style sections with accordions */}
           <div className="border-t border-b-0 border-gray-200">
             {sections.map((section) => (
