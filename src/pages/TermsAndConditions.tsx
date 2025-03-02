@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Separator } from "@/components/ui/separator";
@@ -129,12 +128,11 @@ const TermsAndConditions = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section with new dual-title style */}
-      <div className="bg-white h-[70px]" />
-      <div className="relative bg-black py-16">
+      {/* Hero Section with title styling */}
+      <div className="bg-white py-20 mt-[70px]">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-400 uppercase tracking-wide mb-2">BEVV STUDIO LEGAL</p>
-          <h1 className="text-5xl md:text-6xl font-bold text-white">Terms and Conditions</h1>
+          <p className="text-gray-500 uppercase tracking-wide mb-3 text-sm font-medium">BEVV STUDIO LEGAL</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-black">Terms and Conditions</h1>
         </div>
       </div>
 
