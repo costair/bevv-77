@@ -7,10 +7,11 @@ import DecorativeIcons from "@/components/legal/DecorativeIcons";
 
 type LegalPageLayoutProps = {
   title: string;
+  subTitle?: string;
   children: ReactNode;
 };
 
-const LegalPageLayout = ({ title, children }: LegalPageLayoutProps) => {
+const LegalPageLayout = ({ title, subTitle, children }: LegalPageLayoutProps) => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -18,7 +19,12 @@ const LegalPageLayout = ({ title, children }: LegalPageLayoutProps) => {
       {/* Hero Section with title styling */}
       <div className="bg-white py-10 mt-[70px]">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-500 uppercase tracking-wide mb-3 text-sm font-medium">BEVV STUDIO LEGAL</p>
+          {subTitle && (
+            <p className="text-gray-500 uppercase tracking-wide mb-3 text-sm font-medium">{subTitle}</p>
+          )}
+          {!subTitle && (
+            <p className="text-gray-500 uppercase tracking-wide mb-3 text-sm font-medium">BEVV STUDIO LEGAL</p>
+          )}
           <h1 className="text-4xl md:text-5xl font-bold text-black">{title}</h1>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import FAQ from "./pages/FAQ";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </Router>
   );

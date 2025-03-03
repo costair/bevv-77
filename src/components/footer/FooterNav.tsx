@@ -39,7 +39,7 @@ const footerSections: FooterSectionData[] = [
       { label: "Blog", href: "/blog" },
       { label: "Success Stories", href: "#" },
       { label: "Guides", href: "#" },
-      { label: "FAQ", href: "#" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
   {
