@@ -2,6 +2,7 @@
 import { Package2, Palette, Megaphone, Layout, Share2, PenTool } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Card, CardContent } from "@/components/ui/card";
 
 const services = [
   {
@@ -9,42 +10,42 @@ const services = [
     title: "Packaging Design",
     description: "Eye-catching packaging that stands out on shelves and connects with consumers.",
     step: "01",
-    color: "#F97316", // Bright Orange for packaging
+    color: "#F2FCE2", // Light Green for packaging
   },
   {
     icon: Palette,
     title: "Brand Identity",
     description: "Distinctive visual identities that capture your brand's essence and values.",
     step: "02",
-    color: "#D946EF", // Magenta Pink for brand identity/creativity
+    color: "#E5DEFF", // Light Purple for brand identity/creativity
   },
   {
     icon: Layout,
     title: "Web Design",
     description: "Beautiful, conversion-focused websites for food & beverage brands.",
     step: "03",
-    color: "#0EA5E9", // Ocean Blue for web/digital
+    color: "#D3E4FD", // Light Blue for web/digital
   },
   {
     icon: Megaphone,
     title: "Marketing Campaigns",
     description: "Strategic campaigns that drive engagement and boost brand awareness.",
     step: "04",
-    color: "#8B5CF6", // Vibrant Purple for marketing
+    color: "#FFDEE2", // Light Pink for marketing
   },
   {
     icon: Share2,
     title: "Social Media",
     description: "Engaging content strategies that build community and drive growth.",
     step: "05",
-    color: "#10B981", // Green for social/growth
+    color: "#FDE1D3", // Light Peach for social/growth
   },
   {
     icon: PenTool,
     title: "Logo Design",
     description: "Memorable logos that become the foundation of your brand identity.",
     step: "06",
-    color: "#0D9488", // Teal for design foundation
+    color: "#FEF7CD", // Light Yellow for design foundation
   },
 ];
 
@@ -73,107 +74,38 @@ const Services = () => {
           </p>
         </div>
 
-        {isMobile ? (
-          // Mobile Layout (Stacked)
-          <div className="space-y-12">
-            {services.map((service, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-gray-100 rounded-full scale-[1.15] opacity-20"></div>
-                  <div 
-                    className="relative flex items-center justify-center w-20 h-20 rounded-full text-white"
-                    style={{ backgroundColor: service.color }}
-                  >
-                    <service.icon className="h-8 w-8" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold">
-                    {service.step}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className="overflow-hidden transition-all duration-300 hover:shadow-md"
+              style={{ backgroundColor: service.color }}
+            >
+              <CardContent className="p-6">
+                <div className="flex items-start">
+                  <div className="relative mb-4">
+                    <div 
+                      className="flex items-center justify-center w-12 h-12 rounded-md bg-black text-white"
+                    >
+                      <service.icon className="h-6 w-6" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-white border border-gray-200 text-black flex items-center justify-center text-[10px] font-bold">
+                      {service.step}
+                    </div>
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 max-w-xs">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          // Desktop Layout (Connected Circular Path)
-          <div className="relative mx-auto max-w-4xl">
-            {/* First row */}
-            <div className="flex justify-between items-start mb-12">
-              <div className="flex justify-between w-full">
-                {services.slice(0, 3).map((service, index) => (
-                  <div key={index} className="flex flex-col items-center text-center w-1/3">
-                    <ServiceNode 
-                      service={service}
-                      position={index === 0 ? "left" : index === 2 ? "right" : "center"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Connection lines */}
-            <div className="hidden md:block absolute top-[10%] left-[22%] w-[56%] h-20 border-dashed border-t-0 border-l-0 border-r-0 border-b-2 border-gray-300 rounded-b-3xl -z-10"></div>
-            <div className="hidden md:block absolute bottom-[10%] left-[22%] w-[56%] h-20 border-dashed border-t-2 border-l-0 border-r-0 border-b-0 border-gray-300 rounded-t-3xl -z-10"></div>
-            <div className="hidden md:block absolute top-[28%] left-[15%] w-[2px] h-[44%] border-dashed border-l-2 border-t-0 border-r-0 border-b-0 border-gray-300 -z-10"></div>
-            <div className="hidden md:block absolute top-[28%] right-[15%] w-[2px] h-[44%] border-dashed border-r-2 border-t-0 border-l-0 border-b-0 border-gray-300 -z-10"></div>
-            
-            {/* Second row */}
-            <div className="flex justify-between items-start">
-              <div className="flex justify-between w-full">
-                {services.slice(3).map((service, index) => (
-                  <div key={index + 3} className="flex flex-col items-center text-center w-1/3">
-                    <ServiceNode 
-                      service={service}
-                      position={index === 0 ? "left" : index === 2 ? "right" : "center"}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+                
+                {/* Fixed height title to ensure alignment */}
+                <h3 className="text-xl font-semibold mb-2 h-7">{service.title}</h3>
+                
+                {/* Fixed height description to ensure alignment */}
+                <p className="text-gray-600 h-20">{service.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
-  );
-};
-
-interface ServiceNodeProps {
-  service: {
-    icon: React.FC<React.SVGProps<SVGSVGElement>>;
-    title: string;
-    description: string;
-    step: string;
-    color: string;
-  };
-  position: "left" | "center" | "right";
-}
-
-const ServiceNode = ({ service, position }: ServiceNodeProps) => {
-  return (
-    <div className={cn(
-      "flex flex-col items-center text-center",
-      position === "left" && "self-start",
-      position === "center" && "self-center",
-      position === "right" && "self-end",
-    )}>
-      <div className="relative mb-6 group">
-        <div className="absolute inset-0 bg-gray-100 rounded-full scale-[1.15] opacity-20 
-                      group-hover:scale-[1.25] group-hover:opacity-30 transition-all duration-300"></div>
-        <div 
-          className="relative flex items-center justify-center w-24 h-24 rounded-full text-white
-                    group-hover:brightness-110 transition-all duration-300"
-          style={{ backgroundColor: service.color }}
-        >
-          <service.icon className="h-10 w-10" />
-        </div>
-        <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold">
-          {service.step}
-        </div>
-      </div>
-      <h3 className="text-xl font-semibold mb-2 h-7">{service.title}</h3>
-      <p className="text-gray-600 max-w-xs mx-auto h-[4.5rem]">{service.description}</p>
-    </div>
   );
 };
 
