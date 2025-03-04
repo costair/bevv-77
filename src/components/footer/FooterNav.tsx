@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import FooterSection from "./FooterSection";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -45,10 +44,8 @@ const footerSections: FooterSectionData[] = [
   {
     title: "Legal",
     links: [
-      { label: "Food Safety", href: "#" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms & Conditions", href: "/terms" },
-      { label: "Compliance", href: "#" },
     ],
   },
 ];
