@@ -1,16 +1,19 @@
-import { Beer, Coffee, Pizza, Sandwich, CakeSlice, Wine } from "lucide-react";
+
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { MapPin, Mail, Phone } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
+    service: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -18,8 +21,16 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      // Transform the form data to match what the API expects
+      const apiFormData = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        subject: formData.service || "General Inquiry",
+        message: formData.message,
+      };
+
       const response = await supabase.functions.invoke('send-contact', {
-        body: formData
+        body: apiFormData
       });
 
       if (response.error) {
@@ -36,10 +47,12 @@ const Contact = () => {
 
       // Clear form
       setFormData({
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
-        subject: "",
+        phone: "",
         message: "",
+        service: "",
       });
     } catch (error) {
       console.error("Error sending message:", error);
@@ -53,93 +66,166 @@ const Contact = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
 
+  const services = [
+    { value: "", label: "Select a service" },
+    { value: "Packaging Design", label: "Packaging Design" },
+    { value: "Brand Identity", label: "Brand Identity" },
+    { value: "Web Design", label: "Web Design" },
+    { value: "Marketing Campaigns", label: "Marketing Campaigns" },
+    { value: "Social Media", label: "Social Media" },
+    { value: "Logo Design", label: "Logo Design" },
+  ];
+
   return (
-    <section id="contact" className="py-20 bg-black text-white relative overflow-hidden">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 block animate-fade-in" style={{ animationDelay: "0.3s" }}>
-        <Beer className="w-16 md:w-24 h-16 md:h-24 text-white opacity-10 mb-8 transform -rotate-12" />
-        <Pizza className="w-16 md:w-24 h-16 md:h-24 text-white opacity-10 transform rotate-12" />
-      </div>
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 block animate-fade-in" style={{ animationDelay: "0.3s" }}>
-        <Coffee className="w-16 md:w-24 h-16 md:h-24 text-white opacity-10 mb-8 transform rotate-12" />
-        <Wine className="w-16 md:w-24 h-16 md:h-24 text-white opacity-10 transform -rotate-12" />
-      </div>
-      <div className="absolute left-1/4 top-1/4 block animate-fade-in" style={{ animationDelay: "0.4s" }}>
-        <Sandwich className="w-12 md:w-20 h-12 md:h-20 text-white opacity-10 transform rotate-45" />
-      </div>
-      <div className="absolute right-1/4 bottom-1/4 block animate-fade-in" style={{ animationDelay: "0.4s" }}>
-        <CakeSlice className="w-12 md:w-20 h-12 md:h-20 text-white opacity-10 transform -rotate-45" />
-      </div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
+    <section id="contact" className="py-20 bg-gray-100 relative">
+      <div className="container mx-auto px-6">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="bg-white text-black rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
-              GET IN TOUCH
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 mt-3">
-              Let's Create Something Amazing Together
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Contact our team
             </h2>
-            <p className="text-gray-400">
-              Ready to elevate your food & beverage brand? We'd love to hear from you.
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Got any questions about the product? or looking for our partners? We're here to help.
+              Chat to our friendly team 24/7 and get an answer in less than 5 minutes.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-2">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First name</label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      placeholder="First name"
+                      required
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      placeholder="Last name"
+                      required
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+1 (555) 000-0000"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service</label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                  >
+                    {services.map((service, index) => (
+                      <option key={index} value={service.value}>{service.label}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Leave us a message..."
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                  ></textarea>
+                </div>
+                
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full px-6 py-3 bg-black text-white font-medium rounded-lg hover:bg-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Sending..." : "Send message"}
+                  </button>
+                </div>
+              </form>
             </div>
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              required
-              value={formData.subject}
-              onChange={handleChange}
-              className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              required
-              value={formData.message}
-              onChange={handleChange}
-              rows={4}
-              className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/20"
-            ></textarea>
-            <div className="flex justify-center">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="px-8 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
+            
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Chat with us</h3>
+                <p className="text-gray-600 mb-6">Speak to our friendly team.</p>
+                <a href="mailto:contact@bevv.design" className="flex items-center text-gray-700 hover:text-black">
+                  <Mail className="h-5 w-5 mr-2" />
+                  contact@bevv.design
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Call us</h3>
+                <p className="text-gray-600 mb-6">Call us from Mon-Fri, 9am to 5pm.</p>
+                <a href="tel:+15551234567" className="flex items-center text-gray-700 hover:text-black">
+                  <Phone className="h-5 w-5 mr-2" />
+                  +1 (555) 123-4567
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Visit us</h3>
+                <p className="text-gray-600 mb-6">Come say hello at our office.</p>
+                <div className="flex items-start text-gray-700">
+                  <MapPin className="h-5 w-5 mr-2 mt-1" />
+                  <span>123 South Street, Commercial Rd, NY 10001</span>
+                </div>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
