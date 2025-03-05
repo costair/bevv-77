@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -6,77 +7,77 @@ const projects = [
   {
     title: "Artisanal Coffee Brand",
     category: "Branding & Packaging",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Organic Juice Company",
     category: "Web Design & Marketing",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Craft Brewery",
     category: "Brand Identity",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Gourmet Restaurant",
     category: "Digital Marketing",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Organic Bakery",
     category: "Brand Strategy",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Premium Tea House",
     category: "Visual Identity",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Farm-to-Table Restaurant",
     category: "Brand Development",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Artisanal Chocolatier",
     category: "Packaging Design",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Sustainable Wine Bar",
     category: "Social Media Strategy",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Local Food Market",
     category: "Brand Identity",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Healthy Meal Delivery",
     category: "Digital Marketing",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Vegan Ice Cream Shop",
     category: "Brand Strategy",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Food Truck Festival",
     category: "Event Branding",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Specialty Spice Store",
     category: "E-commerce Design",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   },
   {
     title: "Kombucha Brewery",
     category: "Product Launch",
-    image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
   }
 ];
 
