@@ -11,7 +11,6 @@ const Contact = () => {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
     message: "",
     service: "",
   });
@@ -50,7 +49,6 @@ const Contact = () => {
         firstName: "",
         lastName: "",
         email: "",
-        phone: "",
         message: "",
         service: "",
       });
@@ -84,10 +82,13 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-100 relative">
+    <section id="contact" className="py-12 bg-gray-100 relative">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-1 bg-black text-white text-sm font-medium rounded-full mb-3">
+              Contact Us
+            </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Contact our team
             </h2>
@@ -97,7 +98,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -144,19 +145,6 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+1 (555) 000-0000"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
-                  />
-                </div>
-                
-                <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service</label>
                   <select
                     id="service"
@@ -197,10 +185,9 @@ const Contact = () => {
               </form>
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-4">Chat with us</h3>
-                <p className="text-gray-600 mb-6">Speak to our friendly team.</p>
+                <h3 className="text-xl font-semibold mb-2">Email</h3>
                 <a href="mailto:contact@bevv.design" className="flex items-center text-gray-700 hover:text-black">
                   <Mail className="h-5 w-5 mr-2" />
                   contact@bevv.design
@@ -208,8 +195,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold mb-4">Call us</h3>
-                <p className="text-gray-600 mb-6">Call us from Mon-Fri, 9am to 5pm.</p>
+                <h3 className="text-xl font-semibold mb-2">Phone</h3>
                 <a href="tel:+15551234567" className="flex items-center text-gray-700 hover:text-black">
                   <Phone className="h-5 w-5 mr-2" />
                   +1 (555) 123-4567
@@ -217,8 +203,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold mb-4">Visit us</h3>
-                <p className="text-gray-600 mb-6">Come say hello at our office.</p>
+                <h3 className="text-xl font-semibold mb-2">Address</h3>
                 <div className="flex items-start text-gray-700">
                   <MapPin className="h-5 w-5 mr-2 mt-1" />
                   <span>123 South Street, Commercial Rd, NY 10001</span>
