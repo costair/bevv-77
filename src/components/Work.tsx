@@ -1,5 +1,4 @@
-
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -84,93 +83,31 @@ const projects = [
 const Work = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [isAnimationPaused, setIsAnimationPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerPage = isMobile ? 1 : 3;
+  const maxIndex = Math.max(0, projects.length - itemsPerPage);
 
-  // Función para reiniciar la animación automática
-  const resumeAnimation = () => {
-    setTimeout(() => {
-      if (containerRef.current) {
-        containerRef.current.classList.add('moving');
-        setIsAnimationPaused(false);
-      }
-    }, 2000); // Esperar 2 segundos antes de reanudar la animación
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
   };
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    container.style.setProperty('--move-initial', '0');
-    container.style.setProperty('--move-final', '-50%');
-
-    const handleAnimation = () => {
-      if (container) {
-        if (container.classList.contains('moving')) {
-          container.classList.remove('moving');
-          container.style.left = '0';
-          container.classList.add('moving');
-        }
-      }
-    };
-
-    container.addEventListener('animationend', handleAnimation);
-    return () => {
-      if (container) {
-        container.removeEventListener('animationend', handleAnimation);
-      }
-    };
-  }, []);
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isMobile || !containerRef.current) return;
-    setIsDragging(true);
-    setStartX(e.touches[0].clientX - containerRef.current.offsetLeft);
-    setScrollLeft(containerRef.current.scrollLeft);
-    containerRef.current.classList.remove('moving');
-    setIsAnimationPaused(true);
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isMobile || !isDragging || !containerRef.current) return;
-    e.preventDefault();
-    const x = e.touches[0].clientX - containerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    containerRef.current.scrollLeft = scrollLeft - walk;
+  const scrollToIndex = (index: number) => {
+    if (containerRef.current) {
+      const itemWidth = containerRef.current.querySelector('div[class*="min-w-"]')?.clientWidth || 0;
+      containerRef.current.scrollTo({
+        left: index * itemWidth,
+        behavior: 'smooth'
+      });
+    }
   };
 
-  const handleTouchEnd = () => {
-    if (!isMobile || !containerRef.current) return;
-    setIsDragging(false);
-    resumeAnimation();
-  };
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (!containerRef.current) return;
-    
-    // Detener la animación automática
-    containerRef.current.classList.remove('moving');
-    setIsAnimationPaused(true);
-    
-    // Calcular el ancho de un solo proyecto (en desktop)
-    const itemWidth = containerRef.current.querySelector('div[class*="min-w-"]')?.clientWidth || 0;
-    
-    // Desplazar solo por el ancho de un elemento
-    const currentScroll = containerRef.current.scrollLeft;
-    const targetScroll = direction === 'left' ? 
-      currentScroll - itemWidth : 
-      currentScroll + itemWidth;
-    
-    containerRef.current.scrollTo({
-      left: targetScroll,
-      behavior: 'smooth'
-    });
-
-    // Reanudar la animación después de un tiempo
-    resumeAnimation();
-  };
+  useState(() => {
+    scrollToIndex(currentIndex);
+  });
 
   return (
     <section id="work" className="py-20 overflow-hidden">
@@ -188,75 +125,38 @@ const Work = () => {
         </div>
 
         <div className="relative overflow-hidden">
-          <style>
-            {`
-              @keyframes scroll {
-                0% {
-                  transform: translateX(0);
-                }
-                100% {
-                  transform: translateX(-50%);
-                }
-              }
-              .moving {
-                animation: scroll 25s linear infinite;
-              }
-            `}
-          </style>
-          
-          {!isMobile && (
-            <>
-              <button 
-                onClick={() => scroll('left')}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
-                aria-label="Previous item"
-              >
-                <ArrowLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform"
-                aria-label="Next item"
-              >
-                <ArrowRight className="w-6 h-6" />
-              </button>
-            </>
-          )}
+          <button 
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
+            aria-label="Previous item"
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </button>
+          <button 
+            onClick={handleNext}
+            disabled={currentIndex >= maxIndex}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
+            aria-label="Next item"
+          >
+            <ArrowRight className="w-6 h-6" />
+          </button>
 
           <div
             ref={containerRef}
-            className={`flex ${!isAnimationPaused ? 'moving' : ''} relative`}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
+            className="flex overflow-x-auto scrollbar-hide snap-x"
+            style={{ 
+              scrollBehavior: 'smooth',
+              scrollSnapType: 'x mandatory',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none'
+            }}
           >
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="min-w-[300px] md:min-w-[33.333%] px-4 select-none"
-              >
-                <div className="group relative overflow-hidden rounded-2xl">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
-                    draggable="false"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                    <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <h3 className="text-white text-xl font-semibold mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-white/80 text-sm">{project.category}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-            {projects.map((project, index) => (
-              <div
-                key={`clone-${index}`}
-                className="min-w-[300px] md:min-w-[33.333%] px-4 select-none"
+                className="min-w-[300px] md:min-w-[33.333%] px-4 select-none snap-start"
+                style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="group relative overflow-hidden rounded-2xl">
                   <img
