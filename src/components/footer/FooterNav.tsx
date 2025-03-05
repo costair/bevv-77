@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import FooterSection from "./FooterSection";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -85,9 +84,9 @@ const FooterNav = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full mx-auto text-center md:text-left">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full lg:w-auto">
       {footerSections.map((section) => (
-        <div key={section.title} className="space-y-3 flex flex-col items-center md:items-start">
+        <div key={section.title} className="space-y-3">
           <h3 className="font-semibold">{section.title}</h3>
           <ul className="space-y-2 text-sm text-gray-600">
             {section.links.map((link) => (
