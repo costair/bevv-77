@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Mail, Phone } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -86,8 +85,8 @@ const Contact = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <span className="inline-block px-4 py-1 bg-black text-white text-sm font-medium rounded-full mb-3">
-              Contact Us
+            <span className="inline-block px-6 py-2 bg-black text-white text-xs uppercase tracking-wider font-medium rounded-full mb-3">
+              CONTACT US
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Contact our team
@@ -98,118 +97,90 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="lg:col-span-2">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First name</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      placeholder="First name"
-                      required
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last name</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      placeholder="Last name"
-                      required
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
-                    />
-                  </div>
-                </div>
-                
+          <div className="max-w-3xl mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First name</label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="you@example.com"
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="First name"
                     required
-                    value={formData.email}
+                    value={formData.firstName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
                   />
                 </div>
-                
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service</label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
-                  >
-                    {services.map((service, index) => (
-                      <option key={index} value={service.value}>{service.label}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Leave us a message..."
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Last name"
                     required
-                    value={formData.message}
+                    value={formData.lastName}
                     onChange={handleChange}
-                    rows={4}
                     className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
-                  ></textarea>
+                  />
                 </div>
-                
-                <div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-black text-white font-medium rounded-lg hover:bg-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? "Sending..." : "Send message"}
-                  </button>
-                </div>
-              </form>
-            </div>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Email</h3>
-                <a href="mailto:contact@bevv.design" className="flex items-center text-gray-700 hover:text-black">
-                  <Mail className="h-5 w-5 mr-2" />
-                  contact@bevv.design
-                </a>
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold mb-2">Phone</h3>
-                <a href="tel:+15551234567" className="flex items-center text-gray-700 hover:text-black">
-                  <Phone className="h-5 w-5 mr-2" />
-                  +1 (555) 123-4567
-                </a>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                />
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold mb-2">Address</h3>
-                <div className="flex items-start text-gray-700">
-                  <MapPin className="h-5 w-5 mr-2 mt-1" />
-                  <span>123 South Street, Commercial Rd, NY 10001</span>
-                </div>
+                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service</label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                >
+                  {services.map((service, index) => (
+                    <option key={index} value={service.value}>{service.label}</option>
+                  ))}
+                </select>
               </div>
-            </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Leave us a message..."
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black/20"
+                ></textarea>
+              </div>
+              
+              <div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-6 py-3 bg-black text-white font-medium rounded-lg hover:bg-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Send message"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

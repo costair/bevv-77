@@ -9,42 +9,36 @@ const services = [
     icon: Package2,
     title: "Packaging Design",
     description: "Eye-catching packaging that stands out on shelves and connects with consumers.",
-    step: "01",
     color: "#F2FCE2", // Light Green for packaging
   },
   {
     icon: Palette,
     title: "Brand Identity",
     description: "Distinctive visual identities that capture your brand's essence and values.",
-    step: "02",
     color: "#E5DEFF", // Light Purple for brand identity/creativity
   },
   {
     icon: Layout,
     title: "Web Design",
     description: "Beautiful, conversion-focused websites for food & beverage brands.",
-    step: "03",
     color: "#D3E4FD", // Light Blue for web/digital
   },
   {
     icon: Megaphone,
     title: "Marketing Campaigns",
     description: "Strategic campaigns that drive engagement and boost brand awareness.",
-    step: "04",
     color: "#FFDEE2", // Light Pink for marketing
   },
   {
     icon: Share2,
     title: "Social Media",
     description: "Engaging content strategies that build community and drive growth.",
-    step: "05",
     color: "#FDE1D3", // Light Peach for social/growth
   },
   {
     icon: PenTool,
     title: "Logo Design",
     description: "Memorable logos that become the foundation of your brand identity.",
-    step: "06",
     color: "#FEF7CD", // Light Yellow for design foundation
   },
 ];
@@ -82,16 +76,9 @@ const Services = () => {
               style={{ backgroundColor: service.color }}
             >
               <CardContent className="p-6">
-                <div className="flex items-start">
-                  <div className="relative mb-4">
-                    <div 
-                      className="flex items-center justify-center w-12 h-12 rounded-md bg-black text-white"
-                    >
-                      <service.icon className="h-6 w-6" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-white border border-gray-200 text-black flex items-center justify-center text-[10px] font-bold">
-                      {service.step}
-                    </div>
+                <div className="flex items-start mb-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-md bg-black text-white">
+                    <service.icon className="h-6 w-6" />
                   </div>
                 </div>
                 
