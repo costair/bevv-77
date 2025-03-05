@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Beer, Coffee, Pizza, Wine, CupSoda, IceCreamCone, CookingPot, Apple, ChefHat, Utensils } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -81,8 +82,22 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-12 bg-gray-100 relative">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-12 bg-gray-100 relative overflow-hidden">
+      {/* Decorative Icons */}
+      <div className="absolute w-full h-full pointer-events-none">
+        <Beer className="absolute text-[#F97316] opacity-40 w-12 h-12 top-[15%] left-[10%] rotate-12" />
+        <Coffee className="absolute text-[#8A898C] opacity-40 w-10 h-10 top-[25%] right-[12%] -rotate-12" />
+        <Pizza className="absolute text-[#FEC6A1] opacity-30 w-14 h-14 bottom-[20%] left-[15%] rotate-45" />
+        <Wine className="absolute text-[#FFDEE2] opacity-40 w-12 h-12 top-[35%] left-[20%] -rotate-12" />
+        <CupSoda className="absolute text-[#9b87f5] opacity-40 w-8 h-8 bottom-[30%] right-[20%] rotate-12" />
+        <IceCreamCone className="absolute text-[#F2FCE2] opacity-30 w-16 h-16 top-[10%] right-[25%] -rotate-6" />
+        <CookingPot className="absolute text-[#FDE1D3] opacity-40 w-10 h-10 bottom-[15%] right-[15%] rotate-6" />
+        <Apple className="absolute text-[#FEF7CD] opacity-30 w-8 h-8 top-[40%] right-[10%] rotate-12" />
+        <ChefHat className="absolute text-[#C8C8C9] opacity-30 w-12 h-12 bottom-[25%] left-[5%] -rotate-12" />
+        <Utensils className="absolute text-[#7E69AB] opacity-40 w-8 h-8 top-[45%] left-[15%] rotate-45" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="inline-block px-6 py-2 bg-black text-white text-xs uppercase tracking-wider font-medium rounded-full mb-3">

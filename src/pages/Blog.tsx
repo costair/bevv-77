@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -55,140 +56,140 @@ const Blog = () => {
       title: "Rising Trends in Functional Beverages",
       category: "TRENDS",
       description: "Exploring the growing market of health-focused functional drinks.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 7, 2024"
     },
     {
       title: "Plant-Based Alternatives in the Beverage Industry",
       category: "INNOVATION",
       description: "How plant-based alternatives are reshaping beverage choices.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 5, 2024"
     },
     {
       title: "Global Coffee Market Analysis 2024",
       category: "INDUSTRY NEWS",
       description: "Latest insights into the global coffee industry and market trends.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 3, 2024"
     },
     {
       title: "Signature Cocktail Creation Guide",
       category: "RECIPES",
       description: "Step-by-step guide to creating unique signature cocktails.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "April 1, 2024"
     },
     {
       title: "Success Story: Local Brewery Expansion",
       category: "CASE STUDY",
       description: "How a local brewery scaled their operations successfully.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 30, 2024"
     },
     {
       title: "Zero-Waste Beverage Production",
       category: "SUSTAINABILITY",
       description: "Implementing zero-waste practices in beverage manufacturing.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 28, 2024"
     },
     {
       title: "Artisanal Tea Blending Techniques",
       category: "RECIPES",
       description: "Master the art of creating unique tea blends.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 26, 2024"
     },
     {
       title: "Digital Marketing in the Beverage Industry",
       category: "TRENDS",
       description: "Effective digital marketing strategies for beverage brands.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 24, 2024"
     },
     {
       title: "New Regulations in Beverage Labeling",
       category: "INDUSTRY NEWS",
       description: "Understanding the latest beverage labeling requirements.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 22, 2024"
     },
     {
       title: "Smart Packaging Solutions",
       category: "INNOVATION",
       description: "Innovative packaging solutions in the beverage industry.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 20, 2024"
     },
     {
       title: "Seasonal Beverage Menu Planning",
       category: "FOOD",
       description: "Creating successful seasonal beverage menus.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 18, 2024"
     },
     {
       title: "Beverage Brand Expansion Case Study",
       category: "CASE STUDY",
       description: "Analysis of a successful beverage brand expansion.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 16, 2024"
     },
     {
       title: "Cold Brew Coffee Innovations",
       category: "BEVERAGES",
       description: "Latest trends and techniques in cold brew coffee.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 14, 2024"
     },
     {
       title: "Eco-Friendly Packaging Solutions",
       category: "SUSTAINABILITY",
       description: "Sustainable packaging options for beverages.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 12, 2024"
     },
     {
       title: "Beverage Industry Market Report",
       category: "INDUSTRY NEWS",
       description: "Comprehensive analysis of the beverage market.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 10, 2024"
     },
     {
       title: "Homemade Soda Recipes",
       category: "RECIPES",
       description: "Create your own artisanal sodas at home.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 8, 2024"
     },
     {
       title: "AI in Beverage Production",
       category: "INNOVATION",
       description: "How AI is transforming beverage manufacturing.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 6, 2024"
     },
     {
       title: "Premium Mixer Trends",
       category: "TRENDS",
       description: "The rising demand for premium cocktail mixers.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 4, 2024"
     },
     {
       title: "Beverage Photography Guide",
       category: "FOOD",
       description: "Professional tips for beverage photography.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 2, 2024"
     },
     {
       title: "Future of Sustainable Beverages",
       category: "SUSTAINABILITY",
       description: "Exploring upcoming trends in sustainable beverage production.",
-      image: "/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png",
+      image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
       publishDate: "March 1, 2024"
     }
   ];
@@ -295,8 +296,8 @@ const Blog = () => {
           </div>
         </div>
 
-        {/* Categories Navigation */}
-        <div className="overflow-x-auto my-12">
+        {/* Categories Navigation - Centered */}
+        <div className="overflow-x-auto my-12 flex justify-center">
           <nav className="flex space-x-8 border-b border-gray-200 pb-4 px-4 min-w-max">
             {categories.map((category, index) => (
               <button
