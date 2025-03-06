@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -38,7 +37,6 @@ const Blog = () => {
   
   const navigate = useNavigate();
 
-  // Reset copied state when changing articles
   useEffect(() => {
     setCopied(false);
   }, [selectedArticle]);
@@ -465,7 +463,7 @@ const Blog = () => {
       <Navbar />
       
       {/* Hero Section with Title and Search */}
-      <div className="container mx-auto px-4 pt-24 pb-12 text-center">
+      <div className="container mx-auto px-4 pt-24 pb-8 text-center">
         <div className="flex justify-center items-center gap-2 mb-4">
           <button onClick={() => navigate("/")} className="text-sm text-gray-600 hover:text-gray-900">Home</button>
           <span className="text-gray-600">/</span>
@@ -475,13 +473,13 @@ const Blog = () => {
         <h1 className="text-4xl md:text-6xl font-bold mb-3">
           Our Latest <span className="text-black">Insights</span>
         </h1>
-        <p className="text-gray-600 max-w-3xl mx-auto mb-12">
+        <p className="text-gray-600 max-w-3xl mx-auto mb-8">
           Expert food and beverage guides, industry trends, and articles to help you improve your
           business and stay updated with the latest innovations.
         </p>
         
         {/* Search Bar */}
-        <div className="max-w-xl mx-auto mb-12 relative">
+        <div className="max-w-xl mx-auto mb-8 relative">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
             <input
@@ -495,7 +493,7 @@ const Blog = () => {
         </div>
         
         {/* Categories */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-8">
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category, index) => (
               <button
