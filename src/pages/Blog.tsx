@@ -1,11 +1,13 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, Link2, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const Blog = () => {
   const categories = [
@@ -31,8 +33,15 @@ const Blog = () => {
     content?: string;
     readTime?: string;
   }>(null);
+  const [copied, setCopied] = useState(false);
+  const { toast } = useToast();
   
   const navigate = useNavigate();
+
+  // Reset copied state when changing articles
+  useEffect(() => {
+    setCopied(false);
+  }, [selectedArticle]);
 
   const latestPosts = [
     {
@@ -251,20 +260,7 @@ const Blog = () => {
   });
 
   const getTagColor = (category: string) => {
-    const colors: { [key: string]: string } = {
-      BEVERAGES: "bg-[#9b87f5]",
-      SUSTAINABILITY: "bg-[#0EA5E9]",
-      FOOD: "bg-[#D946EF]",
-      INNOVATION: "bg-[#F97316]",
-      "CASE STUDY": "bg-[#7E69AB]",
-      TRENDS: "bg-[#6E59A5]",
-      "INDUSTRY NEWS": "bg-[#8B5CF6]",
-      RECIPES: "bg-[#0EA5E9]",
-      MARKETING: "bg-[#F97316]",
-      TIPS: "bg-[#D946EF]",
-      ALL: "bg-[#0EA5E9]"
-    };
-    return colors[category] || "bg-gray-500";
+    return "bg-black text-white";
   };
 
   const truncateText = (text: string, maxLength: number) => {
@@ -274,10 +270,25 @@ const Blog = () => {
   };
 
   const filteredPosts = updatedRegularPosts.filter(
-    post => selectedCategory === "ALL" || post.category === selectedCategory
+    post => {
+      const matchesCategory = selectedCategory === "ALL" || post.category === selectedCategory;
+      const matchesSearch = searchQuery === "" || 
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.category.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      return matchesCategory && matchesSearch;
+    }
   );
 
   const allPosts = [...latestPosts, ...updatedRegularPosts];
+
+  const searchFilteredPosts = allPosts.filter(post => {
+    return searchQuery === "" || 
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.category.toLowerCase().includes(searchQuery.toLowerCase());
+  });
 
   const handleArticleClick = (article: any) => {
     setSelectedArticle(article);
@@ -295,6 +306,29 @@ const Blog = () => {
     return allPosts
       .filter(post => post.title !== selectedArticle.title)
       .slice(0, 3);
+  };
+
+  const copyToClipboard = () => {
+    if (selectedArticle) {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url)
+        .then(() => {
+          setCopied(true);
+          toast({
+            title: "Link copied!",
+            description: "The article link has been copied to your clipboard."
+          });
+          setTimeout(() => setCopied(false), 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+          toast({
+            title: "Copy failed",
+            description: "Could not copy the link. Please try again.",
+            variant: "destructive"
+          });
+        });
+    }
   };
 
   if (selectedArticle) {
@@ -331,7 +365,7 @@ const Blog = () => {
               <span>•</span>
               <span>{selectedArticle.readTime}</span>
               <span>•</span>
-              <span className={`${getTagColor(selectedArticle.category)} text-white px-3 py-1 rounded-full text-xs`}>
+              <span className={`${getTagColor(selectedArticle.category)} px-3 py-1 rounded-full text-xs`}>
                 {selectedArticle.category}
               </span>
             </div>
@@ -360,13 +394,22 @@ const Blog = () => {
             {/* Share & Navigation */}
             <div className="flex flex-col sm:flex-row justify-between items-center mt-12 pt-8 border-t border-gray-200">
               <div className="flex gap-4 mb-4 sm:mb-0">
-                <Button variant="outline" className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-share-2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                  Share
-                </Button>
-                <Button variant="outline" className="flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bookmark"><path d="M19 21l-7-7 7-7"/><path d="M19 12H5"/></svg>
-                  Bookmark
+                <Button 
+                  variant={copied ? "default" : "outline"} 
+                  className={`flex items-center gap-2 transition-all duration-300 ${copied ? 'bg-green-500 hover:bg-green-600 border-green-500' : ''}`}
+                  onClick={copyToClipboard}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-4 w-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Link2 className="h-4 w-4" />
+                      Copy Link
+                    </>
+                  )}
                 </Button>
               </div>
               <Button onClick={handleBackToList} variant="outline" className="flex items-center gap-2">
@@ -391,7 +434,7 @@ const Blog = () => {
                   </div>
                   <CardHeader className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <span className={`${getTagColor(article.category)} text-white px-3 py-1 rounded-full text-xs`}>
+                      <span className={`${getTagColor(article.category)} px-3 py-1 rounded-full text-xs`}>
                         {article.category}
                       </span>
                     </div>
@@ -464,7 +507,7 @@ const Blog = () => {
                 className={`
                   text-sm font-medium rounded-full px-5 py-2 transition-colors
                   ${selectedCategory === category 
-                    ? `${getTagColor(category)} text-white` 
+                    ? 'bg-black text-white' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
                 `}
               >
@@ -493,7 +536,7 @@ const Blog = () => {
               </div>
               <CardHeader className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-xs`}>
+                  <span className={`${getTagColor(post.category)} px-3 py-1 rounded-full text-xs`}>
                     {post.category}
                   </span>
                 </div>
@@ -513,7 +556,7 @@ const Blog = () => {
 
         {/* Regular Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post, index) => (
+          {searchFilteredPosts.filter(post => selectedCategory === "ALL" || post.category === selectedCategory).map((post, index) => (
             <Card 
               key={index} 
               className="overflow-hidden group cursor-pointer"
@@ -528,7 +571,7 @@ const Blog = () => {
               </div>
               <CardHeader className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className={`${getTagColor(post.category)} text-white px-3 py-1 rounded-full text-xs`}>
+                  <span className={`${getTagColor(post.category)} px-3 py-1 rounded-full text-xs`}>
                     {post.category}
                   </span>
                 </div>
