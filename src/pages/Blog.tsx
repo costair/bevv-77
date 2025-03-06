@@ -55,7 +55,7 @@ const Blog = () => {
     },
     {
       title: "Mastering Social Media Marketing for F&B Brands",
-      category: "MARKETING",
+      category: "INDUSTRY NEWS",
       description: "Learn effective strategies to build your F&B brand presence on social media. From content planning to engagement tactics, discover how to connect with your audience authentically.",
       image: "/lovable-uploads/3d337ad1-465b-44a4-b74b-6052d0bdc727.png",
       publishDate: "April 14, 2024",
@@ -64,7 +64,7 @@ const Blog = () => {
     },
     {
       title: "Essential F&B Photography Tips",
-      category: "TIPS",
+      category: "FOOD",
       description: "Master the art of food and beverage photography with our expert guide to lighting, composition, and styling techniques.",
       image: "/lovable-uploads/9a683ae9-10a4-46c9-bb18-463f038b29c0.png",
       publishDate: "April 12, 2024",
@@ -271,23 +271,20 @@ const Blog = () => {
 
   const filteredPosts = updatedRegularPosts.filter(
     post => {
-      const matchesCategory = selectedCategory === "ALL" || post.category === selectedCategory;
-      const matchesSearch = searchQuery === "" || 
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.category.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      return matchesCategory && matchesSearch;
+      return selectedCategory === "ALL" || post.category === selectedCategory;
     }
   );
 
   const allPosts = [...latestPosts, ...updatedRegularPosts];
 
   const searchFilteredPosts = allPosts.filter(post => {
-    return searchQuery === "" || 
+    const matchesCategory = selectedCategory === "ALL" || post.category === selectedCategory;
+    const matchesSearch = searchQuery === "" || 
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.category.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    return matchesCategory && matchesSearch;
   });
 
   const handleArticleClick = (article: any) => {
@@ -304,7 +301,7 @@ const Blog = () => {
     if (!selectedArticle) return [];
     
     return allPosts
-      .filter(post => post.title !== selectedArticle.title)
+      .filter(post => post.title !== selectedArticle.title && post.category === selectedArticle.category)
       .slice(0, 3);
   };
 
@@ -476,7 +473,7 @@ const Blog = () => {
         </div>
         
         <h1 className="text-4xl md:text-6xl font-bold mb-3">
-          Our Latest <span className="text-[#9b87f5]">Insights</span>
+          Our Latest <span className="text-black">Insights</span>
         </h1>
         <p className="text-gray-600 max-w-3xl mx-auto mb-12">
           Expert food and beverage guides, industry trends, and articles to help you improve your
@@ -521,42 +518,45 @@ const Blog = () => {
       <div className="container mx-auto px-4 pb-12">
         {/* Featured Posts */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {latestPosts.slice(0, 3).map((post, index) => (
-            <Card 
-              key={index} 
-              className="overflow-hidden group cursor-pointer" 
-              onClick={() => handleArticleClick(post)}
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className={`${getTagColor(post.category)} px-3 py-1 rounded-full text-xs`}>
-                    {post.category}
-                  </span>
+          {latestPosts
+            .filter(post => selectedCategory === "ALL" || post.category === selectedCategory)
+            .slice(0, 3)
+            .map((post, index) => (
+              <Card 
+                key={index} 
+                className="overflow-hidden group cursor-pointer" 
+                onClick={() => handleArticleClick(post)}
+              >
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <CardTitle className="text-lg group-hover:text-gray-600 transition-colors line-clamp-2">
-                  {post.title}
-                </CardTitle>
-                <CardDescription className="text-sm line-clamp-2">
-                  {truncateText(post.description, 100)}
-                </CardDescription>
-                <div className="text-xs text-gray-500 mt-2">
-                  {post.publishDate} • {post.readTime}
-                </div>
-              </CardHeader>
-            </Card>
-          ))}
+                <CardHeader className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className={`${getTagColor(post.category)} px-3 py-1 rounded-full text-xs`}>
+                      {post.category}
+                    </span>
+                  </div>
+                  <CardTitle className="text-lg group-hover:text-gray-600 transition-colors line-clamp-2">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm line-clamp-2">
+                    {truncateText(post.description, 100)}
+                  </CardDescription>
+                  <div className="text-xs text-gray-500 mt-2">
+                    {post.publishDate} • {post.readTime}
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
         </div>
 
         {/* Regular Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {searchFilteredPosts.filter(post => selectedCategory === "ALL" || post.category === selectedCategory).map((post, index) => (
+          {searchFilteredPosts.map((post, index) => (
             <Card 
               key={index} 
               className="overflow-hidden group cursor-pointer"
