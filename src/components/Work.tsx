@@ -126,22 +126,26 @@ const Work = () => {
         </div>
 
         <div className="relative overflow-hidden">
-          <button 
-            onClick={handlePrevious}
-            disabled={currentIndex === 0}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
-            aria-label="Previous item"
-          >
-            <ArrowLeft className="w-6 h-6" />
-          </button>
-          <button 
-            onClick={handleNext}
-            disabled={currentIndex >= maxIndex}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
-            aria-label="Next item"
-          >
-            <ArrowRight className="w-6 h-6" />
-          </button>
+          {!isMobile && (
+            <>
+              <button 
+                onClick={handlePrevious}
+                disabled={currentIndex === 0}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
+                aria-label="Previous item"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+              <button 
+                onClick={handleNext}
+                disabled={currentIndex >= maxIndex}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
+                aria-label="Next item"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
 
           <div
             ref={containerRef}
