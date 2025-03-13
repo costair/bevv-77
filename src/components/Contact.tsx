@@ -51,6 +51,15 @@ const Contact = () => {
         message: "",
         service: "",
       });
+      
+      // Add a small delay before refreshing to show the "sending" state
+      setTimeout(() => {
+        // Refresh the page and redirect to the homepage
+        window.location.href = "/";
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+      }, 1000);
+      
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
@@ -58,7 +67,6 @@ const Contact = () => {
         title: "Error sending message",
         description: error.message || "Please try again later.",
       });
-    } finally {
       setIsSubmitting(false);
     }
   };
