@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -286,6 +285,22 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const organizeIndustryNewsPosts = () => {
+    if (selectedCategory === "INDUSTRY NEWS") {
+      const industryNewsPosts = searchFilteredPosts.filter(post => post.category === "INDUSTRY NEWS");
+      const chunks = [];
+      for (let i = 0; i < industryNewsPosts.length; i += 3) {
+        chunks.push(industryNewsPosts.slice(i, i + 3));
+      }
+      
+      return chunks.flat();
+    }
+    
+    return searchFilteredPosts;
+  };
+
+  const organizedPosts = organizeIndustryNewsPosts();
+
   const handleArticleClick = (article: any) => {
     setSelectedArticle(article);
     window.scrollTo(0, 0);
@@ -555,7 +570,7 @@ const Blog = () => {
 
         {/* Regular Posts Grid - Fixed layout for better organization */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {searchFilteredPosts.map((post, index) => (
+          {organizedPosts.map((post, index) => (
             <Card 
               key={index} 
               className="overflow-hidden group cursor-pointer"
