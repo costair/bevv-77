@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -285,17 +286,23 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
+  // Función mejorada para ordenar y organizar los artículos de Industry News
   const organizeIndustryNewsPosts = () => {
     if (selectedCategory === "INDUSTRY NEWS") {
+      // Obtener los artículos de Industry News
       const industryNewsPosts = searchFilteredPosts.filter(post => post.category === "INDUSTRY NEWS");
-      const chunks = [];
-      for (let i = 0; i < industryNewsPosts.length; i += 3) {
-        chunks.push(industryNewsPosts.slice(i, i + 3));
-      }
       
-      return chunks.flat();
+      // Ordenar por fecha en orden descendente (más reciente primero)
+      const sortedPosts = [...industryNewsPosts].sort((a, b) => {
+        const dateA = new Date(a.publishDate);
+        const dateB = new Date(b.publishDate);
+        return dateB.getTime() - dateA.getTime();
+      });
+      
+      return sortedPosts;
     }
     
+    // Para otras categorías, mantener el orden original
     return searchFilteredPosts;
   };
 
