@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -552,8 +553,8 @@ const Blog = () => {
             ))}
         </div>
 
-        {/* Regular Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Regular Posts Grid - Fixed layout for better organization */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {searchFilteredPosts.map((post, index) => (
             <Card 
               key={index} 
