@@ -51,16 +51,6 @@ const Contact = () => {
         message: "",
         service: "",
       });
-      
-      // Add a delay before refreshing to show the "sending" state
-      // Changed from 1000ms to 1500ms (1.5 seconds)
-      setTimeout(() => {
-        // Refresh the page and redirect to the homepage
-        window.location.href = "/";
-        // Scroll to the top of the page
-        window.scrollTo(0, 0);
-      }, 1500);
-      
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
@@ -68,6 +58,7 @@ const Contact = () => {
         title: "Error sending message",
         description: error.message || "Please try again later.",
       });
+    } finally {
       setIsSubmitting(false);
     }
   };
