@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -286,28 +285,6 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Función mejorada para ordenar y organizar los artículos de Industry News
-  const organizeIndustryNewsPosts = () => {
-    if (selectedCategory === "INDUSTRY NEWS") {
-      // Obtener los artículos de Industry News
-      const industryNewsPosts = searchFilteredPosts.filter(post => post.category === "INDUSTRY NEWS");
-      
-      // Ordenar por fecha en orden descendente (más reciente primero)
-      const sortedPosts = [...industryNewsPosts].sort((a, b) => {
-        const dateA = new Date(a.publishDate);
-        const dateB = new Date(b.publishDate);
-        return dateB.getTime() - dateA.getTime();
-      });
-      
-      return sortedPosts;
-    }
-    
-    // Para otras categorías, mantener el orden original
-    return searchFilteredPosts;
-  };
-
-  const organizedPosts = organizeIndustryNewsPosts();
-
   const handleArticleClick = (article: any) => {
     setSelectedArticle(article);
     window.scrollTo(0, 0);
@@ -575,9 +552,9 @@ const Blog = () => {
             ))}
         </div>
 
-        {/* Regular Posts Grid - Fixed layout for better organization */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {organizedPosts.map((post, index) => (
+        {/* Regular Posts Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {searchFilteredPosts.map((post, index) => (
             <Card 
               key={index} 
               className="overflow-hidden group cursor-pointer"
