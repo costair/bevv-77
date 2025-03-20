@@ -20,24 +20,6 @@ const workCapabilities = [
     title: "Packaging Design",
     description: "Design packaging that enhances shelf presence and communicates your product's unique story and value.",
     icon: <Package className="h-8 w-8 text-black" />
-  },
-  {
-    id: "04",
-    title: "Digital Marketing",
-    description: "Drive engagement and sales through targeted campaigns tailored for the food & beverage industry.",
-    icon: <Megaphone className="h-8 w-8 text-black" />
-  },
-  {
-    id: "05",
-    title: "Restaurant Branding",
-    description: "Create cohesive dining experiences from menu design to interior ambiance that keeps customers coming back.",
-    icon: <UtensilsCrossed className="h-8 w-8 text-black" />
-  },
-  {
-    id: "06",
-    title: "Beverage Concepts",
-    description: "Craft compelling beverage brand identities and marketing strategies that capture market share.",
-    icon: <Coffee className="h-8 w-8 text-black" />
   }
 ];
 
@@ -77,7 +59,7 @@ const Work = () => {
 
           {/* Right side - Capabilities */}
           <div className="space-y-8">
-            {workCapabilities.slice(0, 3).map((capability) => (
+            {workCapabilities.map((capability) => (
               <div key={capability.id} className="flex gap-6 items-start border-b border-gray-200 pb-6">
                 <div className="text-xl font-bold text-gray-400 min-w-[40px]">{capability.id}</div>
                 <div className="flex-1">
@@ -92,22 +74,8 @@ const Work = () => {
           </div>
         </div>
 
-        {/* Bottom section - Additional capabilities */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          {workCapabilities.slice(3).map((capability) => (
-            <div key={capability.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="text-lg font-bold text-gray-400">{capability.id}</div>
-                {capability.icon}
-                <h3 className="text-lg font-bold">{capability.title}</h3>
-              </div>
-              <p className="text-gray-600">{capability.description}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Stats section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+        {/* Stats section - Moved from bottom to replace the additional capabilities */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           <div className="bg-black text-white p-8 rounded-xl flex flex-col items-center justify-center text-center">
             <span className="text-5xl font-bold mb-2">40%</span>
             <p>Average increase in brand recognition for our clients</p>
