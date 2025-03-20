@@ -1,115 +1,47 @@
 
-import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import React from "react";
+import { Coffee, UtensilsCrossed, Package, Target, Megaphone, PenTool } from "lucide-react";
 
-const projects = [
+const workCapabilities = [
   {
-    title: "Artisanal Coffee Brand",
-    category: "Branding & Packaging",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
+    id: "01",
+    title: "Brand Strategy",
+    description: "Develop distinctive identities that resonate with food & beverage audiences and stand out in crowded markets.",
+    icon: <Target className="h-8 w-8 text-black" />
   },
   {
-    title: "Organic Juice Company",
-    category: "Web Design & Marketing",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
+    id: "02",
+    title: "Visual Identity",
+    description: "Create captivating visual systems that bring your culinary or beverage brand to life across all touchpoints.",
+    icon: <PenTool className="h-8 w-8 text-black" />
   },
   {
-    title: "Craft Brewery",
-    category: "Brand Identity",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
+    id: "03",
+    title: "Packaging Design",
+    description: "Design packaging that enhances shelf presence and communicates your product's unique story and value.",
+    icon: <Package className="h-8 w-8 text-black" />
   },
   {
-    title: "Gourmet Restaurant",
-    category: "Digital Marketing",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
+    id: "04",
+    title: "Digital Marketing",
+    description: "Drive engagement and sales through targeted campaigns tailored for the food & beverage industry.",
+    icon: <Megaphone className="h-8 w-8 text-black" />
   },
   {
-    title: "Organic Bakery",
-    category: "Brand Strategy",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
+    id: "05",
+    title: "Restaurant Branding",
+    description: "Create cohesive dining experiences from menu design to interior ambiance that keeps customers coming back.",
+    icon: <UtensilsCrossed className="h-8 w-8 text-black" />
   },
   {
-    title: "Premium Tea House",
-    category: "Visual Identity",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Farm-to-Table Restaurant",
-    category: "Brand Development",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Artisanal Chocolatier",
-    category: "Packaging Design",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Sustainable Wine Bar",
-    category: "Social Media Strategy",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Local Food Market",
-    category: "Brand Identity",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Healthy Meal Delivery",
-    category: "Digital Marketing",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Vegan Ice Cream Shop",
-    category: "Brand Strategy",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Food Truck Festival",
-    category: "Event Branding",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Specialty Spice Store",
-    category: "E-commerce Design",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
-  },
-  {
-    title: "Kombucha Brewery",
-    category: "Product Launch",
-    image: "/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png",
+    id: "06",
+    title: "Beverage Concepts",
+    description: "Craft compelling beverage brand identities and marketing strategies that capture market share.",
+    icon: <Coffee className="h-8 w-8 text-black" />
   }
 ];
 
 const Work = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = isMobile ? 1 : 3;
-  const maxIndex = Math.max(0, projects.length - itemsPerPage);
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => Math.max(0, prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
-  };
-
-  const scrollToIndex = (index: number) => {
-    if (containerRef.current) {
-      const itemWidth = containerRef.current.querySelector('div[class*="min-w-"]')?.clientWidth || 0;
-      containerRef.current.scrollTo({
-        left: index * itemWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  useState(() => {
-    scrollToIndex(currentIndex);
-  });
-
   return (
     <section id="work" className="py-20 overflow-hidden">
       <div className="container mx-auto px-6">
@@ -125,62 +57,72 @@ const Work = () => {
           </p>
         </div>
 
-        <div className="relative overflow-hidden">
-          {!isMobile && (
-            <>
-              <button 
-                onClick={handlePrevious}
-                disabled={currentIndex === 0}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
-                aria-label="Previous item"
-              >
-                <ArrowLeft className="w-6 h-6" />
-              </button>
-              <button 
-                onClick={handleNext}
-                disabled={currentIndex >= maxIndex}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-transform disabled:opacity-50 disabled:hover:scale-100"
-                aria-label="Next item"
-              >
-                <ArrowRight className="w-6 h-6" />
-              </button>
-            </>
-          )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
+          {/* Left side - Image */}
+          <div className="relative">
+            <div className="bg-gray-100 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300">
+              <img 
+                src="/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png" 
+                alt="Bevv Agency Dashboard" 
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white rounded-full py-3 px-6 shadow-lg flex items-center gap-2 hover:bg-gray-50 transition-colors cursor-pointer">
+              <span className="font-medium">Schedule a consultation</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.16675 7.00008H12.8334M12.8334 7.00008L7.00008 1.16675M12.8334 7.00008L7.00008 12.8334" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </div>
 
-          <div
-            ref={containerRef}
-            className="flex overflow-x-auto scrollbar-hide snap-x"
-            style={{ 
-              scrollBehavior: 'smooth',
-              scrollSnapType: 'x mandatory',
-              msOverflowStyle: 'none',
-              scrollbarWidth: 'none'
-            }}
-          >
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="min-w-[300px] md:min-w-[33.333%] px-4 select-none snap-start"
-                style={{ scrollSnapAlign: 'start' }}
-              >
-                <div className="group relative overflow-hidden rounded-2xl">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
-                    draggable="false"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                    <div className="text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <h3 className="text-white text-xl font-semibold mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-white/80 text-sm">{project.category}</p>
-                    </div>
+          {/* Right side - Capabilities */}
+          <div className="space-y-8">
+            {workCapabilities.slice(0, 3).map((capability) => (
+              <div key={capability.id} className="flex gap-6 items-start border-b border-gray-200 pb-6">
+                <div className="text-xl font-bold text-gray-400 min-w-[40px]">{capability.id}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    {capability.icon}
+                    <h3 className="text-xl font-bold">{capability.title}</h3>
                   </div>
+                  <p className="text-gray-600">{capability.description}</p>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Bottom section - Additional capabilities */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          {workCapabilities.slice(3).map((capability) => (
+            <div key={capability.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="text-lg font-bold text-gray-400">{capability.id}</div>
+                {capability.icon}
+                <h3 className="text-lg font-bold">{capability.title}</h3>
+              </div>
+              <p className="text-gray-600">{capability.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+          <div className="bg-black text-white p-8 rounded-xl flex flex-col items-center justify-center text-center">
+            <span className="text-5xl font-bold mb-2">40%</span>
+            <p>Average increase in brand recognition for our clients</p>
+          </div>
+          <div className="bg-gray-100 p-8 rounded-xl col-span-2">
+            <h3 className="text-xl font-bold mb-4">Tailored to Your Needs</h3>
+            <p className="text-gray-700 mb-4">
+              Explore our comprehensive suite of services, meticulously tailored to meet the unique needs of food & beverage businesses. From startups to established brands, we provide the creative solutions you need to thrive.
+            </p>
+            <a href="#contact" className="inline-flex items-center text-black font-medium hover:opacity-80">
+              Discuss your project with us
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
