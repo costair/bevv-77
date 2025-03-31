@@ -1,66 +1,40 @@
-import { ShieldCheck, TrendingUp, MessageSquare, HeartHandshake } from "lucide-react";
+
+import React from "react";
 
 const About = () => {
   return (
-    <section id="about" className="relative bg-white py-24 overflow-hidden">
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="flex flex-col items-center justify-center space-y-3 mb-12">
-          <span className="bg-black text-white rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
-            Our Culture
-          </span>
-          <h2 className="text-4xl font-bold text-center">About Us</h2>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-12">
-          <div className="space-y-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
-                <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
-                  <ShieldCheck className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold">Quality & Innovation</h3>
-                <p className="text-gray-600">
-                  We blend traditional culinary expertise with modern innovation to create exceptional F&B experiences.
-                </p>
-              </div>
-
-              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
-                <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold">Growth & Development</h3>
-                <p className="text-gray-600">
-                  Our team constantly explores new flavors and trends to stay ahead in the F&B industry.
-                </p>
-              </div>
-
-              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
-                <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
-                  <MessageSquare className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold">Open Communication</h3>
-                <p className="text-gray-600">
-                  We foster transparent dialogue with our clients to ensure their vision comes to life.
-                </p>
-              </div>
-
-              <div className="space-y-4 flex flex-col items-center text-center sm:items-start sm:text-left">
-                <div className="bg-black w-14 h-14 rounded-lg flex items-center justify-center">
-                  <HeartHandshake className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold">Client Partnership</h3>
-                <p className="text-gray-600">
-                  We build lasting relationships with our clients, supporting their F&B journey every step of the way.
-                </p>
-              </div>
+    <section className="bg-muted/40 py-24 md:py-32" id="about">
+      <div className="container px-4 md:px-6">
+        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+          <div className="flex flex-col justify-center space-y-4">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Sobre Nosotros
+              </h2>
+              <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                Con sede en Madrid y experiencia global, Bevv se especializa en crear conceptos innovadores para la industria de alimentos y bebidas. Nuestra atención al detalle y enfoque en la sostenibilidad nos distinguen.
+              </p>
             </div>
+            <ul className="grid gap-2 py-4">
+              <li className="flex items-center gap-2">
+                <div className="flex h-2 w-2 rounded-full bg-primary" />
+                <span>Fundado en 2018 por expertos en diseño y gastronomía</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="flex h-2 w-2 rounded-full bg-primary" />
+                <span>Más de 200 proyectos exitosos en todo el mundo</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <div className="flex h-2 w-2 rounded-full bg-primary" />
+                <span>Comprometidos con prácticas sostenibles y éticas</span>
+              </li>
+            </ul>
           </div>
-
-          <div className="relative">
-            <img 
-              src="/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png" 
-              alt="Team Culture" 
-              className="rounded-lg shadow-xl w-full object-cover"
+          <div className="mx-auto w-full max-w-[400px] overflow-hidden">
+            <img
+              src="/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png"
+              alt="Equipo de Bevv trabajando en diseño de packaging"
+              className="mx-auto aspect-square overflow-hidden rounded-full object-cover object-center sm:w-full"
             />
           </div>
         </div>

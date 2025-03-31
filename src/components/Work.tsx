@@ -1,96 +1,57 @@
 
 import React from "react";
-import { Coffee, UtensilsCrossed, Package, Target, Megaphone, PenTool } from "lucide-react";
-
-const workCapabilities = [
-  {
-    id: "01",
-    title: "Brand Strategy",
-    description: "Develop distinctive identities that resonate with food & beverage audiences and stand out in crowded markets.",
-    icon: <Target className="h-8 w-8 text-black" />
-  },
-  {
-    id: "02",
-    title: "Visual Identity",
-    description: "Create captivating visual systems that bring your culinary or beverage brand to life across all touchpoints.",
-    icon: <PenTool className="h-8 w-8 text-black" />
-  },
-  {
-    id: "03",
-    title: "Packaging Design",
-    description: "Design packaging that enhances shelf presence and communicates your product's unique story and value.",
-    icon: <Package className="h-8 w-8 text-black" />
-  }
-];
 
 const Work = () => {
   return (
-    <section id="work" className="py-20 overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <span className="bg-black text-white rounded-full px-6 py-2 text-xs uppercase tracking-wider font-medium">
-            SELECTED WORK
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 mt-3">
-            Crafting Success Stories
+    <section className="py-24 md:py-32" id="work">
+      <div className="container px-4 md:px-6">
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+            Nuestro Trabajo
           </h2>
-          <p className="text-gray-600">
-            Transforming food & beverage brands through strategic design and marketing
+          <p className="max-w-[85%] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+            Explora algunos de nuestros proyectos recientes que muestran nuestro enfoque creativo y atención al detalle.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
-          {/* Left side - Image */}
-          <div className="relative">
-            <div className="bg-gray-100 rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300">
-              <img 
-                src="/lovable-uploads/f4f1d62c-748a-40d7-9b47-3fecd545756f.png" 
-                alt="Bevv Agency Dashboard" 
-                className="w-full h-auto"
-              />
-            </div>
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white rounded-full py-3 px-6 shadow-lg flex items-center gap-2 hover:bg-gray-50 transition-colors cursor-pointer">
-              <span className="font-medium">Schedule a consultation</span>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.16675 7.00008H12.8334M12.8334 7.00008L7.00008 1.16675M12.8334 7.00008L7.00008 12.8334" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-          </div>
-
-          {/* Right side - Capabilities */}
-          <div className="space-y-8">
-            {workCapabilities.map((capability) => (
-              <div key={capability.id} className="flex gap-6 items-start border-b border-gray-200 pb-6">
-                <div className="text-xl font-bold text-gray-400 min-w-[40px]">{capability.id}</div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    {capability.icon}
-                    <h3 className="text-xl font-bold">{capability.title}</h3>
-                  </div>
-                  <p className="text-gray-600">{capability.description}</p>
-                </div>
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="group relative overflow-hidden rounded-lg">
+            <img
+              src="/lovable-uploads/49a6017a-a56b-49b0-b214-852f106c03c6.png"
+              alt="Packaging de zumo orgánico"
+              className="aspect-[4/5] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex items-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div>
+                <h3 className="text-xl font-bold text-white">Zumo Orgánico Fresa</h3>
+                <p className="text-white/80">Diseño de packaging y desarrollo de marca</p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-
-        {/* Stats section - Moved from bottom to replace the additional capabilities */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-          <div className="bg-black text-white p-8 rounded-xl flex flex-col items-center justify-center text-center">
-            <span className="text-5xl font-bold mb-2">40%</span>
-            <p>Average increase in brand recognition for our clients</p>
+          <div className="group relative overflow-hidden rounded-lg">
+            <img
+              src="/lovable-uploads/3d337ad1-465b-44a4-b74b-6052d0bdc727.png"
+              alt="Campaña de marketing para café"
+              className="aspect-[4/5] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex items-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div>
+                <h3 className="text-xl font-bold text-white">Café de Especialidad</h3>
+                <p className="text-white/80">Estrategia de marca y campaña de marketing</p>
+              </div>
+            </div>
           </div>
-          <div className="bg-gray-100 p-8 rounded-xl col-span-2">
-            <h3 className="text-xl font-bold mb-4">Tailored to Your Needs</h3>
-            <p className="text-gray-700 mb-4">
-              Explore our comprehensive suite of services, meticulously tailored to meet the unique needs of food & beverage businesses. From startups to established brands, we provide the creative solutions you need to thrive.
-            </p>
-            <a href="#contact" className="inline-flex items-center text-black font-medium hover:opacity-80">
-              Discuss your project with us
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </a>
+          <div className="group relative overflow-hidden rounded-lg">
+            <img
+              src="/lovable-uploads/9a683ae9-10a4-46c9-bb18-463f038b29c0.png"
+              alt="Colección de botellas de vino"
+              className="aspect-[4/5] h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex items-end opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div>
+                <h3 className="text-xl font-bold text-white">Bodega Terra Nova</h3>
+                <p className="text-white/80">Rediseño de etiquetas y estrategia de marca</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
