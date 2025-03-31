@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,7 +22,7 @@
   }
 
   ::selection {
-    @apply bg-black text-white;
+    @apply bg-accent text-white;
   }
 }
 
@@ -33,4 +34,14 @@
 .animate-fade-in {
   opacity: 0;
   animation: fade-in 0.3s ease-out forwards;
+}
+
+@layer components {
+  .hover-accent {
+    @apply hover:bg-accent hover:text-white transition-colors;
+  }
+
+  .card-cost-calculator {
+    @apply bg-white rounded-xl shadow-lg p-6;
+  }
 }

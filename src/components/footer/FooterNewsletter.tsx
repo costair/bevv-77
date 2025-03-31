@@ -17,7 +17,9 @@ const FooterNewsletter = () => {
             placeholder="Tu correo electrónico"
             className="sm:flex-1"
           />
-          <Button type="submit">Suscribirse</Button>
+          <Button type="submit" className="hover:bg-accent transition-colors">
+            Suscribirse
+          </Button>
         </form>
         <p className="text-sm text-gray-500">
           Suscríbete a nuestro boletín para recibir las últimas noticias y

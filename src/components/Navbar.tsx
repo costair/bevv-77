@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -39,7 +40,10 @@ const Navbar = () => {
             </NavLink>
           </nav>
           <div className="flex items-center gap-2">
-            <Button variant="default" className="rounded-full">
+            <Button 
+              variant="default" 
+              className="rounded-full hover:bg-accent transition-colors"
+            >
               Contáctanos
             </Button>
           </div>
@@ -103,7 +107,7 @@ const Navbar = () => {
                 </nav>
                 <div className="mt-8 flex flex-col gap-2">
                   <Button
-                    className="w-full rounded-full"
+                    className="w-full rounded-full hover:bg-accent transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     Contáctanos

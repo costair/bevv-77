@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -32,19 +33,20 @@ export default {
           DEFAULT: "#F3F3F3",
           foreground: "#000000",
         },
+        accent: {
+          DEFAULT: "#EA384C", // Rojo para acentos y hover
+          foreground: "#FFFFFF",
+        },
         muted: {
           DEFAULT: "#F8F8F8",
           foreground: "#666666",
-        },
-        accent: {
-          DEFAULT: "#E8E8E8",
-          foreground: "#000000",
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "1.5rem",
       },
       keyframes: {
         "accordion-down": {
@@ -87,7 +89,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
-        "scroll": "scroll 15s linear infinite", // Increased animation speed from 25s to 15s
+        "scroll": "scroll 15s linear infinite",
       },
     },
   },
