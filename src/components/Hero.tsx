@@ -113,7 +113,7 @@ const Hero = () => {
                     <SelectTrigger id="category">
                       <SelectValue placeholder="Seleccionar categoría" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent align="start" sideOffset={8}>
                       <SelectItem value="indumentaria">Indumentaria - $70/kg</SelectItem>
                       <SelectItem value="accesorios">Accesorios/Juguetes/Deporte - $70/kg</SelectItem>
                       <SelectItem value="cremas">Cremas Faciales - $70/kg</SelectItem>
