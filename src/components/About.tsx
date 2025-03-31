@@ -1,41 +1,131 @@
 
 import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const About = () => {
   return (
-    <section className="bg-muted/40 py-24 md:py-32" id="about">
+    <section
+      id="about"
+      className="w-full py-12 md:py-24 lg:py-32"
+    >
       <div className="container px-4 md:px-6">
-        <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-          <div className="flex flex-col justify-center space-y-4">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Sobre Nosotros
-              </h2>
-              <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                Con sede en Madrid y experiencia global, Bevv se especializa en crear conceptos innovadores para la industria de alimentos y bebidas. Nuestra atención al detalle y enfoque en la sostenibilidad nos distinguen.
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-2">
+            <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm">
+              Nuestra historia
+            </div>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              Confianza y eficiencia en logística internacional
+            </h2>
+            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Costair nació con la misión de simplificar el comercio global, ofreciendo soluciones de envío accesibles para todos.
+            </p>
+          </div>
+        </div>
+        <div className="mx-auto grid max-w-5xl items-center gap-8 py-12 lg:grid-cols-2">
+          <div className="grid gap-4">
+            <h3 className="text-2xl font-bold">Nuestra Experiencia</h3>
+            <p className="text-gray-500">
+              Con más de una década en el sector logístico internacional, hemos desarrollado relaciones con los principales operadores aéreos y marítimos para ofrecer las mejores tarifas del mercado.
+            </p>
+            <p className="text-gray-500">
+              Nuestro equipo especializado domina los procesos aduaneros y las normativas internacionales, asegurando que cada envío llegue a su destino sin complicaciones.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-2">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
+                  <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3" />
+                  <path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z" />
+                  <path d="M5 18v2" />
+                  <path d="M19 18v2" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold">+50.000</h4>
+              <p className="text-gray-500">Envíos completados</p>
+            </div>
+            <div className="grid gap-2">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold">98%</h4>
+              <p className="text-gray-500">Satisfacción de clientes</p>
+            </div>
+            <div className="grid gap-2">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
+                  <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold">24/7</h4>
+              <p className="text-gray-500">Atención al cliente</p>
+            </div>
+            <div className="grid gap-2">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold">+50</h4>
+              <p className="text-gray-500">Destinos internacionales</p>
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto max-w-5xl space-y-8">
+          <h3 className="text-2xl font-bold text-center">Lo que dicen nuestros clientes</h3>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <div className="flex items-start gap-4">
+                <Avatar>
+                  <AvatarImage src="/avatar-1.png" alt="Avatar" />
+                  <AvatarFallback>MG</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="text-sm font-medium">María González</p>
+                  <p className="text-xs text-gray-500">Emprendedora</p>
+                </div>
+              </div>
+              <p className="mt-4 text-gray-500">
+                "Costair revolucionó la logística de mi tienda online. Ahora puedo ofrecer envíos internacionales a mis clientes sin preocupaciones."
               </p>
             </div>
-            <ul className="grid gap-2 py-4">
-              <li className="flex items-center gap-2">
-                <div className="flex h-2 w-2 rounded-full bg-primary" />
-                <span>Fundado en 2018 por expertos en diseño y gastronomía</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="flex h-2 w-2 rounded-full bg-primary" />
-                <span>Más de 200 proyectos exitosos en todo el mundo</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <div className="flex h-2 w-2 rounded-full bg-primary" />
-                <span>Comprometidos con prácticas sostenibles y éticas</span>
-              </li>
-            </ul>
-          </div>
-          <div className="mx-auto w-full max-w-[400px] overflow-hidden">
-            <img
-              src="/lovable-uploads/2b12d53a-7131-4dad-9ac9-45690a517e22.png"
-              alt="Equipo de Bevv trabajando en diseño de packaging"
-              className="mx-auto aspect-square overflow-hidden rounded-full object-cover object-center sm:w-full"
-            />
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <div className="flex items-start gap-4">
+                <Avatar>
+                  <AvatarImage src="/avatar-2.png" alt="Avatar" />
+                  <AvatarFallback>JR</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="text-sm font-medium">Juan Rodríguez</p>
+                  <p className="text-xs text-gray-500">Director de Operaciones</p>
+                </div>
+              </div>
+              <p className="mt-4 text-gray-500">
+                "Gracias a Costair hemos optimizado nuestra cadena de suministro internacional. Sus tarifas competitivas y servicio confiable marcan la diferencia."
+              </p>
+            </div>
+            <div className="rounded-lg border bg-card p-6 shadow-sm">
+              <div className="flex items-start gap-4">
+                <Avatar>
+                  <AvatarImage src="/avatar-3.png" alt="Avatar" />
+                  <AvatarFallback>LM</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="text-sm font-medium">Laura Méndez</p>
+                  <p className="text-xs text-gray-500">Compradora Frecuente</p>
+                </div>
+              </div>
+              <p className="mt-4 text-gray-500">
+                "He probado varios servicios de courier y Costair es el más transparente en costos. Sin sorpresas ni cargos adicionales, justo lo que necesitaba."
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -9,101 +9,101 @@ const Pricing = () => {
       <div className="container px-4 md:px-6">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Nuestros Planes
+            Nuestros Planes de Envío
           </h2>
-          <p className="max-w-[85%] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-            Ofrecemos paquetes flexibles para adaptarnos a las necesidades de cada empresa, desde startups hasta marcas establecidas.
+          <p className="max-w-[85%] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Ofrecemos diferentes opciones para adaptarnos a tus necesidades, desde envíos pequeños hasta cargas completas.
           </p>
         </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 py-12 lg:grid-cols-3">
           <div className="flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold">Esencial</h3>
+              <h3 className="text-2xl font-bold">Básico</h3>
               <div className="text-4xl font-bold">
-                €1,500<span className="text-sm font-normal text-gray-500">/proyecto</span>
+                $70<span className="text-sm font-normal text-gray-500">/kg</span>
               </div>
-              <p className="text-gray-500 dark:text-gray-400">
-                Para pequeñas empresas que buscan establecer su presencia en el mercado.
+              <p className="text-gray-500">
+                Para envíos personales y pequeñas compras internacionales.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Diseño de identidad básica</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Indumentaria y Accesorios</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Diseño de packaging simple</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Productos de belleza</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>2 rondas de revisiones</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Tracking internacional</span>
                 </li>
               </ul>
             </div>
-            <Button className="mt-6 rounded-full w-full">Comenzar</Button>
+            <Button className="mt-6 rounded-full w-full hover:bg-red-500">Cotizar envío</Button>
           </div>
           <div className="relative flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
-            <div className="absolute -top-4 left-0 right-0 mx-auto w-fit rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+            <div className="absolute -top-4 left-0 right-0 mx-auto w-fit rounded-full bg-red-500 px-3 py-1 text-xs font-medium text-white">
               Popular
             </div>
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold">Profesional</h3>
+              <h3 className="text-2xl font-bold">Premium</h3>
               <div className="text-4xl font-bold">
-                €3,500<span className="text-sm font-normal text-gray-500">/proyecto</span>
+                $130<span className="text-sm font-normal text-gray-500">/kg</span>
               </div>
-              <p className="text-gray-500 dark:text-gray-400">
-                Para empresas en crecimiento que necesitan una presencia de marca más completa.
+              <p className="text-gray-500">
+                Para envíos de alta prioridad y productos de tecnología valiosos.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Sistema de identidad completo</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>iPhones y electrónicos premium</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Diseño de packaging premium</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Repuestos de avión</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Asesoría estratégica</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Seguro incluido</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>4 rondas de revisiones</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Entrega prioritaria</span>
                 </li>
               </ul>
             </div>
-            <Button className="mt-6 rounded-full w-full">Comenzar</Button>
+            <Button className="mt-6 rounded-full w-full hover:bg-red-500">Cotizar envío</Button>
           </div>
           <div className="flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Empresarial</h3>
               <div className="text-4xl font-bold">
-                €8,000<span className="text-sm font-normal text-gray-500">/proyecto</span>
+                Personalizado<span className="text-sm font-normal text-gray-500">/kg</span>
               </div>
-              <p className="text-gray-500 dark:text-gray-400">
-                Solución integral para marcas establecidas con necesidades complejas.
+              <p className="text-gray-500">
+                Soluciones de logística para empresas con envíos regulares.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Sistema de identidad avanzado</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Tarifas corporativas</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Diseño de línea completa de productos</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Gestión aduanera integral</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Consultoría estratégica de producto</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>API de integración</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary" />
-                  <span>Revisiones ilimitadas</span>
+                  <Check className="h-4 w-4 text-red-500" />
+                  <span>Asesoría logística personalizada</span>
                 </li>
               </ul>
             </div>
-            <Button className="mt-6 rounded-full w-full">Contactar ventas</Button>
+            <Button className="mt-6 rounded-full w-full hover:bg-red-500">Contactar ventas</Button>
           </div>
         </div>
       </div>
