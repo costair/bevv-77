@@ -1,4 +1,4 @@
-
+import React from "react";
 import { ChevronDown } from "lucide-react";
 
 interface FooterLink {
@@ -8,13 +8,32 @@ interface FooterLink {
 
 interface FooterSectionProps {
   title: string;
-  links: FooterLink[];
-  isOpen: boolean;
-  onToggle: () => void;
-  onLinkClick: (href: string) => void;
+  children?: React.ReactNode;
+  links?: FooterLink[];
+  isOpen?: boolean;
+  onToggle?: () => void;
+  onLinkClick?: (href: string) => void;
 }
 
-const FooterSection = ({ title, links, isOpen, onToggle, onLinkClick }: FooterSectionProps) => {
+const FooterSection = ({ 
+  title, 
+  children, 
+  links, 
+  isOpen, 
+  onToggle, 
+  onLinkClick 
+}: FooterSectionProps) => {
+  // If children are provided, render them directly
+  if (children) {
+    return (
+      <div className="space-y-4">
+        <h3 className="font-semibold">{title}</h3>
+        <div>{children}</div>
+      </div>
+    );
+  }
+
+  // Otherwise, render mobile accordion style with links
   return (
     <div>
       <button
@@ -28,13 +47,13 @@ const FooterSection = ({ title, links, isOpen, onToggle, onLinkClick }: FooterSe
           }`}
         />
       </button>
-      {isOpen && (
+      {isOpen && links && (
         <div className="pb-4 space-y-2 pl-4">
           {links.map((link) => (
             link.href.startsWith('/') ? (
               <button
                 key={link.label}
-                onClick={() => onLinkClick(link.href)}
+                onClick={() => onLinkClick && onLinkClick(link.href)}
                 className="block text-gray-600 hover:text-black transition-colors"
               >
                 {link.label}

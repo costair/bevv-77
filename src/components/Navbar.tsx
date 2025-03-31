@@ -1,14 +1,13 @@
-
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Menu, X } from "lucide-react";
-import { useMobile } from "../hooks/use-mobile";
+import { useIsMobile } from "../hooks/use-mobile";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

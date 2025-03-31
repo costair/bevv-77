@@ -50,7 +50,7 @@ const footerSections: FooterSectionData[] = [
   },
 ];
 
-const FooterNav = () => {
+const FooterNav = ({ children }: { children?: React.ReactNode }) => {
   const isMobile = useIsMobile();
   const [openSection, setOpenSection] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -65,6 +65,14 @@ const FooterNav = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  if (children) {
+    return (
+      <ul className="space-y-2 text-sm text-gray-600">
+        {children}
+      </ul>
+    );
+  }
 
   if (isMobile) {
     return (
