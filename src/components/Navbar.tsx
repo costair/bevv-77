@@ -10,65 +10,56 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
-        <NavLink to="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-bold text-xl sm:text-2xl">Bevv</span>
-        </NavLink>
-        <div className="hidden md:flex flex-1 items-center justify-between">
+        <div className="flex items-center mr-6">
+          <img 
+            src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
+            alt="Costair Logo" 
+            className="h-8"
+          />
+        </div>
+        <div className="hidden md:flex flex-1 items-center justify-center">
           <nav className="flex items-center gap-6 text-sm">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "transition-colors text-foreground font-medium"
-                  : "transition-colors text-muted-foreground hover:text-foreground"
-              }
-            >
-              Inicio
-            </NavLink>
-            <NavLink
-              to="/servicios"
-              className={({ isActive }) =>
-                isActive
-                  ? "transition-colors text-foreground font-medium"
-                  : "transition-colors text-muted-foreground hover:text-foreground"
-              }
+            <button
+              onClick={() => scrollToSection("services")}
+              className="transition-colors text-muted-foreground hover:text-foreground"
             >
               Servicios
-            </NavLink>
-            <NavLink
-              to="/nosotros"
-              className={({ isActive }) =>
-                isActive
-                  ? "transition-colors text-foreground font-medium"
-                  : "transition-colors text-muted-foreground hover:text-foreground"
-              }
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="transition-colors text-muted-foreground hover:text-foreground"
             >
               Nosotros
-            </NavLink>
-            <NavLink
-              to="/contacto"
-              className={({ isActive }) =>
-                isActive
-                  ? "transition-colors text-foreground font-medium"
-                  : "transition-colors text-muted-foreground hover:text-foreground"
-              }
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="transition-colors text-muted-foreground hover:text-foreground"
             >
               Contacto
-            </NavLink>
+            </button>
           </nav>
-          <div className="flex items-center gap-2">
-            <Button 
-              variant="default" 
-              className="rounded-full bg-red-500 hover:bg-red-400 transition-colors"
-            >
-              Contáctanos
-            </Button>
-          </div>
         </div>
-        <div className="flex flex-1 items-center justify-end md:hidden">
+        <div className="flex items-center justify-end flex-1">
+          <Button 
+            variant="default" 
+            className="rounded-full bg-red-500 hover:bg-red-400 transition-colors"
+            onClick={() => scrollToSection("contact")}
+          >
+            Contáctanos
+          </Button>
+        </div>
+        <div className="flex ml-4 md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button
@@ -84,13 +75,13 @@ const Navbar = () => {
             <SheetContent side="right" className="pr-0">
               <div className="px-7">
                 <div className="flex items-center justify-between">
-                  <NavLink
-                    to="/"
-                    className="flex items-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span className="font-bold text-xl">Bevv</span>
-                  </NavLink>
+                  <div className="flex items-center">
+                    <img 
+                      src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
+                      alt="Costair Logo" 
+                      className="h-8"
+                    />
+                  </div>
                   <Button
                     variant="outline"
                     size="icon"
@@ -102,55 +93,29 @@ const Navbar = () => {
                   </Button>
                 </div>
                 <nav className="mt-8 flex flex-col gap-6 text-base">
-                  <NavLink
-                    to="/"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "transition-colors text-foreground font-medium"
-                        : "transition-colors hover:text-foreground"
-                    }
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Inicio
-                  </NavLink>
-                  <NavLink
-                    to="/servicios"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "transition-colors text-foreground font-medium"
-                        : "transition-colors hover:text-foreground"
-                    }
-                    onClick={() => setIsOpen(false)}
+                  <button
+                    onClick={() => scrollToSection("services")}
+                    className="transition-colors hover:text-foreground text-left"
                   >
                     Servicios
-                  </NavLink>
-                  <NavLink
-                    to="/nosotros"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "transition-colors text-foreground font-medium"
-                        : "transition-colors hover:text-foreground"
-                    }
-                    onClick={() => setIsOpen(false)}
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("about")}
+                    className="transition-colors hover:text-foreground text-left"
                   >
                     Nosotros
-                  </NavLink>
-                  <NavLink
-                    to="/contacto"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "transition-colors text-foreground font-medium"
-                        : "transition-colors hover:text-foreground"
-                    }
-                    onClick={() => setIsOpen(false)}
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("contact")}
+                    className="transition-colors hover:text-foreground text-left"
                   >
                     Contacto
-                  </NavLink>
+                  </button>
                 </nav>
                 <div className="mt-8 flex flex-col gap-2">
                   <Button
                     className="w-full rounded-full bg-red-500 hover:bg-red-400 transition-colors"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => scrollToSection("contact")}
                   >
                     Contáctanos
                   </Button>
