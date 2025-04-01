@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -117,25 +118,24 @@ const Hero = () => {
 
                 <div className="space-y-2">
                   <Label>Cantidad de Kilos</Label>
-                  <div className="flex items-center gap-2">
-                    <div className="relative flex-1">
-                      <Input
-                        type="number"
-                        value={inputWeight}
-                        onChange={handleWeightInputChange}
-                        onBlur={handleWeightInputBlur}
-                        min="1"
-                        max="1000"
-                        step="0.1"
-                        className="pr-12"
-                      />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <span className="text-gray-500">kg</span>
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-2">
+                      <div className="relative w-24">
+                        <Input
+                          type="number"
+                          value={inputWeight}
+                          onChange={handleWeightInputChange}
+                          onBlur={handleWeightInputBlur}
+                          min="1"
+                          max="1000"
+                          step="0.1"
+                          className="pr-6 text-right"
+                        />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                          <span className="text-gray-500">kg</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <p className="text-sm font-medium">{weight} kg</p>
                     <p className="text-sm text-gray-500">Redondeado: {roundWeight(weight)} kg</p>
                   </div>
                   <Slider 
