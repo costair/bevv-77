@@ -29,20 +29,40 @@ const Navbar = () => {
               Inicio
             </NavLink>
             <NavLink
-              to="/faq"
+              to="/servicios"
               className={({ isActive }) =>
                 isActive
                   ? "transition-colors text-foreground font-medium"
                   : "transition-colors text-muted-foreground hover:text-foreground"
               }
             >
-              Preguntas Frecuentes
+              Servicios
+            </NavLink>
+            <NavLink
+              to="/nosotros"
+              className={({ isActive }) =>
+                isActive
+                  ? "transition-colors text-foreground font-medium"
+                  : "transition-colors text-muted-foreground hover:text-foreground"
+              }
+            >
+              Nosotros
+            </NavLink>
+            <NavLink
+              to="/contacto"
+              className={({ isActive }) =>
+                isActive
+                  ? "transition-colors text-foreground font-medium"
+                  : "transition-colors text-muted-foreground hover:text-foreground"
+              }
+            >
+              Contacto
             </NavLink>
           </nav>
           <div className="flex items-center gap-2">
             <Button 
               variant="default" 
-              className="rounded-full hover:bg-accent transition-colors"
+              className="rounded-full bg-red-500 hover:bg-red-400 transition-colors"
             >
               Contáctanos
             </Button>
@@ -94,7 +114,7 @@ const Navbar = () => {
                     Inicio
                   </NavLink>
                   <NavLink
-                    to="/faq"
+                    to="/servicios"
                     className={({ isActive }) =>
                       isActive
                         ? "transition-colors text-foreground font-medium"
@@ -102,12 +122,34 @@ const Navbar = () => {
                     }
                     onClick={() => setIsOpen(false)}
                   >
-                    Preguntas Frecuentes
+                    Servicios
+                  </NavLink>
+                  <NavLink
+                    to="/nosotros"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "transition-colors text-foreground font-medium"
+                        : "transition-colors hover:text-foreground"
+                    }
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Nosotros
+                  </NavLink>
+                  <NavLink
+                    to="/contacto"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "transition-colors text-foreground font-medium"
+                        : "transition-colors hover:text-foreground"
+                    }
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Contacto
                   </NavLink>
                 </nav>
                 <div className="mt-8 flex flex-col gap-2">
                   <Button
-                    className="w-full rounded-full hover:bg-accent transition-colors"
+                    className="w-full rounded-full bg-red-500 hover:bg-red-400 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     Contáctanos

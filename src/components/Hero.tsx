@@ -97,11 +97,11 @@ const Hero = () => {
               Especialistas en servicios de courier y logística internacional. Conectamos tus productos con el mundo de manera rápida, segura y al mejor precio.
             </p>
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Button className="rounded-full hover:bg-red-500" size="lg">
+              <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
                 Comenzar ahora
               </Button>
               <Button
-                className="rounded-full"
+                className="rounded-full border-red-500 text-red-500 hover:bg-red-50"
                 variant="outline"
                 size="lg"
               >
@@ -180,7 +180,7 @@ const Hero = () => {
                   <p className="text-xs text-gray-500 mt-2">*Precio final con impuestos y todas las tasas incluidas.</p>
                 </div>
 
-                <Button className="w-full bg-red-500 hover:bg-red-600">
+                <Button className="w-full bg-red-500 hover:bg-red-400">
                   Solicitar Envío
                 </Button>
               </div>
