@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
 import { Label } from "./ui/label";
+import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 // Shipping rate categories
@@ -25,6 +25,7 @@ const Hero = () => {
   const [weight, setWeight] = useState<number>(1);
   const [category, setCategory] = useState<string>("");
   const [total, setTotal] = useState<number>(0);
+  const [inputWeight, setInputWeight] = useState<string>("1");
 
   // Format currency in ARS
   const formatCurrency = (value: number): string => {
@@ -38,6 +39,30 @@ const Hero = () => {
   // Handle weight slider change
   const handleSliderChange = (value: number[]) => {
     setWeight(value[0]);
+    setInputWeight(value[0].toString());
+  };
+
+  // Handle weight input change
+  const handleWeightInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === "") {
+      setInputWeight("");
+      return;
+    }
+    
+    const parsedValue = parseFloat(value);
+    if (!isNaN(parsedValue) && parsedValue >= 1 && parsedValue <= 1000) {
+      setInputWeight(value);
+      setWeight(parsedValue);
+    }
+  };
+
+  // Handle input blur to ensure valid values
+  const handleWeightInputBlur = () => {
+    if (inputWeight === "" || isNaN(parseFloat(inputWeight))) {
+      setInputWeight("1");
+      setWeight(1);
+    }
   };
 
   // Round weight according to Costair's rounding rules
@@ -92,12 +117,29 @@ const Hero = () => {
 
                 <div className="space-y-2">
                   <Label>Cantidad de Kilos</Label>
+                  <div className="flex items-center gap-2">
+                    <div className="relative flex-1">
+                      <Input
+                        type="number"
+                        value={inputWeight}
+                        onChange={handleWeightInputChange}
+                        onBlur={handleWeightInputBlur}
+                        min="1"
+                        max="1000"
+                        step="0.1"
+                        className="pr-12"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <span className="text-gray-500">kg</span>
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex justify-between">
-                    <p className="text-lg font-bold">{weight} kg</p>
+                    <p className="text-sm font-medium">{weight} kg</p>
                     <p className="text-sm text-gray-500">Redondeado: {roundWeight(weight)} kg</p>
                   </div>
                   <Slider 
-                    defaultValue={[weight]} 
+                    value={[weight]} 
                     min={1} 
                     max={1000} 
                     step={0.1}
