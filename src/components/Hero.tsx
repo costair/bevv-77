@@ -86,21 +86,31 @@ const Hero = () => {
   }, [weight, category]);
 
   return (
-    <section className="relative min-h-screen bg-cover bg-center py-24 md:py-32" style={{ backgroundImage: "url('/lovable-uploads/649ab51b-82eb-44a2-a966-f29aa810c672.png')" }}>
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      <div className="container px-4 md:px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">
+    <section className="py-24 md:py-32">
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               Envíos internacionales a tu alcance con Costair
             </h1>
-            <p className="mt-4 text-white text-xl max-w-3xl mx-auto">
+            <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Especialistas en servicios de courier y logística internacional. Conectamos tus productos con el mundo de manera rápida, segura y al mejor precio.
             </p>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Button className="rounded-full hover:bg-red-500" size="lg">
+                Comenzar ahora
+              </Button>
+              <Button
+                className="rounded-full"
+                variant="outline"
+                size="lg"
+              >
+                Ver nuestros servicios
+              </Button>
+            </div>
           </div>
-          
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
+          <div className="mx-auto overflow-hidden rounded-xl bg-white shadow-lg">
+            <div className="p-6 md:p-8">
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h2 className="text-2xl font-semibold">Calcula el costo de tu envío</h2>
@@ -145,7 +155,7 @@ const Hero = () => {
                     <SelectTrigger id="category">
                       <SelectValue placeholder="Seleccionar categoría" />
                     </SelectTrigger>
-                    <SelectContent align="end" sideOffset={8}>
+                    <SelectContent align="start" sideOffset={8}>
                       <SelectItem value="indumentaria">Indumentaria - $70/kg</SelectItem>
                       <SelectItem value="accesorios">Accesorios/Juguetes/Deporte - $70/kg</SelectItem>
                       <SelectItem value="cremas">Cremas Faciales - $70/kg</SelectItem>
@@ -173,51 +183,6 @@ const Hero = () => {
                 <Button className="w-full bg-red-500 hover:bg-red-600">
                   Solicitar Envío
                 </Button>
-              </div>
-            </div>
-            
-            <div className="flex flex-col justify-center">
-              <div className="bg-white bg-opacity-95 rounded-xl shadow-lg p-6 md:p-8">
-                <h2 className="text-2xl font-bold mb-4">¿Por qué elegir Costair?</h2>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <span className="bg-red-500 rounded-full p-1 mr-3 mt-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                    <span>Tarifas competitivas en el mercado</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-red-500 rounded-full p-1 mr-3 mt-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                    <span>Seguimiento en tiempo real de tus envíos</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-red-500 rounded-full p-1 mr-3 mt-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                    <span>Soporte al cliente 24/7</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="bg-red-500 rounded-full p-1 mr-3 mt-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                    <span>Envíos seguros y garantizados</span>
-                  </li>
-                </ul>
-                <div className="mt-6">
-                  <Button className="w-full bg-red-500 hover:bg-red-600">
-                    Comenzar ahora
-                  </Button>
-                </div>
               </div>
             </div>
           </div>
