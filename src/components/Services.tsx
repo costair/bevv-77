@@ -9,8 +9,8 @@ const Services = () => {
       id="services"
       className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
     >
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col md:flex-row gap-12 items-start">
+      <div className="container px-4 md:px-6 max-w-full 2xl:max-w-[90%] mx-auto">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
           {/* Left Side: Heading and CTA */}
           <div className="md:w-1/3 space-y-6">
             <h2 className="font-condensed text-4xl md:text-5xl font-bold text-black leading-tight">
@@ -26,7 +26,7 @@ const Services = () => {
           </div>
           
           {/* Right Side: Service Cards */}
-          <div className="md:w-2/3 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 xl:gap-6">
             {/* Card 1 */}
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
               <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
