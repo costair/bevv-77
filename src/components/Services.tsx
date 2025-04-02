@@ -1,6 +1,7 @@
 
 import React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plane, Package, Clock, Shield, Map, FileCheck } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Services = () => {
   return (
@@ -9,79 +10,76 @@ const Services = () => {
       className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
     >
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm">
-              Servicios
-            </div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Soluciones logísticas globales
+        <div className="flex flex-col md:flex-row gap-12 items-start">
+          {/* Left Side: Heading and CTA */}
+          <div className="md:w-1/3 space-y-6">
+            <h2 className="font-condensed text-4xl md:text-5xl font-bold text-black leading-tight">
+              Explorá nuestros servicios de courier aéreo
             </h2>
-            <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              En Costair facilitamos el comercio internacional con servicios de courier confiables y eficientes.
+            <p className="text-gray-600 md:text-lg">
+              Te ofrecemos una variedad de servicios premium para conectar tus compras de EE.UU. con Argentina de manera eficiente.
             </p>
+            <Button className="group rounded-full bg-red-500 hover:bg-red-400 text-white px-6 py-3">
+              Saber Más
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
           </div>
-        </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 pt-12">
-          <div className="grid gap-1">
-            <h3 className="text-xl font-bold">Courier Internacional</h3>
-            <p className="text-gray-500">
-              Envíos rápidos y seguros desde y hacia cualquier parte del mundo, con tarifas competitivas y tiempos de entrega optimizados.
-            </p>
-            <a href="#" className="group mt-2 inline-flex items-center text-sm font-medium text-primary">
-              Ver más
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          <div className="grid gap-1">
-            <h3 className="text-xl font-bold">Compras Asistidas</h3>
-            <p className="text-gray-500">
-              Te ayudamos a comprar en tiendas internacionales y facilitamos el envío hasta tu puerta, con gestión de impuestos y trámites aduaneros.
-            </p>
-            <a href="#" className="group mt-2 inline-flex items-center text-sm font-medium text-primary">
-              Ver más
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          <div className="grid gap-1">
-            <h3 className="text-xl font-bold">Logística e-Commerce</h3>
-            <p className="text-gray-500">
-              Soluciones integrales para tiendas online con cumplimiento de pedidos, gestión de devoluciones y almacenamiento.
-            </p>
-            <a href="#" className="group mt-2 inline-flex items-center text-sm font-medium text-primary">
-              Ver más
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          <div className="grid gap-1">
-            <h3 className="text-xl font-bold">Carga Aérea</h3>
-            <p className="text-gray-500">
-              Transporte aéreo de mercancías con tarifas especiales para distintos tipos de productos, desde electrónicos hasta repuestos.
-            </p>
-            <a href="#" className="group mt-2 inline-flex items-center text-sm font-medium text-primary">
-              Ver más
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          <div className="grid gap-1">
-            <h3 className="text-xl font-bold">Trámites Aduaneros</h3>
-            <p className="text-gray-500">
-              Gestión de aduanas y documentación para garantizar que tus envíos cumplan con todas las regulaciones internacionales.
-            </p>
-            <a href="#" className="group mt-2 inline-flex items-center text-sm font-medium text-primary">
-              Ver más
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          <div className="grid gap-1">
-            <h3 className="text-xl font-bold">Seguimiento en Tiempo Real</h3>
-            <p className="text-gray-500">
-              Monitorea el estado de tus envíos con nuestra plataforma online, recibiendo actualizaciones en cada etapa del proceso.
-            </p>
-            <a href="#" className="group mt-2 inline-flex items-center text-sm font-medium text-primary">
-              Ver más
-              <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+          
+          {/* Right Side: Service Cards */}
+          <div className="md:w-2/3 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            {/* Card 1 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <Plane className="h-6 w-6 text-red-500" />
+              </div>
+              <h3 className="font-condensed text-lg font-semibold mb-2">Envíos Express</h3>
+              <p className="text-sm text-gray-500">7-10 días desde EE.UU. a cualquier punto de Argentina</p>
+            </div>
+            
+            {/* Card 2 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <Package className="h-6 w-6 text-red-500" />
+              </div>
+              <h3 className="font-condensed text-lg font-semibold mb-2">Compras Asistidas</h3>
+              <p className="text-sm text-gray-500">Te ayudamos a comprar en tiendas de EE.UU. sin complicaciones</p>
+            </div>
+            
+            {/* Card 3 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <Clock className="h-6 w-6 text-red-500" />
+              </div>
+              <h3 className="font-condensed text-lg font-semibold mb-2">Seguimiento Real</h3>
+              <p className="text-sm text-gray-500">Monitoreo en tiempo real de tus envíos internacionales</p>
+            </div>
+            
+            {/* Card 4 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <FileCheck className="h-6 w-6 text-red-500" />
+              </div>
+              <h3 className="font-condensed text-lg font-semibold mb-2">Trámites Aduaneros</h3>
+              <p className="text-sm text-gray-500">Gestión completa de documentación y despacho de aduana</p>
+            </div>
+            
+            {/* Card 5 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <Shield className="h-6 w-6 text-red-500" />
+              </div>
+              <h3 className="font-condensed text-lg font-semibold mb-2">Seguro de Carga</h3>
+              <p className="text-sm text-gray-500">Protección completa para tus envíos de alto valor</p>
+            </div>
+            
+            {/* Card 6 */}
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <Map className="h-6 w-6 text-red-500" />
+              </div>
+              <h3 className="font-condensed text-lg font-semibold mb-2">Asesoría Logística</h3>
+              <p className="text-sm text-gray-500">Consultores expertos para optimizar tus importaciones</p>
+            </div>
           </div>
         </div>
       </div>
