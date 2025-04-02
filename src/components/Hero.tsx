@@ -86,17 +86,26 @@ const Hero = () => {
   }, [weight, category]);
 
   return (
-    <section className="py-24 md:py-32">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-              Envíos internacionales a tu alcance con Costair
+    <section className="relative py-24 md:py-32">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
+        style={{ backgroundImage: "url('/lovable-uploads/8284259c-6f5c-4112-8050-8f87c8f4c876.png')" }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="grid gap-10 lg:grid-cols-2 items-center">
+          {/* Text Content */}
+          <div className="space-y-6">
+            <h1 className="hero-title">
+              Navigating Logistics with a Focus on Timely Deliveries
             </h1>
-            <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Especialistas en servicios de courier y logística internacional. Conectamos tus productos con el mundo de manera rápida, segura y al mejor precio.
+            <p className="hero-subtitle">
+              Experience flawless shipping solutions tailored to your needs. We take pride in delivering excellence with punctuality at the forefront.
             </p>
-            <div className="flex flex-col gap-2 sm:flex-row">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
                 Comenzar ahora
               </Button>
@@ -109,7 +118,9 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="mx-auto overflow-hidden rounded-xl bg-white shadow-lg">
+          
+          {/* Calculator Card */}
+          <div className="mx-auto w-full overflow-hidden rounded-xl bg-white shadow-lg">
             <div className="p-6 md:p-8">
               <div className="space-y-6">
                 <div className="space-y-2">
