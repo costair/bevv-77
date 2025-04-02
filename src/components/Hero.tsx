@@ -100,10 +100,10 @@ const Hero = () => {
           {/* Text Content - Adjusted vertical alignment */}
           <div className="flex flex-col justify-center space-y-6">
             <h1 className="hero-title">
-              Navigating Logistics with a Focus on Timely Deliveries
+              ¡De EE.UU. a Argentina en 7-10 días, boludo!
             </h1>
             <p className="hero-subtitle">
-              Experience flawless shipping solutions tailored to your needs. We take pride in delivering excellence with punctuality at the forefront.
+              Hacemos que tus compras vuelen. Nuestro servicio courier aéreo te conecta con el mundo de forma rápida, segura y ¡a precios que te van a sorprender!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
               <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
