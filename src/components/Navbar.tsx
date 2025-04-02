@@ -21,13 +21,15 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
-        <div className="flex items-center mr-6">
+        <div className="flex items-center mr-4">
           <img 
             src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
             alt="Costair Logo" 
             className="h-8"
           />
         </div>
+        
+        {/* Center navigation - adjusted to be truly centered */}
         <div className="hidden md:flex flex-1 items-center justify-center">
           <nav className="flex items-center gap-6 text-sm">
             <button
@@ -50,7 +52,8 @@ const Navbar = () => {
             </button>
           </nav>
         </div>
-        <div className="flex items-center justify-end flex-1">
+        
+        <div className="flex items-center justify-end ml-auto md:ml-0">
           <Button 
             variant="default" 
             className="rounded-full bg-red-500 hover:bg-red-400 transition-colors"
@@ -59,6 +62,7 @@ const Navbar = () => {
             Contáctanos
           </Button>
         </div>
+        
         <div className="flex ml-4 md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>

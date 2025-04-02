@@ -97,15 +97,15 @@ const Hero = () => {
       
       <div className="container px-4 md:px-6 relative z-10">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
-          {/* Text Content */}
-          <div className="space-y-6">
+          {/* Text Content - Adjusted vertical alignment */}
+          <div className="flex flex-col justify-center space-y-6">
             <h1 className="hero-title">
               Navigating Logistics with a Focus on Timely Deliveries
             </h1>
             <p className="hero-subtitle">
               Experience flawless shipping solutions tailored to your needs. We take pride in delivering excellence with punctuality at the forefront.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2">
               <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
                 Comenzar ahora
               </Button>
