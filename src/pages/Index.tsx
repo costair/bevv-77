@@ -8,16 +8,16 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen w-full bg-white">
       <Navbar />
       <Hero />
-      <div id="services">
+      <div id="services" className="w-full">
         <Services />
       </div>
-      <div id="about">
+      <div id="about" className="w-full">
         <About />
       </div>
-      <div id="contact">
+      <div id="contact" className="w-full">
         <Contact />
       </div>
       <Footer />
