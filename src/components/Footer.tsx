@@ -38,8 +38,8 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 border-t pt-8 md:mt-12 md:pt-12 lg:mt-16 lg:pt-16">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p className="text-sm text-gray-500">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-center">
+            <p className="text-sm text-gray-500 text-center">
               © {new Date().getFullYear()} Costair. Todos los derechos reservados.
             </p>
           </div>

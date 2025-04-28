@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
@@ -34,7 +33,7 @@ const About = () => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
                   <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3" />
                   <path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z" />
@@ -42,39 +41,39 @@ const About = () => {
                   <path d="M19 18v2" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold">+50.000</h4>
-              <p className="text-gray-500">Envíos completados</p>
+              <h4 className="text-xl font-bold text-center">+50.000</h4>
+              <p className="text-gray-500 text-center">Envíos completados</p>
             </div>
             <div className="grid gap-2">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
                   <circle cx="12" cy="12" r="10" />
                   <path d="m9 12 2 2 4-4" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold">98%</h4>
-              <p className="text-gray-500">Satisfacción de clientes</p>
+              <h4 className="text-xl font-bold text-center">98%</h4>
+              <p className="text-gray-500 text-center">Satisfacción de clientes</p>
             </div>
             <div className="grid gap-2">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
                   <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
                   <line x1="12" x2="12" y1="8" y2="12" />
                   <line x1="12" x2="12.01" y1="16" y2="16" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold">24/7</h4>
-              <p className="text-gray-500">Atención al cliente</p>
+              <h4 className="text-xl font-bold text-center">24/7</h4>
+              <p className="text-gray-500 text-center">Atención al cliente</p>
             </div>
             <div className="grid gap-2">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold">+50</h4>
-              <p className="text-gray-500">Destinos internacionales</p>
+              <h4 className="text-xl font-bold text-center">+50</h4>
+              <p className="text-gray-500 text-center">Destinos internacionales</p>
             </div>
           </div>
         </div>

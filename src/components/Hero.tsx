@@ -108,7 +108,7 @@ const Hero = () => {
             <p className="hero-subtitle">
               Hacemos que tus compras vuelen. Nuestro servicio courier aéreo te conecta con el mundo de forma rápida, segura y ¡a precios que te van a sorprender!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 lg:justify-end">
               <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
                 Comenzar ahora
               </Button>

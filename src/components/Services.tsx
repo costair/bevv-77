@@ -28,8 +28,8 @@ const Services = () => {
           {/* Right Side: Service Cards */}
           <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 xl:gap-6">
             {/* Card 1 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4 mx-auto">
                 <Plane className="h-6 w-6 text-red-500" />
               </div>
               <h3 className="font-condensed text-lg font-semibold mb-2">Envíos Express</h3>
@@ -37,8 +37,8 @@ const Services = () => {
             </div>
             
             {/* Card 2 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4 mx-auto">
                 <Package className="h-6 w-6 text-red-500" />
               </div>
               <h3 className="font-condensed text-lg font-semibold mb-2">Compras Asistidas</h3>
@@ -46,8 +46,8 @@ const Services = () => {
             </div>
             
             {/* Card 3 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4 mx-auto">
                 <Clock className="h-6 w-6 text-red-500" />
               </div>
               <h3 className="font-condensed text-lg font-semibold mb-2">Seguimiento Real</h3>
@@ -55,8 +55,8 @@ const Services = () => {
             </div>
             
             {/* Card 4 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4 mx-auto">
                 <FileCheck className="h-6 w-6 text-red-500" />
               </div>
               <h3 className="font-condensed text-lg font-semibold mb-2">Trámites Aduaneros</h3>
@@ -64,8 +64,8 @@ const Services = () => {
             </div>
             
             {/* Card 5 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4 mx-auto">
                 <Shield className="h-6 w-6 text-red-500" />
               </div>
               <h3 className="font-condensed text-lg font-semibold mb-2">Seguro de Carga</h3>
@@ -73,8 +73,8 @@ const Services = () => {
             </div>
             
             {/* Card 6 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+              <div className="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-4 mx-auto">
                 <Map className="h-6 w-6 text-red-500" />
               </div>
               <h3 className="font-condensed text-lg font-semibold mb-2">Asesoría Logística</h3>
