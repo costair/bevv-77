@@ -86,16 +86,16 @@ const Hero = () => {
   }, [weight, category]);
 
   return (
-    <section className="relative py-24 md:py-32">
-      {/* Background Image */}
+    <section className="relative py-24 md:py-32 w-full">
+      {/* Background Image - Updated to an air freight logistics image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
         style={{ backgroundImage: "url('/lovable-uploads/8284259c-6f5c-4112-8050-8f87c8f4c876.png')" }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
       </div>
       
-      <div className="container px-4 md:px-6 relative z-10">
+      <div className="container px-4 md:px-6 mx-auto w-full max-w-none">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
           {/* Text Content - Adjusted vertical alignment */}
           <div className="flex flex-col justify-center space-y-6">
