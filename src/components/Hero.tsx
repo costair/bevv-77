@@ -90,14 +90,16 @@ const Hero = () => {
       {/* Background Image - Updated to an air freight logistics image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
-        style={{ backgroundImage: "url('/lovable-uploads/8284259c-6f5c-4112-8050-8f87c8f4c876.png')" }}
+        style={{ 
+          backgroundImage: "url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1470&auto=format&fit=crop')",
+        }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
       </div>
       
       <div className="container px-4 md:px-6 mx-auto w-full max-w-none">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
-          {/* Text Content - Adjusted vertical alignment */}
+          {/* Text Content */}
           <div className="flex flex-col justify-center space-y-6">
             <h1 className="hero-title">
               ¡De EE.UU. a Argentina en 7-10 días, boludo!
