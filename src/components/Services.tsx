@@ -9,7 +9,7 @@ const Services = () => {
       id="services"
       className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
     >
-      <div className="container px-4 md:px-6 mx-auto w-full max-w-none">
+      <div className="container px-4 md:px-6 max-w-full 2xl:max-w-[90%] mx-auto">
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
           {/* Left Side: Heading and CTA */}
           <div className="md:w-1/3 space-y-6">

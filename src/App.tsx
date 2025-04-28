@@ -26,14 +26,12 @@ const App = () => {
             </div>
           }
         >
-          <div className="w-full max-w-none">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          </Routes>
         </Suspense>
       </BrowserRouter>
       
