@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WhatsApp } from "lucide-react";
+import WhatsAppIcon from "./components/icons/WhatsAppIcon";
 import "./App.css";
 
 // Pages
@@ -43,7 +43,7 @@ const App = () => {
         className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition-transform hover:scale-110 hover:shadow-xl"
         aria-label="Contact us on WhatsApp"
       >
-        <WhatsApp size={32} className="text-white" />
+        <WhatsAppIcon size={32} className="text-white" />
       </a>
       
       <Toaster />
