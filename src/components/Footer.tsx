@@ -27,9 +27,9 @@ const Footer = () => {
           <div className="grid gap-6 md:grid-cols-2 lg:col-span-2">
             <FooterSection title="Contacto">
               <FooterNav>
-                <span>contacto@costair.com</span>
-                <span>+34 912 345 678</span>
-                <span>Calle Gran Vía 123, Madrid, España</span>
+                <span>contact@costairglobal.com</span>
+                <span>+541123687997</span>
+                <span>8140 NW 29th St, Doral, FL 33122</span>
               </FooterNav>
             </FooterSection>
 
