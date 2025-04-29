@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -102,10 +103,10 @@ const Hero = () => {
           {/* Text Content - Adjusted vertical alignment */}
           <div className="flex flex-col justify-center space-y-6">
             <h1 className="hero-title">
-              ¡De EE.UU. a Argentina en 7-10 días, boludo!
+              De EE.UU. a Argentina en 7-10 días
             </h1>
             <p className="hero-subtitle">
-              Hacemos que tus compras vuelen. Nuestro servicio courier aéreo te conecta con el mundo de forma rápida, segura y ¡a precios que te van a sorprender!
+              Hacemos que sus compras lleguen con eficiencia. Nuestro servicio courier aéreo le conecta con el mundo de forma rápida, segura y a precios competitivos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-2 justify-center">
               <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">

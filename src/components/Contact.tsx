@@ -12,10 +12,10 @@ const Contact = () => {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Hablemos
+                Contáctenos
               </h2>
               <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                ¿Necesitas enviar o recibir paquetes desde EE.UU. a Argentina? Contáctanos para un servicio de courier puerta a puerta confiable y rápido.
+                ¿Necesita enviar o recibir paquetes desde EE.UU. a Argentina? Contáctenos para acceder a nuestro servicio de courier puerta a puerta confiable, rápido y eficiente.
               </p>
             </div>
             <ul className="grid gap-2 py-4">
@@ -62,7 +62,7 @@ const Contact = () => {
               <div className="space-y-2">
                 <Textarea
                   id="message"
-                  placeholder="Tu mensaje"
+                  placeholder="Su mensaje"
                   className="min-h-[150px] resize-none rounded-2xl"
                 />
               </div>
