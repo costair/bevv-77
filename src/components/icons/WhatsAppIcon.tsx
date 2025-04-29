@@ -20,10 +20,12 @@ const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({ size = 32, className = "" }
       strokeLinejoin="round"
       className={className}
     >
-      <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-      <path d="M9 10a.5.5 0 0 1 1 0v2a.5.5 0 0 1-1 0v-2z" />
-      <path d="M14 10a.5.5 0 0 1 1 0v2a.5.5 0 0 1-1 0v-2z" />
-      <path d="M9.5 15a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+      <path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14" />
+      <path d="M16.5 9.4 7.55 4.24" />
+      <polyline points="3.29 7 12 12 20.71 7" />
+      <line x1="12" y1="22" x2="12" y2="12" />
+      <circle cx="18.5" cy="15.5" r="2.5" />
+      <path d="M20.27 17.27 22 19" />
     </svg>
   );
 };
