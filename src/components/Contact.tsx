@@ -15,21 +15,21 @@ const Contact = () => {
                 Hablemos
               </h2>
               <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                ¿Listo para llevar tu marca de alimentos y bebidas al siguiente nivel? Contáctanos para discutir tu proyecto.
+                ¿Necesitas enviar o recibir paquetes desde EE.UU. a Argentina? Contáctanos para un servicio de courier puerta a puerta confiable y rápido.
               </p>
             </div>
             <ul className="grid gap-2 py-4">
               <li className="flex items-center gap-2">
                 <div className="flex h-2 w-2 rounded-full bg-primary" />
-                <span>Madrid, España</span>
+                <span>contact@costairglobal.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="flex h-2 w-2 rounded-full bg-primary" />
-                <span>contacto@bevvstudio.com</span>
+                <span>+541123687997</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="flex h-2 w-2 rounded-full bg-primary" />
-                <span>+34 912 345 678</span>
+                <span>8140 NW 29th St, Doral, FL 33122</span>
               </li>
             </ul>
           </div>
