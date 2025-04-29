@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -108,7 +107,7 @@ const Hero = () => {
             <p className="hero-subtitle">
               Hacemos que tus compras vuelen. Nuestro servicio courier aéreo te conecta con el mundo de forma rápida, segura y ¡a precios que te van a sorprender!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-2 lg:justify-end">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 justify-center">
               <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
                 Comenzar ahora
               </Button>
