@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
@@ -17,7 +18,7 @@ const About = () => {
               Confianza y eficiencia en logística internacional
             </h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Costair nació con la misión de simplificar el comercio global, ofreciendo soluciones de envío accesibles para todos.
+              Costair nació con la misión de simplificar el comercio internacional entre EE.UU. y Argentina, ofreciendo soluciones de envío accesibles para todos.
             </p>
           </div>
         </div>
@@ -25,10 +26,10 @@ const About = () => {
           <div className="grid gap-4">
             <h3 className="text-2xl font-bold">Nuestra Experiencia</h3>
             <p className="text-gray-500">
-              Con más de una década en el sector logístico internacional, hemos desarrollado relaciones con los principales operadores aéreos y marítimos para ofrecer las mejores tarifas del mercado.
+              Con más de una década en el sector logístico internacional, contamos con una warehouse estratégicamente ubicada en Miami y nos especializamos exclusivamente en la ruta Miami-Buenos Aires.
             </p>
             <p className="text-gray-500">
-              Nuestro equipo especializado domina los procesos aduaneros y las normativas internacionales, asegurando que cada envío llegue a su destino sin complicaciones.
+              Nuestro equipo especializado domina los procesos aduaneros y las normativas específicas para envíos entre EE.UU. y Argentina, asegurando que cada paquete llegue a su destino sin complicaciones en 7-10 días hábiles.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -72,8 +73,8 @@ const About = () => {
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-center">+50</h4>
-              <p className="text-gray-500 text-center">Destinos internacionales</p>
+              <h4 className="text-xl font-bold text-center">Miami-Buenos Aires</h4>
+              <p className="text-gray-500 text-center">Ruta exclusiva</p>
             </div>
           </div>
         </div>
@@ -92,7 +93,7 @@ const About = () => {
                 </div>
               </div>
               <p className="mt-4 text-gray-500">
-                "Costair revolucionó la logística de mi tienda online. Ahora puedo ofrecer envíos internacionales a mis clientes sin preocupaciones."
+                "Costair revolucionó la logística de mi tienda online. Ahora puedo ofrecer envíos desde EE.UU. a mis clientes argentinos sin preocupaciones."
               </p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
@@ -107,7 +108,7 @@ const About = () => {
                 </div>
               </div>
               <p className="mt-4 text-gray-500">
-                "Gracias a Costair hemos optimizado nuestra cadena de suministro internacional. Sus tarifas competitivas y servicio confiable marcan la diferencia."
+                "Gracias a Costair hemos optimizado nuestra cadena de suministro entre Miami y Buenos Aires. Sus tarifas competitivas y servicio confiable marcan la diferencia."
               </p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
@@ -122,7 +123,7 @@ const About = () => {
                 </div>
               </div>
               <p className="mt-4 text-gray-500">
-                "He probado varios servicios de courier y Costair es el más transparente en costos. Sin sorpresas ni cargos adicionales, justo lo que necesitaba."
+                "He probado varios servicios de courier y Costair es el más transparente en costos. Sin sorpresas ni cargos adicionales, y con tiempos de entrega precisos entre 7-10 días hábiles."
               </p>
             </div>
           </div>
