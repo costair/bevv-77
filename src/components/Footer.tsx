@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="border-t">
       <div className="container px-4 pb-8 pt-10 md:px-6 md:pb-12 md:pt-16 lg:pb-16 lg:pt-20">
         <div className="grid gap-8 lg:grid-cols-3">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center lg:items-start mx-auto lg:mx-0 w-full max-w-xs">
             <div className="inline-block">
               <img 
                 src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
@@ -19,7 +19,7 @@ const Footer = () => {
                 className="h-10" 
               />
             </div>
-            <p className="text-muted-foreground max-w-xs">
+            <p className="text-muted-foreground max-w-xs text-center lg:text-left">
               Especialistas en servicios de courier y logística internacional. Conectamos tus productos con el mundo de manera rápida, segura y al mejor precio.
             </p>
           </div>
