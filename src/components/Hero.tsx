@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -17,9 +16,10 @@ const shippingRates = {
   "iphones": 130,
   "macbooks": 160,
   "fundas": 70,
-  "hardware": 70,
+  "hardware": 90,
   "electrodomesticos": 70,
   "telefonia": 90,
+  "accesorios-tecnologia": 70,
 };
 
 const Hero = () => {
@@ -172,6 +172,7 @@ const Hero = () => {
                     <SelectContent align="start" sideOffset={8}>
                       <SelectItem value="indumentaria">Indumentaria - $70/kg</SelectItem>
                       <SelectItem value="accesorios">Accesorios/Juguetes/Deporte - $70/kg</SelectItem>
+                      <SelectItem value="accesorios-tecnologia">Accesorios de Tecnología - $70/kg</SelectItem>
                       <SelectItem value="cremas">Cremas Faciales - $70/kg</SelectItem>
                       <SelectItem value="repuestos-coche">Repuestos de Coche/Moto/Barco - $70/kg</SelectItem>
                       <SelectItem value="repuestos-avion">Repuestos de avión - $130/kg</SelectItem>
@@ -179,7 +180,7 @@ const Hero = () => {
                       <SelectItem value="iphones">iPhones - $130/kg</SelectItem>
                       <SelectItem value="macbooks">Macbooks - $160/kg</SelectItem>
                       <SelectItem value="fundas">Fundas de Teléfono - $70/kg</SelectItem>
-                      <SelectItem value="hardware">Hardware - $70/kg</SelectItem>
+                      <SelectItem value="hardware">Hardware - $90/kg</SelectItem>
                       <SelectItem value="electrodomesticos">Electrodomésticos - $70/kg</SelectItem>
                       <SelectItem value="telefonia">Telefonía Otras Marcas - $90/kg</SelectItem>
                     </SelectContent>
