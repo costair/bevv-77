@@ -85,45 +85,45 @@ const About = () => {
               <div className="flex items-start gap-4">
                 <Avatar>
                   <AvatarImage src="/avatar-1.png" alt="Avatar" />
-                  <AvatarFallback>MG</AvatarFallback>
+                  <AvatarFallback>JC</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium">María González</p>
-                  <p className="text-xs text-gray-500">Emprendedora</p>
+                  <p className="text-sm font-medium">Juan Cruz Quevedo</p>
+                  <p className="text-xs text-gray-500">Founder @powerstorearg</p>
                 </div>
               </div>
               <p className="mt-4 text-gray-500">
-                "Costair revolucionó la logística de mi tienda online. Ahora puedo ofrecer envíos desde EE.UU. a mis clientes argentinos sin preocupaciones."
+                "Super confiable y envío muy rápido!! Recomendadísimo"
               </p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <div className="flex items-start gap-4">
                 <Avatar>
                   <AvatarImage src="/avatar-2.png" alt="Avatar" />
-                  <AvatarFallback>JR</AvatarFallback>
+                  <AvatarFallback>JS</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium">Juan Rodríguez</p>
-                  <p className="text-xs text-gray-500">Director de Operaciones</p>
+                  <p className="text-sm font-medium">Jamil Soto</p>
+                  <p className="text-xs text-gray-500">Importador Mayorista</p>
                 </div>
               </div>
               <p className="mt-4 text-gray-500">
-                "Gracias a Costair hemos optimizado nuestra cadena de suministro entre Miami y Buenos Aires. Sus tarifas competitivas y servicio confiable marcan la diferencia."
+                "Compré una notebook en Miami y en solo 5 días ya la tenía en la puerta de mi casa en Argentina. Todo el proceso fue rápido, seguro y sin complicaciones. La atención al cliente fue muy buena."
               </p>
             </div>
             <div className="rounded-lg border bg-card p-6 shadow-sm">
               <div className="flex items-start gap-4">
                 <Avatar>
                   <AvatarImage src="/avatar-3.png" alt="Avatar" />
-                  <AvatarFallback>LM</AvatarFallback>
+                  <AvatarFallback>CG</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium">Laura Méndez</p>
-                  <p className="text-xs text-gray-500">Compradora Frecuente</p>
+                  <p className="text-sm font-medium">Camila Gonçalves</p>
+                  <p className="text-xs text-gray-500">Compradora Casual</p>
                 </div>
               </div>
               <p className="mt-4 text-gray-500">
-                "He probado varios servicios de courier y Costair es el más transparente en costos. Sin sorpresas ni cargos adicionales, y con tiempos de entrega precisos entre 7-10 días hábiles."
+                "Genios el mejor servicio !!!"
               </p>
             </div>
           </div>
