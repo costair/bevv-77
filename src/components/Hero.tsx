@@ -4,6 +4,7 @@ import { Slider } from "./ui/slider";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { openWhatsApp } from "../utils/contact";
 
 // Shipping rate categories
 const shippingRates = {
@@ -109,13 +110,23 @@ const Hero = () => {
               Hacemos que sus compras lleguen con eficiencia. Nuestro servicio courier aéreo le conecta con el mundo de forma rápida, segura y a precios competitivos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-2 justify-center">
-              <Button className="rounded-full bg-red-500 hover:bg-red-400" size="lg">
+              <Button 
+                className="rounded-full bg-red-500 hover:bg-red-400" 
+                size="lg"
+                onClick={openWhatsApp}
+              >
                 Comenzar ahora
               </Button>
               <Button
                 className="rounded-full border-red-500 text-red-500 hover:bg-red-50"
                 variant="outline"
                 size="lg"
+                onClick={() => {
+                  const servicesSection = document.getElementById("services");
+                  if (servicesSection) {
+                    servicesSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Ver nuestros servicios
               </Button>
@@ -195,7 +206,10 @@ const Hero = () => {
                   <p className="text-xs text-gray-500 mt-2">*Precio final con impuestos y todas las tasas incluidas.</p>
                 </div>
 
-                <Button className="w-full bg-red-500 hover:bg-red-400">
+                <Button 
+                  className="w-full bg-red-500 hover:bg-red-400"
+                  onClick={openWhatsApp}
+                >
                   Solicitar Envío
                 </Button>
               </div>

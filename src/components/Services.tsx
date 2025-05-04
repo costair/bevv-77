@@ -2,6 +2,7 @@
 import React from "react";
 import { ArrowRight, Plane, Package, Clock, Shield, Map, FileCheck } from "lucide-react";
 import { Button } from "./ui/button";
+import { openWhatsApp } from "../utils/contact";
 
 const Services = () => {
   return (
@@ -19,7 +20,10 @@ const Services = () => {
             <p className="text-gray-600 md:text-lg">
               Te ofrecemos una variedad de servicios premium para conectar tus compras de EE.UU. con Argentina de manera eficiente.
             </p>
-            <Button className="group rounded-full bg-red-500 hover:bg-red-400 text-white px-6 py-3">
+            <Button 
+              className="group rounded-full bg-red-500 hover:bg-red-400 text-white px-6 py-3"
+              onClick={openWhatsApp}
+            >
               Saber Más
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>

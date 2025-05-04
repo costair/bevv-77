@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { Check } from "lucide-react";
+import { openWhatsApp } from "../utils/contact";
 
 const Pricing = () => {
   return (
@@ -40,7 +41,12 @@ const Pricing = () => {
                 </li>
               </ul>
             </div>
-            <Button className="mt-6 rounded-full w-full hover:bg-red-500">Cotizar envío</Button>
+            <Button 
+              className="mt-6 rounded-full w-full hover:bg-red-500"
+              onClick={openWhatsApp}
+            >
+              Cotizar envío
+            </Button>
           </div>
           <div className="relative flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
             <div className="absolute -top-4 left-0 right-0 mx-auto w-fit rounded-full bg-red-500 px-3 py-1 text-xs font-medium text-white">
@@ -73,7 +79,12 @@ const Pricing = () => {
                 </li>
               </ul>
             </div>
-            <Button className="mt-6 rounded-full w-full hover:bg-red-500">Cotizar envío</Button>
+            <Button 
+              className="mt-6 rounded-full w-full hover:bg-red-500"
+              onClick={openWhatsApp}
+            >
+              Cotizar envío
+            </Button>
           </div>
           <div className="flex flex-col justify-between rounded-lg border bg-background p-6 shadow-sm">
             <div className="space-y-4">
@@ -103,7 +114,12 @@ const Pricing = () => {
                 </li>
               </ul>
             </div>
-            <Button className="mt-6 rounded-full w-full hover:bg-red-500">Contactar ventas</Button>
+            <Button 
+              className="mt-6 rounded-full w-full hover:bg-red-500"
+              onClick={openWhatsApp}
+            >
+              Contactar ventas
+            </Button>
           </div>
         </div>
       </div>

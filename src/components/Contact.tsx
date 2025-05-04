@@ -1,8 +1,8 @@
-
 import React from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { openWhatsApp } from "../utils/contact";
 
 const Contact = () => {
   return (
@@ -67,7 +67,12 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <Button className="rounded-full w-full">Enviar mensaje</Button>
+            <Button 
+              className="rounded-full w-full"
+              onClick={openWhatsApp}
+            >
+              Enviar mensaje
+            </Button>
           </div>
         </div>
       </div>

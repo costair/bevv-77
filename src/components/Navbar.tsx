@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "../hooks/use-mobile";
+import { openWhatsApp } from "../utils/contact";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +58,7 @@ const Navbar = () => {
           <Button 
             variant="default" 
             className="rounded-full bg-red-500 hover:bg-red-400 transition-colors"
-            onClick={() => scrollToSection("contact")}
+            onClick={openWhatsApp}
           >
             Contáctanos
           </Button>
@@ -119,7 +120,7 @@ const Navbar = () => {
                 <div className="mt-8 flex flex-col gap-2">
                   <Button
                     className="w-full rounded-full bg-red-500 hover:bg-red-400 transition-colors"
-                    onClick={() => scrollToSection("contact")}
+                    onClick={openWhatsApp}
                   >
                     Contáctanos
                   </Button>
