@@ -88,10 +88,10 @@ const Hero = () => {
   }, [weight, category]);
 
   return (
-    <section className="relative w-full py-24 md:py-32 overflow-hidden">
-      {/* Background Image */}
+    <section className="relative w-full min-h-[680px] py-24 md:py-32 overflow-hidden">
+      {/* Background Image - Fixed with inline styles for guaranteed display */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat before:content-none" 
+        className="absolute inset-0 z-0" 
         style={{ 
           backgroundImage: `url('/lovable-uploads/59ac7cc3-b323-4582-8516-e0f57586ff09.png')`,
           backgroundSize: "cover",
@@ -99,12 +99,13 @@ const Hero = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>
       
       <div className="container px-4 md:px-6 w-full max-w-full mx-auto relative z-10">
         <div className="grid gap-10 lg:grid-cols-2 items-center">
-          {/* Text Content - Adjusted vertical alignment */}
+          {/* Text Content */}
           <div className="flex flex-col justify-center space-y-6">
             <h1 className="hero-title">
               De EE.UU. a Argentina en 7-10 días
