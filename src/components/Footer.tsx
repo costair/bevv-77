@@ -5,6 +5,7 @@ import FooterSection from "./footer/FooterSection";
 import FooterLogo from "./footer/FooterLogo";
 import FooterNav from "./footer/FooterNav";
 import FooterNewsletter from "./footer/FooterNewsletter";
+import { Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -22,6 +23,20 @@ const Footer = () => {
             <p className="text-muted-foreground max-w-xs text-center lg:text-left">
               Especialistas en servicios de courier y logística internacional. Conectamos tus productos con el mundo de manera rápida, segura y al mejor precio.
             </p>
+            
+            <div className="flex space-x-4 mt-2">
+              <a 
+                href="https://www.instagram.com/costairglobal/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-red-500 transition-colors"
+              >
+                <Instagram size={24} />
+              </a>
+              <span className="text-gray-600 cursor-not-allowed">
+                <Linkedin size={24} />
+              </span>
+            </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:col-span-2">
