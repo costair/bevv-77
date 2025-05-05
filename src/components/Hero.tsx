@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -92,11 +93,11 @@ const Hero = () => {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
         style={{ 
-          backgroundImage: "url('/lovable-uploads/8284259c-6f5c-4112-8050-8f87c8f4c876.png')",
+          backgroundImage: "url('/lovable-uploads/59ac7cc3-b323-4582-8516-e0f57586ff09.png')",
           backgroundSize: "cover"
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
       </div>
       
       <div className="container px-4 md:px-6 w-full max-w-full mx-auto relative z-10">
