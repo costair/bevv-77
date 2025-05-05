@@ -88,13 +88,15 @@ const Hero = () => {
   }, [weight, category]);
 
   return (
-    <section className="relative w-full py-24 md:py-32">
+    <section className="relative w-full py-24 md:py-32 overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat before:content-none" 
         style={{ 
-          backgroundImage: "url('/lovable-uploads/59ac7cc3-b323-4582-8516-e0f57586ff09.png')",
-          backgroundSize: "cover"
+          backgroundImage: `url('/lovable-uploads/59ac7cc3-b323-4582-8516-e0f57586ff09.png')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
