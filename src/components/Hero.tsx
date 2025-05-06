@@ -93,14 +93,15 @@ const Hero = () => {
       <div 
         className="absolute inset-0 z-0" 
         style={{ 
-          backgroundImage: `url('/lovable-uploads/59ac7cc3-b323-4582-8516-e0f57586ff09.png')`,
+          backgroundImage: `url('/lovable-uploads/30b44d7e-d7d0-40b6-8baf-427e46e79e58.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          opacity: 0.85, // Adding opacity to the background image
         }}
       >
-        {/* Dark overlay - removed bg-black bg-opacity-60 */}
-        <div className="absolute inset-0"></div>
+        {/* Semi-transparent overlay for better text readability if needed */}
+        <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       </div>
       
       <div className="container px-4 md:px-6 w-full max-w-full mx-auto relative z-10">
