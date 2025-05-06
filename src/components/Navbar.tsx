@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="container flex h-14 w-full max-w-full items-center px-4 md:px-6">
         <div className="flex items-center mr-4">
           <img 
-            src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
+            src="/lovable-uploads/77d44c5a-72bd-4efd-9372-efaf47b4e77a.png" 
             alt="Costair Logo" 
             className="h-8"
           />
@@ -82,7 +82,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <img 
-                      src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
+                      src="/lovable-uploads/77d44c5a-72bd-4efd-9372-efaf47b4e77a.png" 
                       alt="Costair Logo" 
                       className="h-8"
                     />

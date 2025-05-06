@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="flex flex-col gap-4 items-center lg:items-start mx-auto lg:mx-0 w-full max-w-xs">
             <div className="inline-block">
               <img 
-                src="/lovable-uploads/373a7b6d-dbaa-4a09-8913-995e2d45cfee.png" 
+                src="/lovable-uploads/77d44c5a-72bd-4efd-9372-efaf47b4e77a.png" 
                 alt="Costair Logo" 
                 className="h-10" 
               />
