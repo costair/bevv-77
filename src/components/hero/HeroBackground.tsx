@@ -18,8 +18,8 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ imageUrl, opacity = 0.8
         opacity: opacity,
       }}
     >
-      {/* Semi-transparent overlay for better text readability if needed */}
-      <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+      {/* Semi-transparent overlay for better text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
     </div>
   );
 };
