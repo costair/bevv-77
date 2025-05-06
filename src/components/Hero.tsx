@@ -89,7 +89,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full min-h-[680px] py-24 md:py-32 overflow-hidden">
-      {/* Background Image - Fixed with inline styles for guaranteed display */}
+      {/* Background Image */}
       <div 
         className="absolute inset-0 z-0" 
         style={{ 
@@ -99,8 +99,8 @@ const Hero = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        {/* Dark overlay - removed bg-black bg-opacity-60 */}
+        <div className="absolute inset-0"></div>
       </div>
       
       <div className="container px-4 md:px-6 w-full max-w-full mx-auto relative z-10">
