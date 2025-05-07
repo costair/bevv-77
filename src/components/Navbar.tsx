@@ -22,6 +22,7 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 w-full max-w-full items-center px-4 md:px-6">
+        {/* Logo - Left aligned */}
         <div className="flex items-center mr-4">
           <img 
             src="/lovable-uploads/77d44c5a-72bd-4efd-9372-efaf47b4e77a.png" 
@@ -30,8 +31,8 @@ const Navbar = () => {
           />
         </div>
         
-        {/* Center navigation - adjusted to be truly centered */}
-        <div className="hidden md:flex flex-1 items-center justify-center">
+        {/* Navigation - Always centered regardless of resolution */}
+        <div className="hidden md:flex flex-1 items-center justify-center absolute left-0 right-0 mx-auto">
           <nav className="flex items-center gap-6 text-sm">
             <button
               onClick={() => scrollToSection("services")}
@@ -54,7 +55,8 @@ const Navbar = () => {
           </nav>
         </div>
         
-        <div className="flex items-center justify-end ml-auto md:ml-0">
+        {/* Contact button - Right aligned */}
+        <div className="flex items-center ml-auto">
           <Button 
             variant="default" 
             className="rounded-full bg-red-500 hover:bg-red-400 transition-colors"
@@ -64,6 +66,7 @@ const Navbar = () => {
           </Button>
         </div>
         
+        {/* Mobile menu - Only visible on mobile */}
         <div className="flex ml-4 md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
