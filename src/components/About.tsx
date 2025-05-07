@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Box } from "lucide-react";
 
 const About = () => {
   return (
@@ -29,7 +30,7 @@ const About = () => {
               Con más de una década en el sector logístico internacional, contamos con una warehouse estratégicamente ubicada en Miami y nos especializamos exclusivamente en la ruta Miami-Buenos Aires.
             </p>
             <p className="text-gray-500">
-              Nuestro equipo especializado domina los procesos aduaneros y las normativas específicas para envíos entre EE.UU. y Argentina, asegurando que cada paquete llegue a su destino sin complicaciones en 7-10 días hábiles.
+              Nuestro equipo especializado domina los procesos aduaneros y las normativas específicas para envíos entre EE.UU. y Argentina, asegurando que cada paquete llegue a su destino sin complicaciones en <strong>7-10 días hábiles</strong>.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -47,14 +48,10 @@ const About = () => {
             </div>
             <div className="grid gap-2">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
-                  <path d="m8 6 4-4 4 4" />
-                  <path d="M12 2v10.3" />
-                  <rect width="16" height="8" x="4" y="14" rx="1" />
-                </svg>
+                <Box className="h-10 w-10 text-red-500" />
               </div>
-              <h4 className="text-xl font-bold text-center">100%</h4>
-              <p className="text-gray-500 text-center">Tracking en tiempo real</p>
+              <h4 className="text-xl font-bold text-center">Rapidez</h4>
+              <p className="text-gray-500 text-center">Tiempos de entrega optimizados</p>
             </div>
             <div className="grid gap-2">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
