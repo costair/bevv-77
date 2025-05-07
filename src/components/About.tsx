@@ -42,18 +42,19 @@ const About = () => {
                   <path d="M19 18v2" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-center">+50.000</h4>
+              <h4 className="text-xl font-bold text-center">+2000</h4>
               <p className="text-gray-500 text-center">Envíos completados</p>
             </div>
             <div className="grid gap-2">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-10 w-10 text-red-500">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="m9 12 2 2 4-4" />
+                  <path d="m8 6 4-4 4 4" />
+                  <path d="M12 2v10.3" />
+                  <rect width="16" height="8" x="4" y="14" rx="1" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-center">98%</h4>
-              <p className="text-gray-500 text-center">Satisfacción de clientes</p>
+              <h4 className="text-xl font-bold text-center">100%</h4>
+              <p className="text-gray-500 text-center">Tracking en tiempo real</p>
             </div>
             <div className="grid gap-2">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-100 mx-auto">
