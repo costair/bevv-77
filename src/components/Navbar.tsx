@@ -1,12 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { useMobile } from '@/hooks/use-mobile';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
 import WhatsAppIcon from './icons/WhatsAppIcon';
 
 export default function Navbar() {
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
